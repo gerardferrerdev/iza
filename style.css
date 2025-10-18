@@ -1,0 +1,85 @@
+/* 1. Estilos Base e Fundo Gradiente */
+body {
+    /* Remove margens e padding padrão para que o fundo ocupe 100% da tela */
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif; /* Uma fonte clássica e romântica */
+    color: #333; /* Cor do texto padrão para a caixa central */
+    min-height: 100vh; /* Garante que o corpo ocupa, no mínimo, a altura total da janela */
+    
+    /* O Fundo Gradiente: Preto para Roxo Suave */
+    /* A função linear-gradient cria a transição de cor */
+    /* to bottom: faz a transição de cima para baixo */
+    /* #000000: Cor preta (começa) */
+    /* #3a1c4a: Um roxo violeta profundo e elegante (termina) */
+    background: linear-gradient(to bottom, #000000, #3a1c4a);
+    
+    /* Centraliza o conteúdo (o container-romance) na vertical e horizontal */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+/* 2. Estilos da "Página ao Meio" (Container) */
+.container-romance {
+    /* Tamanho e forma da caixa central */
+    width: 85%; /* Ocupa 85% da largura da tela */
+    max-width: 700px; /* Limita o tamanho máximo em telas grandes */
+    padding: 40px; /* Espaço interno para o texto não ficar colado nas bordas */
+    
+    /* Estilo da Caixa */
+    background-color: rgba(255, 255, 255, 0.95); /* Fundo branco com 95% de opacidade (parece papel) */
+    border-radius: 15px; /* Bordas arredondadas para um toque suave */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra suave para dar profundidade */
+    text-align: center; /* Centraliza o texto dentro da caixa */
+}
+p{
+  text-align: justify;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h3{
+  color: #7b1fa2;
+}
+
+/* 3. Estilos do Título (h1) */
+.container-romance h1 {
+    color: #7b1fa2; /* Um roxo mais vibrante para o título */
+    font-size: 2.5em; /* Tamanho maior */
+    margin-bottom: 20px;
+}
+
+/* 4. Estilos do Parágrafo (p) */
+.container-romance p {
+    font-size: 1.1em;
+    line-height: 1.6; /* Espaçamento entre linhas para facilitar a leitura */
+    color: #4a4a4a;
+}
+
+/* Adicionar no style.css (no final do ficheiro) */
+
+/* 5. Estilos do Botão (botao-musica) */
+.botao-musica {
+    /* Aparência do botão */
+    display: inline-block; /* Permite definir padding e margem */
+    margin-top: 30px; /* Espaçamento acima do botão */
+    padding: 12px 25px; /* Espaçamento interno */
+    
+    /* Cores e Fundo */
+    background-color: #7b1fa2; /* O roxo vibrante que usámos no título */
+    color: #ffffff; /* Texto branco */
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    
+    /* Forma e Efeito */
+    border-radius: 5px; /* Bordas ligeiramente arredondadas */
+    font-weight: bold; /* Deixa o texto do botão em negrito */
+    transition: background-color 0.3s ease; /* Animação suave para o hover */
+    letter-spacing: 1px; /* Espaçamento entre letras para melhor leitura */
+}
+
+/* Estilo para quando o mouse passar por cima (efeito "hover") */
+.botao-musica:hover {
+    background-color: #5d167f; /* Um roxo ligeiramente mais escuro e profundo */
+    transform: translateY(-2px); /* Efeito suave de "levantar" o botão */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
+}
