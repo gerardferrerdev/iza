@@ -1,0 +1,64 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Garante que o body herda a altura total */
+    min-height: 100vh; /* Garante que o fundo cresce se o conteúdo for maior */
+    
+    font-family: 'Georgia', serif; 
+    color: #333; 
+}
+
+body {
+    background: linear-gradient(to bottom, #000000, #3a1c4a);
+    
+    /* REMOVER AS REGRAS DE FLEXBOX DAQUI */
+    /* Elas devem estar APENAS no .main-content-wrapper */
+}
+
+/* O .main-content-wrapper deve ter as regras de centralização: */
+.main-content-wrapper {
+    width: 100%;
+    
+    /* ESSENCIAL PARA A CENTRALIZAÇÃO VERTICAL */
+    min-height: 100vh; 
+    
+    /* O BLOCO FLEXBOX DEVE ESTAR AQUI! */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente (o que faltava!) */
+    align-items: center; /* Centraliza verticalmente (o que faltava!) */
+}
+
+/* O container principal também é geral, pois todas as páginas terão uma "caixa ao centro" */
+.container-romance {
+    width: 85%;
+    max-width: 700px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* 7. Estilos do Botão de Navegação (novo botão) */
+.botao-navegacao {
+    display: inline-block; 
+    margin-top: 20px; /* Um pouco menos de espaço que o botão da música */
+    padding: 12px 25px; 
+    
+    background-color: #5d167f; /* Roxo mais profundo para diferenciá-lo ligeiramente */
+    color: #ffffff; 
+    text-decoration: none; 
+    
+    border-radius: 5px; 
+    font-weight: bold; 
+    transition: background-color 0.3s ease; 
+    letter-spacing: 1px;
+}
+
+/* Estilo para quando o mouse passar por cima (hover) */
+.botao-navegacao:hover {
+    background-color: #7b1fa2; /* Volta para o roxo vibrante no hover */
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,42 @@
+/* style_capitulo2.css (Estilos específicos para a página Sumário) */
+
+/* 1. Estilo para o Título (h1) */
+.container-romance h1 {
+    color: #7b1fa2; 
+    font-size: 2.2em; /* Um pouco menor que o da página inicial */
+    margin-bottom: 40px; /* Mais espaço antes dos cartões */
+}
+
+/* 2. Estilo da Grelha/Layout (Grid) do Sumário */
+.menu-sumario {
+    display: grid; /* Usa o layout de grelha para organizar os cartões */
+    /* Cria 2 colunas de largura igual, com um espaço de 20px entre elas */
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; /* Espaço entre os cartões */
+    margin-top: 20px;
+}
+
+/* 3. Estilo dos Cartões do Sumário (os links) */
+.cartao-sumario {
+    display: block; /* Ocupa todo o espaço da grelha */
+    padding: 20px;
+    
+    /* Aparência */
+    background-color: #f7f7f7; /* Fundo cinza/branco suave */
+    border: 1px solid #e0e0e0; /* Borda suave */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra mais leve */
+    text-decoration: none; /* Remove sublinhado */
+    color: #4a4a4a; /* Cor do texto */
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease; /* Transições suaves */
+}
+
+/* 4. Estilo Hover (ao passar o mouse) */
+.cartao-sumario:hover {
+    background-color: #7b1fa2; /* Mudar para a cor roxa no hover */
+    color: white; /* Texto fica branco */
+    transform: translateY(-5px); /* Efeito suave de "levantar" */
+    box-shadow: 0 8px 15px rgba(123, 31, 162, 0.5); /* Sombra roxa no hover */
+}

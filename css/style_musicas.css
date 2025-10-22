@@ -1,0 +1,76 @@
+/* css/style_musicas.css (Estilos específicos para a página de Músicas) */
+
+/* 1. Estilos do Título e Subtítulo (Mantidos) */
+.container-romance h1 {
+    color: #7b1fa2; 
+    font-size: 2.2em;
+    margin-bottom: 5px;
+}
+
+.subtitulo-musicas {
+    font-style: italic;
+    color: #6a6a6a;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
+
+/* 2. Estilo de Cada Item de Música */
+.musica-item {
+    background-color: #f7f7f7; 
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* 3. Contentor Flex Principal (Alinha a Capa, Texto e Botão) */
+.info-musica {
+    display: flex;
+    align-items: center; /* Alinha todos os itens verticalmente ao centro */
+    gap: 20px; /* Espaço entre a capa, o texto e o botão */
+}
+
+/* 4. Estilo da Capa da Música */
+.capa-musica {
+    width: 80px; /* Largura da Capa (podes ajustar) */
+    height: 80px; /* Altura da Capa (garante que é quadrada) */
+    object-fit: cover; /* Garante que a imagem preenche sem distorcer */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 5. Estilo da Área de Texto (Para ocupar o espaço central) */
+.texto-musica {
+    flex-grow: 1; /* Permite que o texto ocupe o máximo de espaço central */
+    text-align: left;
+}
+
+.texto-musica h2 {
+    color: #5d167f; 
+    font-size: 1.4em;
+    margin: 0 0 5px 0;
+}
+
+.texto-musica p {
+    font-size: 0.9em;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+/* 6. Estilo do Botão de Ouvir */
+.botao-ouvir {
+    /* Herda o estilo do botão de navegação, mas com cor de destaque */
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #7b1fa2; /* Roxo vibrante */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    white-space: nowrap; /* Impede que o texto do botão quebre */
+    transition: background-color 0.3s ease;
+}
+
+.botao-ouvir:hover {
+    background-color: #5d167f; /* Roxo mais escuro no hover */
+}

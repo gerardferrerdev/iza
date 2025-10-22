@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poesias: Palavras do Coração</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    
+    <link rel="stylesheet" href="css/style_citacoes.css"> 
+</head>
+<body>
+    
+    <div class="main-content-wrapper">
+        
+        <div class="container-romance">
+            
+            <header>
+                <h1>✨ Palavras do Nosso Amor</h1>
+                <p class="subtitulo-poesias">Citações e poemas que nos fazem sorrir e recordar o nosso sentimento.</p>
+            </header>
+
+            <section class="lista-citacoes">
+                
+                <div class="cartao-citacao" onclick="revelarCitacao(this)">
+                    <div class="header-citacao">
+                        <h2>O Amor é Mestre</h2>
+                        <span class="coracao">❤️</span>
+                    </div>
+                    
+                    <p class="texto-citacao escondido">
+                        "O amor é mestre, mas é preciso saber adquirí-lo, porque se adquire dificilmente, ao preço de um esforço prolongado; é preciso amar, de fato, não por um instante, mas até o fim." - Adaptado de "Os Irmãos Karamazov"
+                        <br><br>
+                      
+                    </p>
+                </div>
+
+                <div class="cartao-citacao" onclick="revelarCitacao(this)">
+                    <div class="header-citacao">
+                        <h2>Tu És Uma Mulher Rara</h2>
+                        <span class="coracao">❤️</span>
+                    </div>
+                    
+                    <p class="texto-citacao escondido">
+                      "Tu és uma mulher rara, e, além do mais, a melhor de todas as mulheres. Tu própria não sonhas as qualidades que tens. Para mim és um encanto, não tens igual, e qualquer homem de sentimentos e bom gosto to dirá, se atentar em ti." — Excerto de Carta a Anna Dostoiévskaia
+                    </p>
+                </div>
+                
+            </section>
+            
+            <br>
+            <a href="segunda_pagina.html" class="botao-navegacao">
+                ← Voltar ao Sumário
+            </a>
+            
+        </div>
+    </div>
+    
+    <script>
+        // FUNÇÃO PARA REVELAR O CONTEÚDO DA POESIA
+        function revelarCitacao(cartao) {
+            // 1. Encontra o texto escondido dentro deste cartão
+            const texto = cartao.querySelector('.texto-citacao');
+            
+            // 2. Alterna a classe 'escondido' e 'revelado'
+            // O 'toggle' remove a classe se ela estiver presente, e adiciona se não estiver.
+            texto.classList.toggle('escondido');
+            texto.classList.toggle('revelado');
+
+            // 3. Alterna a classe 'cartao-revelado' no próprio cartão para mudar a cor do coração
+            cartao.classList.toggle('cartao-revelado');
+        }
+    </script>
+</body>
+</html>

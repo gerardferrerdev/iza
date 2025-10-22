@@ -1,0 +1,41 @@
+/* css/style_livro.css (Estilos específicos para a página do Livro) */
+
+/* 1. Estilos do Cabeçalho e Título Principal */
+.container-romance h1 {
+    color: #7b1fa2; 
+    font-size: 2.5em; 
+    margin-bottom: 5px;
+}
+
+/* 2. Estilo do Subtítulo */
+.subtitulo-livro {
+    font-style: italic; /* Texto em itálico */
+    color: #6a6a6a;
+    margin-bottom: 30px; /* Espaçamento grande para separar do conteúdo */
+    border-bottom: 2px solid #e0e0e0; /* Linha divisória suave */
+    padding-bottom: 15px;
+}
+
+/* 3. Estilos do Conteúdo (Texto Corrido) */
+.conteudo-livro {
+    text-align: left; /* O texto corrido deve ser alinhado à esquerda para ser mais fácil de ler */
+    padding: 0 15px; /* Pequeno espaçamento nas laterais do texto */
+}
+
+/* 4. Estilos dos Títulos dos Capítulos (h2) */
+.conteudo-livro h2 {
+    color: #5d167f; /* Roxo mais profundo */
+    font-size: 1.8em;
+    margin-top: 40px; /* Espaço antes do novo capítulo */
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #c8c8c8; /* Linha suave por baixo do título do capítulo */
+}
+
+/* 5. Estilos dos Parágrafos do Livro */
+.conteudo-livro p {
+    font-size: 1.15em; /* Ligeiramente maior para uma leitura confortável */
+    line-height: 1.8; /* Espaçamento entre linhas generoso (muito importante para leitura) */
+    color: #4a4a4a;
+    margin-bottom: 25px; /* Espaçamento entre parágrafos */
+}

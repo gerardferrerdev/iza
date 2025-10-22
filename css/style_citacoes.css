@@ -1,0 +1,83 @@
+/* css/style_citacoes.css (Estilos específicos para a página de Poesias) */
+
+/* 1. Títulos e Subtítulos */
+.container-romance h1 {
+    color: #7b1fa2; 
+    font-size: 2.2em;
+    margin-bottom: 5px;
+}
+
+.subtitulo-poesias {
+    font-style: italic;
+    color: #6a6a6a;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
+
+/* 2. Estilo dos Cartões de Citação */
+.cartao-citacao {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* Indica que é clicável */
+    transition: all 0.3s ease;
+    border: 2px solid #e0e0e0; /* Borda suave por padrão */
+}
+
+.cartao-citacao:hover {
+    box-shadow: 0 6px 20px rgba(123, 31, 162, 0.3);
+    transform: translateY(-2px);
+    border-color: #7b1fa2; /* Borda roxa no hover */
+}
+
+/* 3. Estilo do Cabeçalho (Título e Coração) */
+.header-citacao {
+    display: flex;
+    justify-content: space-between; /* Afasta o título do coração */
+    align-items: center;
+}
+
+.header-citacao h2 {
+    color: #5d167f; 
+    font-size: 1.3em;
+    margin: 0;
+}
+
+/* 4. Estilo do Coração (Ícone) */
+.coracao {
+    font-size: 1.8em;
+    color: #e0e0e0; /* Cor cinza por padrão (não revelado) */
+    transition: color 0.5s ease;
+}
+
+/* 5. O Texto da Poesia (ESSENCIAL PARA ESCONDER/REVELAR) */
+.texto-citacao {
+    text-align: left;
+    font-size: 1.1em;
+    font-style: italic;
+    color: #333;
+    padding-top: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Classe que esconde o texto (aplicada no HTML) */
+.escondido {
+    display: none;
+}
+
+/* Classe que mostra o texto (adicionada pelo JavaScript) */
+.revelado {
+    display: block;
+    /* Linha de separação */
+    border-top: 1px dashed #cccccc;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+/* Estilo para quando o cartão for REVELADO */
+.cartao-revelado .coracao {
+    color: #ff4081; /* Cor de coração vibrante (Magenta/Rosa) quando revelado */
+}

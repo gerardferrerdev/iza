@@ -1,0 +1,57 @@
+/* css/style_galeria.css (Estilos específicos para a Galeria de Fotos) */
+
+/* 1. Estilos do Título Principal */
+.container-romance h1 {
+    color: #7b1fa2; 
+    font-size: 2.2em;
+    margin-bottom: 5px;
+}
+
+/* 2. Estilo do Subtítulo */
+.subtitulo-galeria {
+    font-style: italic;
+    color: #6a6a6a;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
+
+/* 3. Layout da Galeria (Usando CSS Grid) */
+.galeria-fotos {
+    display: grid; 
+    /* Cria 2 colunas de largura igual (1fr 1fr), perfeitas para a caixa central */
+    grid-template-columns: 1fr 1fr; 
+    gap: 25px; /* Espaço entre as fotos */
+    margin-bottom: 30px;
+}
+
+/* 4. Estilo de Cada Item (o Cartão da Foto) */
+.foto-item {
+    background-color: white; 
+    border-radius: 10px;
+    overflow: hidden; /* Garante que a imagem se mantém dentro das bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar um efeito de "cartão" */
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+/* 5. Estilo da Imagem */
+.foto-item img {
+    width: 100%; /* Faz a imagem preencher todo o espaço do cartão */
+    height: 180px; /* Altura fixa para manter a grelha uniforme */
+    object-fit: cover; /* ESSENCIAL: Garante que a imagem preenche o espaço sem distorcer, cortando o excesso */
+    display: block;
+}
+
+/* 6. Estilo da Legenda */
+.legenda {
+    padding: 10px 5px;
+    font-size: 0.9em;
+    color: #5d167f; /* Roxo elegante */
+    font-weight: bold;
+}
+
+/* 7. Efeito Hover (Opcional, mas muito elegante) */
+.foto-item:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente a foto ao passar o mouse */
+    box-shadow: 0 8px 15px rgba(123, 31, 162, 0.5); /* Sombra roxa no hover */
+}
