@@ -39,3 +39,78 @@
     color: #4a4a4a;
     margin-bottom: 25px; /* Espaçamento entre parágrafos */
 }
+
+/* css/style_livro.css (Estilos para o Índice Rápido) */
+
+.sumario-capitulos {
+    text-align: left;
+    background-color: #f0f0f0; /* Fundo cinza claro para destacar */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sumario-capitulos h3 {
+    color: #7b1fa2;
+    font-size: 1.2em;
+    margin-top: 0;
+    border-bottom: 1px solid #d0d0d0;
+    padding-bottom: 5px;
+}
+
+.lista-capitulos {
+    list-style: none; /* Remove os marcadores de lista padrão */
+    padding: 0;
+    margin-top: 15px;
+    column-count: 2; /* Tenta dividir os links em 2 colunas para economizar espaço */
+    column-gap: 30px;
+}
+
+.lista-capitulos li {
+    margin-bottom: 8px;
+}
+
+.lista-capitulos a {
+    color: #4a4a4a;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.lista-capitulos a:hover {
+    color: #5d167f; /* Roxo escuro no hover */
+    text-decoration: underline;
+}
+
+
+
+
+
+/* css/style_livro.css (SUBSTITUIR CÓDIGO DROP CAP) */
+
+/* 1. Aplica o Dropcap ao PRIMEIRO parágrafo que está DENTRO do .conteudo-livro */
+/* ESTA LINHA VAI CONTINUAR A FUNCIONAR PARA O PRÓLOGO: */
+.conteudo-livro > p:first-of-type::first-letter {
+    /* ... (Estilos de cor/tamanho que definimos) ... */
+    color: #5d167f; 
+    font-size: 3.5em; 
+    line-height: 1; 
+    float: left; 
+    margin-right: 10px; 
+    font-family: 'Times New Roman', serif; 
+    font-weight: bold;
+}
+
+/* 2. Aplica o Dropcap ao PARÁGRAFO que vem IMEDIATAMENTE APÓS qualquer título <h2> */
+/* ESTA LINHA VAI CORRIGIR OS CAPÍTULOS SEGUINTES (1, 2, etc.): */
+.conteudo-livro h2 + p::first-letter {
+    /* ... (Repete os mesmos estilos) ... */
+    color: #5d167f; 
+    font-size: 3.5em; 
+    line-height: 1; 
+    float: left; 
+    margin-right: 10px; 
+    font-family: 'Times New Roman', serif; 
+    font-weight: bold;
+}
