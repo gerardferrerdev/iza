@@ -3,45 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para a Minha Pessoa Especial ❤️</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/💜.jpeg" type="image/x-icon">
+    <title>O Nosso Portal do Amor</title>
+    <link rel="shortcut icon" href="img/velaris-removebg-preview.png" type="image/x-icon">
+    
+
+    <link rel="stylesheet" href="css/global.css">
+    
+    <link rel="stylesheet" href="css/style_capitulo2.css"> 
 </head>
 <body>
-
-    <div class="container-romance">
-    </head>
-    <h1>Izabella Beatriz</h1>
-        <p>
-            <i>
-              Olá! Espero que gostes desta pequena surpresa. Este lugar foi feito
-              só para ti, com todo o carinho e admiração.
-              É o nosso pequeno canto no mundo digital...
-            </i>
-            <br><br>
-            <h3>Uma Janela Para a Alma que Inspira</h3>
-            
-              <p>Há laços na vida que transcendem o tempo e as circunstâncias, e a nossa conexão é, sem dúvida, um deles. Quatro anos podem ter nos apresentado, mas a profundidade do que compartilhamos reside na essência de quem você é.</p>
-
-              <p>Existe uma meiguice em seu ser que atua como um bálsamo, uma suavidade rara no mundo. Contudo, é a força sob essa delicadeza que verdadeiramente me encanta. Seus olhos, que guardam tantas histórias e paixões, são o espelho de uma dedicação inabalável. Testemunhar sua força de vontade e o modo como você persegue a vontade de vencer na vida é uma das coisas mais inspiradoras que já presenciei. Você não apenas sonha, você se move.</p>
-
-              <p>Você é a personificação da resiliência. A forma como você se entrega aos livros, — independente de nossas brincadeiras — buscando conhecimento e novas perspectivas, revela uma alma voraz por crescimento. É essa sua integridade e paixão pela vida que tornam seu jeito, que chamas de 'enjoado', tão absolutamente cativante e único.</p>
-
-              <p>Lembro-me de que, por um tempo, a sua simples presença era a minha maior alegria. A quietude ao seu lado, o som da sua risada, a motivação em fazer algo apenas para ver o seu sorriso — esses momentos eram e ainda são a definição de conforto e acolhimento. Não há esforço em prol da sua felicidade que não valha a pena.</p>
-
-              <p>Este site é um lembrete. Um lembrete de que, independentemente da distância ou do caminho que a vida nos force a trilhar, a admiração que sinto pela pessoa que você é — a leitora voraz, a dedicada, a que luta por sua verdade — é um alicerce.</p>
-
-              <p>Continue lendo, continue sorrindo, e acima de tudo, continue sendo essa força da natureza doce e apaixonada. Você ilumina o mundo.</p>
-        </p>
-        <a href="https://open.spotify.com/intl-pt/track/5vPUv0xziXbV4lnWeVNXNq?si=9f55e528eea940c2" target="_blank" class="botao-musica">
-            Muisca que gosto e o clima está propenso
-        </a>
-            <br>
-            <br>
-        <a href="segunda_pagina.html" class="botao-navegacao">
-            Avançar para o Próximo Capítulo
-        </a>
+    
+    <div id="contador-tempo">
+        <span>O Nosso Tempo Juntos Desde sua Volta</span>
+        <span id="tempo-decorrido">A calcular...</span>
     </div>
 
+    <div class="main-content-wrapper">
+        
+            <script>
+                // -----------------------------------------------------
+                // 🚨 PASSO CRUCIAL: DEFINE A DATA E HORA DE INÍCIO DO PROJETO
+                // Usa o formato: Ano, Mês-1 (Janeiro é 0), Dia, Hora, Minuto, Segundo
+                // Exemplo: 7 de Novembro de 2025 às 19:21:00
+                const DATA_INICIO = new Date(2025, 9, 17, 22, 0, 0); 
+                // -----------------------------------------------------
+
+                const elementoTempo = document.getElementById('tempo-decorrido');
+
+                function atualizarContador() {
+                    const agora = new Date();
+                    const diferencaMs = agora.getTime() - DATA_INICIO.getTime(); // Diferença em milissegundos
+
+                    // Conversões
+                    const segundos = Math.floor(diferencaMs / 1000);
+                    const minutos = Math.floor(segundos / 60);
+                    const horas = Math.floor(minutos / 60);
+                    const dias = Math.floor(horas / 24);
+                    
+                    // Unidades maiores
+                    const anos = Math.floor(dias / 365.25); // Usamos 365.25 para anos bissextos
+                    const meses = Math.floor(dias / 30.44); // Média de dias por mês
+
+                    // O que vamos exibir
+                    const tempoFormatado = 
+                        `${anos} anos, ` +
+                        `${meses % 12} meses, ` + // Mês restante após contar os anos
+                        `${dias % 30} dias, ` + // Dia restante após contar os meses
+                        `${horas % 24}h, ` + // Hora restante no dia
+                        `${minutos % 60}m, ` + // Minuto restante na hora
+                        `${segundos % 60}s`; // Segundo restante no minuto
+
+                    elementoTempo.textContent = tempoFormatado;
+                }
+
+                // Atualiza o contador imediatamente ao carregar
+                atualizarContador();
+
+                // Atualiza o contador a cada 1 segundo (1000 milissegundos)
+                setInterval(atualizarContador, 1000);
+            </script>
+    
+    <div class="main-content-wrapper">
+        
+        <div class="container-romance">
+            
+            <h1>O Nosso Portal do Amor</h1>
+            
+            <p>Bem-vinda ao nosso cantinho de memórias! Podes escolher o que queres explorar:</p>
+
+            <div class="menu-sumario">
+    
+                <a href="boas_vindas.html" class="cartao-sumario">
+                    ❤️ Mensagem de Boas-Vindas
+                </a>
+                
+                <a href="livro.html" class="cartao-sumario">
+                    📚 O Livro que Estamos a Escrever
+                </a>
+                
+                <a href="fotos.html" class="cartao-sumario">
+                    📸 A Nossa Galeria de Fotos
+                </a>
+                
+                <a href="musicas.html" class="cartao-sumario">
+                    🎶 As Nossas Músicas Favoritas
+                </a>
+                
+                <a href="citacoes.html" class="cartao-sumario">
+                    ✨ As Nossas Poesias e Citações 
+                </a>
+                
+            </div>
+            
+           
+            
+        </div>
+    </div>
 </body>
 </html>

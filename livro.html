@@ -4,12 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Nosso Livro: História de Nós</title>
+    <link rel="shortcut icon" href="img/velaris-removebg-preview.png" type="image/x-icon">
     
+
     <link rel="stylesheet" href="css/global.css">
     
     <link rel="stylesheet" href="css/style_livro.css"> 
 </head>
 <body>
+
+    <div id="contador-tempo">
+        <span>O Nosso Tempo Juntos Desde sua Volta</span>
+        <span id="tempo-decorrido">A calcular...</span>
+    </div>
+
+    <div class="main-content-wrapper">
+        
+            <script>
+                // -----------------------------------------------------
+                // 🚨 PASSO CRUCIAL: DEFINE A DATA E HORA DE INÍCIO DO PROJETO
+                // Usa o formato: Ano, Mês-1 (Janeiro é 0), Dia, Hora, Minuto, Segundo
+                // Exemplo: 7 de Novembro de 2025 às 19:21:00
+                const DATA_INICIO = new Date(2025, 9, 17, 22, 0, 0); 
+                // -----------------------------------------------------
+
+                const elementoTempo = document.getElementById('tempo-decorrido');
+
+                function atualizarContador() {
+                    const agora = new Date();
+                    const diferencaMs = agora.getTime() - DATA_INICIO.getTime(); // Diferença em milissegundos
+
+                    // Conversões
+                    const segundos = Math.floor(diferencaMs / 1000);
+                    const minutos = Math.floor(segundos / 60);
+                    const horas = Math.floor(minutos / 60);
+                    const dias = Math.floor(horas / 24);
+                    
+                    // Unidades maiores
+                    const anos = Math.floor(dias / 365.25); // Usamos 365.25 para anos bissextos
+                    const meses = Math.floor(dias / 30.44); // Média de dias por mês
+
+                    // O que vamos exibir
+                    const tempoFormatado = 
+                        `${anos} anos, ` +
+                        `${meses % 12} meses, ` + // Mês restante após contar os anos
+                        `${dias % 30} dias, ` + // Dia restante após contar os meses
+                        `${horas % 24}h, ` + // Hora restante no dia
+                        `${minutos % 60}m, ` + // Minuto restante na hora
+                        `${segundos % 60}s`; // Segundo restante no minuto
+
+                    elementoTempo.textContent = tempoFormatado;
+                }
+
+                // Atualiza o contador imediatamente ao carregar
+                atualizarContador();
+
+                // Atualiza o contador a cada 1 segundo (1000 milissegundos)
+                setInterval(atualizarContador, 1000);
+            </script>
     
     <div class="main-content-wrapper">
         
@@ -26,8 +78,9 @@
                 
                 <li><a href="#capitulo-prologo">Prólogo: Minhas Palavras</a></li>
                 <li><a href="#capitulo-1">Capítulo 1: A Descoberta do Olhar</a></li>
-                <li><a href="#capitulo-2">Capítulo 2: A Linha que Separava a Amizade</a></li>
+                <li><a href="#capitulo-2">Capítulo 2: A Linha que Separava...</a></li>
                 <li><a href="#capitulo-3">Capítulo 3: O Amor Sem Assinatura</a></li>
+                <li><a href="#capitulo-4">Capítulo 4: O Risco que Valia a Pena</a></li>
                 </ul>
             <hr>
             </section>
@@ -156,12 +209,77 @@
 
             <h2 id="capitulo-3">Capítulo 3: O Amor Sem Assinatura</h2>
 
+            <p>
+                Ali, vi-me perante a oportunidade de finalmente ser algo mais, de ser definitivamente teu. Não sei porquê, mas tu cativavas-me de uma forma surreal. Sentia uma forte atração, uma grande vontade de estar contigo. Eras uma pessoa incrível, uma pessoa amável na tua essência.
+
+                Então, foi para isso que me lancei: para me tornar o teu motivo de sorrir, tal como tu eras o meu. Contudo, havia um pequeno (e grande) problema: eu nunca fui bom com garotas, né? Afinal, eu era... meio estranho demais.
+
+                Mas eu tinha a vantagem de ser teu amigo; já vivia contigo e não teria de passar pela terrível aproximação com duzentos por cento de chance de rejeição.
+
+                Fomos, então, construindo passo a passo, fazendo coisas por ti, dando-te a atenção desejada. E, por incrível que pareça, não era cansativo, era até gratificante ver-te feliz e tudo o mais. Por algum motivo, se tu tinhas um problema, nós tínhamos um problema. Assim tu conseguias respirar, e isso era bom. Parecia que eu finalmente era necessário, sabes? E aquilo fazia-me bem.
+            </p>
+
+            <p>
+                E, para minha surpresa, fui correspondido. Passávamos a abraçar-nos mais, a rir juntos, a conhecer-nos na essência. A cada dia que passava, reforçávamos a nossa conexão, o que me deixava incrédulo de certo modo. Eu era... um garoto muito respeitoso, por assim dizer. Medo: essa era a palavra. Medo de tentar algo brusco e te afastar.
+
+                E por que isso me deixava incrédulo? Pois eu definitivamente achava que era um garoto que te cansava, já que correspondias à minha paixão mesmo que aos poucos. Eu não tinha atitude alguma. E, mesmo assim, ficamos durante muito tempo sendo a companhia um do outro para absolutamente tudo.
+
+                E meu Deus, como aquilo era reconfortante! Dava prazer estar ali. Tu fazias-me ser alguém melhor. Eu estudava, lia, aprendi a melhorar a minha letra, moldei os meus ouvidos para escutar a música (não apenas o ruído), aprendi a dar valor às pequenas coisas, aprendi a ser um homem ao teu lado. Aos poucos, tu moldaste-me para ser quem sou hoje.
+
+                Quem sou agora, enquanto me debruço sobre o teclado para escrever sobre nós. E isso deixa-me feliz, pois consigo ver o quão desprazeroso é ser homem (não, menino, tendo em vista o desdém com o sentimento alheio) nos dias atuais.
+
+                Mas existe uma parte ruim em tudo isso: a única pessoa que o meu coração permite usufruir deste homem melhor que tu me ajudaste a construir, chama-se Izabella Beatriz da Costa Pinheiro. Familiar? Talvez. Mas, enfim: "O preço de amar muito alguém é nunca mais amar ninguém." (Fiódor Dostoiévski). Ele sabia do que estava a falar, mesmo há cento e quarenta anos atrás.    
+            </p>
+
+            <p>
+                Aquele era o ciclo do nosso amor sem assinatura: tu moldavas-me, eu dedicava-me, e a nossa proximidade dissolvia os contornos de qualquer definição. Por mais que tentasse racionalizar a situação, ou convencer-me de que a amizade bastava, a verdade era incontornável: eu já te pertencia. O meu coração, que tu fizeste melhor, não aceitava que a única barreira entre nós fosse uma formalidade externa e teimosa. Tínhamos partilhado sonhos, medos e segredos – eu sabia que era tempo de partilhar o resto. Era a hora da paixão, há tanto tempo contida e disfarçada em abraços e risos, finalmente tomar a sua forma inegável.
+            </p>
+
+
+            <h2 id="capitulo-4">Capítulo 4: O Risco que Valia a Pena</h2>
+
+            <p>
+                Estávamos a ir tão bem que eu queria mais, queria poder quebrar a linha da amizade e iniciar o nosso lado romântico de uma vez por todas. A única coisa que faltava era a confirmação, pois todos os outros quesitos já estavam mais do que confirmados: nos nossos abraços, nas conversas, na demonstração de afeto, em tudo.
+
+                O que faltava?
+
+                Faltava a cereja do bolo, faltava o marco que definitivamente assumiria aquilo que nenhum dos dois colocava em palavras.
+            </p>
+
+            <p>
+                Foi então numa manhã, mais especificamente a de 14 de junho, que, após a realização de um trabalho escolar, fomos ver um filme em aula para toda a turma. Como de costume, sentei-me atrás de ti, junto à carteira, e ali te abracei para vermos o filme. Estava legendado e, naturalmente, todos estavam com a atenção redobrada, o que ironicamente favoreceu o meu propósito.
+
+                Ali, comecei a sentir algo diferente: uma batida descontrolada do coração, um ar rarefeito, um estado de transe em que entramos noutra dimensão. Aos poucos, alinhámos as nossas cabeças. Fui pensando se valeria a pena o risco, com medo, mil pensamentos a questionar tudo... até que te reclinaste sobre os meus lábios. E ali...
+
+                Senti o meu mundo mudar. Tive o contacto tão aguardado. O meu peito parou de acelerar e alinhou-se com o teu. Senti o mundo de outra forma, senti a tua respiração, os teus lábios, o teu coração alinhado ao meu. A paixão ali sentida transbordou-me.
+
+                Ali eu tive a certeza. Faria de tudo, literalmente de tudo, para nunca te perder. Pois ali eu entendi que tinha achado a mulher da minha vida.
+
+                "O charme é a maneira de obter a resposta 'sim' sem ter feito uma pergunta clara." (Albert Camus). Isso descreve bem o nosso momento.
+            </p>
+
+            <p>
+                A partir daí, o meu mais puro e singelo sentimento de pertencimento ganhou forma. E tu não consegues compreender o quão mágico isso foi para mim.
+
+                Tu, o ser que mais me tinhas, acabavas finalmente de confirmar as minhas suspeitas: o amor era recíproco.
+
+                Tudo aquilo não era um grande conto criado por mim para amenizar o fato de tu não me querer. Tu realmente me quiseste ali. Tu mostraste ser a pessoa que eu queria ao meu lado para sempre.
+            </p>
+
+            <p>
+                Aquele beijo, ocorrido sob o olhar irónico da nossa rotina escolar, foi a certidão de nascimento do nosso amor não oficial. Entendemo-nos em silêncio: o risco tinha valido a pena, mas a jornada apenas começava. O destino tinha-nos forçado a encontrar o nosso caminho juntos, e agora, com a certeza do amor recíproco, estávamos prontos para viver a plenitude da paixão dentro da nossa bolha proibida, desafiando as regras que nunca poderíamos quebrar por inteiro.
+            </p>
+            <br>
+            <p>
+                "O meu único mapa tem os teus olhos castanhos como bússola e o teu sorriso como a lua. (Vá lá, ilumina minha noite, nem que seja só para eu não me perder de novo na escuridão)." (Seu G). 
+            </p>
+
 
                 
             </section>
             
             <br>
-            <a href="segunda_pagina.html" class="botao-navegacao">
+            <a href="index.html" class="botao-navegacao">
                 ← Voltar ao Sumário
             </a>
             

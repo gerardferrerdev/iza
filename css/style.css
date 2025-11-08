@@ -107,3 +107,30 @@ h3{
     transform: translateY(-2px); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+
+
+/* css/global.css (NOVO BLOCO - ESTILO DO CONTADOR) */
+
+#contador-tempo {
+    /* Posição Fixa no Canto Superior Direito */
+    position: fixed; 
+    top: 20px;
+    right: 20px;
+    
+    /* Aparência */
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo preto semi-transparente */
+    color: #E0C090; /* Cor amarela/dourada para o tempo (destaque) */
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: monospace; /* Fonte com espaçamento fixo para o tempo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Garante que fica por cima de tudo */
+    text-align: center;
+}
+
+#contador-tempo span {
+    display: block; /* Garante que o texto de "Desde" fica numa linha, e o tempo na outra */
+    line-height: 1.4;
+}

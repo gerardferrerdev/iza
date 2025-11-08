@@ -1,20 +1,25 @@
 
-html, body {
+body {
+    /* Remove margens e padding padrão para que o fundo ocupe 100% da tela */
     margin: 0;
     padding: 0;
-    height: 100%; /* Garante que o body herda a altura total */
-    min-height: 100vh; /* Garante que o fundo cresce se o conteúdo for maior */
+    font-family: 'Georgia', serif; /* Uma fonte clássica e romântica */
+    color: #333; /* Cor do texto padrão para a caixa central */
+    min-height: 100vh; /* Garante que o corpo ocupa, no mínimo, a altura total da janela */
     
-    font-family: 'Georgia', serif; 
-    color: #333; 
-}
-
-body {
+    /* O Fundo Gradiente: Preto para Roxo Suave */
+    /* A função linear-gradient cria a transição de cor */
+    /* to bottom: faz a transição de cima para baixo */
+    /* #000000: Cor preta (começa) */
+    /* #3a1c4a: Um roxo violeta profundo e elegante (termina) */
     background: linear-gradient(to bottom, #000000, #3a1c4a);
     
-    /* REMOVER AS REGRAS DE FLEXBOX DAQUI */
-    /* Elas devem estar APENAS no .main-content-wrapper */
+    /* Centraliza o conteúdo (o container-romance) na vertical e horizontal */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
 }
+
 
 /* O .main-content-wrapper deve ter as regras de centralização: */
 .main-content-wrapper {
@@ -61,4 +66,31 @@ body {
     background-color: #7b1fa2; /* Volta para o roxo vibrante no hover */
     transform: translateY(-2px); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* css/global.css (NOVO BLOCO - ESTILO DO CONTADOR) */
+
+#contador-tempo {
+    /* Posição Fixa no Canto Superior Direito */
+    position: fixed; 
+    top: 20px;
+    right: 20px;
+    
+    /* Aparência */
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo preto semi-transparente */
+    color: #E0C090; /* Cor amarela/dourada para o tempo (destaque) */
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: monospace; /* Fonte com espaçamento fixo para o tempo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Garante que fica por cima de tudo */
+    text-align: center;
+}
+
+#contador-tempo span {
+    display: block; /* Garante que o texto de "Desde" fica numa linha, e o tempo na outra */
+    line-height: 1.4;
 }
