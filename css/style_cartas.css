@@ -1,0 +1,12 @@
+/* css/style_cartas.css (Anulação do Dropcap) */
+
+/* Esta regra TEM de ser a mais específica para anular a do style_livro.css */
+/* O valor font-size: 1em; volta ao tamanho normal. */
+.conteudo-livro h2 + p::first-letter,
+.conteudo-livro p:first-of-type::first-letter {
+    font-size: 1em; /* Tamanho normal da primeira letra */
+    float: none; /* Essencial: Remove o alinhamento flutuante que faz a letra parecer grande */
+    margin-right: 0; /* Remove o espaço extra */
+    font-weight: normal; /* Remove o negrito */
+    color: inherit; /* Volta à cor do texto normal */
+}
