@@ -47,6 +47,17 @@
             font-weight: bold;
             display: none;
         }
+
+        /* index.html (ADICIONAR NO BLOCO <style>) */
+
+        .pista-senha {
+            font-size: 0.95em;
+            color: #5d167f; /* Roxo escuro para harmonizar */
+            font-style: italic; /* Texto em itálico para suavizar */
+            margin-top: -10px; /* Reduz o espaço com o campo de senha */
+            margin-bottom: 25px; /* Espaço antes do botão */
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -58,6 +69,9 @@
 
         <form id="form-login">
             <input type="password" id="senha" placeholder="Insere a nossa senha secreta" required>
+            <p class="pista-senha">
+                A senha é: como eu lhe chamava
+            </p>
             <button type="submit">Entrar</button>
             <p id="erro" class="mensagem-erro">Senha incorreta. Tenta novamente.</p>
         </form>
@@ -67,7 +81,7 @@
     <script>
         // -----------------------------------------------------
         // 🚨 PASSO CRUCIAL: A SENHA SECRETA 🚨
-        const SENHA_CORRETA = "nossoamor2025"; 
+        const SENHA_CORRETA = "criança"; 
         // -----------------------------------------------------
         
         const form = document.getElementById('form-login');

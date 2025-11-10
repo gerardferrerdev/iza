@@ -96,3 +96,19 @@ body {
     display: block; /* Garante que o texto de "Desde" fica numa linha, e o tempo na outra */
     line-height: 1.4;
 }
+
+/* css/global.css (AJUSTE PARA O BOTÃO FIXO DE LOGOUT) */
+
+#trancar-segredos {
+    /* Posição Fixa no Viewport */
+    position: fixed; 
+    bottom: 20px; /* 20px acima da borda inferior */
+    left: 20px;   /* 20px à direita da borda esquerda */
+    
+    /* 🚨 NOVO TAMANHO E FORMATAÇÃO DISCRETA 🚨 */
+    font-size: 0.8em; /* Letra ainda mais pequena (discreta) */
+    padding: 8px 12px; /* Reduz o padding interno */
+    
+    /* Garantia de visibilidade */
+    z-index: 1000; 
+}
