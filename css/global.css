@@ -117,6 +117,8 @@ body {
 
 /* css/global.css (MODIFICAÇÃO NO BLOCO #contador-vida) */
 
+/* css/global.css (BLOCO #contador-vida CORRIGIDO) */
+
 #contador-vida {
     /* Posição Fixa no Viewport */
     position: fixed; 
@@ -137,4 +139,10 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: 999; 
     text-align: center;
+}
+
+/* 🚨 AJUSTE ESSENCIAL para o JS 🚨 */
+#contador-vida span {
+    display: block; /* Garante que o título e o tempo ficam em linhas separadas */
+    line-height: 1.4;
 }
