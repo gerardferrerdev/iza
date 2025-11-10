@@ -99,16 +99,42 @@ body {
 
 /* css/global.css (AJUSTE PARA O BOTÃO FIXO DE LOGOUT) */
 
+/* css/global.css (MODIFICAÇÃO NO BLOCO #trancar-segredos) */
+
 #trancar-segredos {
+    position: fixed; 
+    
+    /* 🚨 MUDANÇA: Para o canto superior esquerdo */
+    top: 20px; 
+    left: 20px; 
+    bottom: auto; /* Remove o bottom: 20px anterior */
+    
+    /* Tamanho e Estilo (restante do código...) */
+    font-size: 0.8em; 
+    padding: 8px 12px;
+    z-index: 1000; 
+}
+
+/* css/global.css (MODIFICAÇÃO NO BLOCO #contador-vida) */
+
+#contador-vida {
     /* Posição Fixa no Viewport */
     position: fixed; 
-    bottom: 20px; /* 20px acima da borda inferior */
-    left: 20px;   /* 20px à direita da borda esquerda */
+    bottom: 20px;
     
-    /* 🚨 NOVO TAMANHO E FORMATAÇÃO DISCRETA 🚨 */
-    font-size: 0.8em; /* Letra ainda mais pequena (discreta) */
-    padding: 8px 12px; /* Reduz o padding interno */
+    /* 🚨 MUDANÇA: Para o lado esquerdo */
+    left: 20px;   
+    right: auto; /* Garantimos que não há conflito com o right anterior */
     
-    /* Garantia de visibilidade */
-    z-index: 1000; 
+    /* Aparência (restante do código...) */
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: #E0C090; /* Ouro Pálido */
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: monospace; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 999; 
+    text-align: center;
 }

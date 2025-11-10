@@ -1,131 +1,269 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartas: Os Meus Desabafos</title>
-    
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/style_livro.css"> 
-    <link rel="stylesheet" href="css/style_cartas.css"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartas: Os Meus Desabafos</title>
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/style_livro.css">
+  <link rel="stylesheet" href="css/style_cartas.css">
 
 </head>
-    <div id="contador-tempo">
-        <span>O Nosso Tempo Juntos Desde sua Volta</span>
-        <span id="tempo-decorrido">A calcular...</span>
+<div id="contador-tempo">
+  <span>O Nosso Tempo Juntos Desde sua Volta</span>
+  <span id="tempo-decorrido">A calcular...</span>
+</div>
+
+<div id="contador-vida">
+  <span>Desde o Nosso Primeiro Encontro <br></span>
+  <span id="tempo-vida-decorrido">A calcular...</span>
+</div>
+
+<div class="main-content-wrapper">
+
+  <script>
+    // --- DADOS DE INÍCIO (CORRETOS) ---
+    const DATA_INICIO_PROJETO = new Date(2025, 9, 17, 22, 0, 0);
+    const DATA_PRIMEIRO_ENCONTRO = new Date(2021, 7, 14, 9, 10, 0);
+
+    // --- ELEMENTOS HTML (CORRETOS) ---
+    const elementoTempoProjeto = document.getElementById('tempo-decorrido');
+    const elementoTempoEncontro = document.getElementById('tempo-vida-decorrido'); // Renomeado para clareza
+
+    function formatarTempo(diferencaMs) {
+      // Funções de formatação: Recebe milissegundos e devolve a string formatada
+      const segundos = Math.floor(diferencaMs / 1000);
+      const minutos = Math.floor(segundos / 60);
+      const horas = Math.floor(minutos / 60);
+      const dias = Math.floor(horas / 24);
+
+      const anos = Math.floor(dias / 365.25);
+      const meses = Math.floor(dias / 30.44);
+
+      return `${anos} anos, ` +
+        `${meses % 12} meses, ` +
+        `${dias % 30} dias, ` +
+        `${horas % 24}h, ` +
+        `${minutos % 60}m, ` +
+        `${segundos % 60}s`;
+    }
+
+    // FUNÇÃO PRINCIPAL QUE ATUALIZA AMBOS OS CONTADORES
+    function atualizarContadores() {
+      const agora = new Date();
+
+      // 1. CÁLCULO E ATRIBUIÇÃO DO TEMPO DO PROJETO (JÁ EXISTENTE)
+      const diferencaProjetoMs = agora.getTime() - DATA_INICIO_PROJETO.getTime();
+      const tempoProjetoFormatado = formatarTempo(diferencaProjetoMs);
+      elementoTempoProjeto.textContent = tempoProjetoFormatado;
+
+      // 2. 🚨 NOVO CÁLCULO E ATRIBUIÇÃO: TEMPO DO ENCONTRO 🚨
+      const diferencaEncontroMs = agora.getTime() - DATA_PRIMEIRO_ENCONTRO.getTime();
+      const tempoEncontroFormatado = formatarTempo(diferencaEncontroMs);
+      elementoTempoEncontro.textContent = tempoEncontroFormatado; // Atribui ao elemento correto!
+    }
+
+    // Inicializa e atualiza a cada segundo
+    atualizarContadores();
+    setInterval(atualizarContadores, 1000);
+
+    // --- CÓDIGO DO BOTÃO TRANCAR (Permanece para o Logout) ---
+    document.addEventListener('DOMContentLoaded', function () {
+      const botaoTrancar = document.getElementById('trancar-segredos');
+
+      if (botaoTrancar) {
+        botaoTrancar.addEventListener('click', function (event) {
+          event.preventDefault();
+          localStorage.clear();
+          window.location.href = "index.html";
+        });
+      }
+    });
+  </script>
+
+  <div class="main-content-wrapper">
+
+    <div class="container-romance">
+
+      <header>
+        <h1>💌 Cartas e Desabafos do Coração</h1>
+        <p class="subtitulo-livro">Tudo que eu ja escrevi para você ou pensei, ou so oque está borbulhando na minha
+          mente, so pra você</p>
+      </header>
+
+
+      <section class="sumario-capitulos">
+        <h3>Índice Rápido de Cartas</h3>
+        <ul class="lista-capitulos">
+          <li><a href="#carta-1">Carta 1: 09/10/2025 18h18</a></li>
+          <li><a href="#carta-2">Carta 2: 09/10/2025 19h40</a></li>
+          <li><a href="#carta-3">Carta 3: 09/10/2025 23h20</a></li>
+          <li><a href="#carta-4">Carta 4: 09/10/2025 23h25</a></li>
+          <li><a href="#carta-5">Carta 5: 09/10/2025 23h43</a></li>
+          <li><a href="#sumario">Sumario</a></li>
+
+
+
+
+
+        </ul>
+        <hr>
+        <section class="conteudo-livro">
+
+          <div class="cartao-carta-revelavel" id="carta-1" onclick="revelarConteudo(this)">
+
+            <div class="header-carta">
+              <h2>Carta 1: 09/10/2025 18h18</h2>
+              <span class="icone-revelar">▼</span>
+            </div>
+
+            <div class="texto-carta-escondido">
+
+              <p>
+                Hoje não esta fazendo nem 24h ainda que você se afastou um pouco, e bom ta feio kkk, to com saudades
+                genuinas de você, acordar sem poder dar bom dia, ver reels e não poder mandar, so estar contigo, enfim,
+                to
+                sentindo su falta, volta pra mim...</p>
+            </div>
+
+          </div>
+
+          <div class="cartao-carta-revelavel" id="carta-2" onclick="revelarConteudo(this)">
+
+            <div class="header-carta">
+              <h2>Carta 2: 09/10/2025 19h40</h2>
+              <span class="icone-revelar">▼</span>
+            </div>
+
+            <div class="texto-carta-escondido">
+              <p>
+                Eu te amo! <br>
+                Mas e se eu te machucar? <br>
+                Eu te amo! <br>
+                Mas eu sou uma grande confusão e... <br>
+                Eu te amo! <br>
+                Mas eu tenho medo... <br>
+                Eu te amo! <br>
+                Mas e se algum dia agente... <br>
+                Eu te amo! <br>
+                Você ao menos esta escutando oque eu to falando? <br>
+                Eu te amo! <br>
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="cartao-carta-revelavel" id="carta-3" onclick="revelarConteudo(this)">
+
+            <div class="header-carta">
+              <h2>Carta 3: 09/10/2025 23h20</h2>
+              <span class="icone-revelar">▼</span>
+            </div>
+
+            <div class="texto-carta-escondido">
+              <p>
+                Hoje eu vou dormir sentindo saudades de você denovo, nem lembrava mais como era, por incrivel que
+                pareça.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="cartao-carta-revelavel" id="carta-4" onclick="revelarConteudo(this)">
+
+            <div class="header-carta">
+              <h2>Carta 4: 09/10/2025 23h25</h2>
+              <span class="icone-revelar">▼</span>
+            </div>
+
+            <div class="texto-carta-escondido">
+              <p>
+                Enquanto houver o amanhã, estarei contigo; e, enquanto estiver contigo sempre desejarei que haja o
+                amanhã.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="cartao-carta-revelavel" id="carta-5" onclick="revelarConteudo(this)">
+
+            <div class="header-carta">
+              <h2>Carta 5: 09/10/2025 23h43</h2>
+              <span class="icone-revelar">▼</span>
+            </div>
+
+            <div class="texto-carta-escondido">
+              <p>
+                Bom, já que estou sem você por agora, tive um dia bem estranho... Não estranho não. Só um dia normal,
+                sabe quando te perguntam: "Como foi seu dia?" e você solta só um "normal", genuíno mesmo? Pois é, foi o
+                meu hoje. Normal.
+
+                Concluí minhas matérias da Faculdade, agora é só revisar até o dia 13.
+
+                E também hoje me perguntaram o que é o amor. Que legal, né? Foi um amigo, ele se diz apaixonado e tal.
+                Essa pergunta dele me pegou desprevenido, sabe? Porque só me veio você à mente. Correlacionando o amor,
+                você é o meu amor, a minha definição, aparentemente.
+
+                Foi o que disse para ele: "Irmão, amor é você, independentemente de tudo, ainda ver que vale a pena. É
+                ver que nem tudo são rosas e, mesmo assim, ainda estar extremamente cativado. Amar é isso: querer o bem
+                mesmo de longe."
+
+                Ele riu e mandou um: "Tá bem, mano?" Eu ri e disse que sim, né.
+
+                Mas no fundo estou com saudades: muitas, muitas mesmo. Não tipo: "Meu Deus, você se distanciou um pouco
+                ontem e estou morrendo de saudades!" Em parte, sim, é isso. Mas eu sinto sua falta: já vai fazer um ano.
+                Um ano que pude te dar um abraço, te ter nele. Um ano que você me deu um beijo, um ano que tento lembrar
+                daquela sensação... Sei lá.
+
+                Amo você. Falo isso sem medo, sabe? Desculpa, sei lá. Beijos. Boa noite, minha princesa. Queria poder
+                estar olhando no fundo desses seus olhos que sou profundamente apaixonado...
+              </p>
+            </div>
+
+          </div>
+
+        </section>
+
+        <br>
+        <a href="sumario.html" id="sumario" class="botao-navegacao">
+          ← Voltar ao Sumário
+        </a>
     </div>
+  </div>
 
-    <div class="main-content-wrapper">
-        
-            <script>
-                // -----------------------------------------------------
-                // 🚨 PASSO CRUCIAL: DEFINE A DATA E HORA DE INÍCIO DO PROJETO
-                // Usa o formato: Ano, Mês-1 (Janeiro é 0), Dia, Hora, Minuto, Segundo
-                // Exemplo: 7 de Novembro de 2025 às 19:21:00
-                const DATA_INICIO = new Date(2025, 9, 17, 22, 0, 0); 
-                // -----------------------------------------------------
+  <script>
+    // Função de verificação de segurança
+    function verificarSessao() {
+        const acesso = localStorage.getItem('acessoConcedido');
+        const expiracao = localStorage.getItem('expiracao');
+        const horaAtual = new Date().getTime();
 
-                const elementoTempo = document.getElementById('tempo-decorrido');
-
-                function atualizarContador() {
-                    const agora = new Date();
-                    const diferencaMs = agora.getTime() - DATA_INICIO.getTime(); // Diferença em milissegundos
-
-                    // Conversões
-                    const segundos = Math.floor(diferencaMs / 1000);
-                    const minutos = Math.floor(segundos / 60);
-                    const horas = Math.floor(minutos / 60);
-                    const dias = Math.floor(horas / 24);
-                    
-                    // Unidades maiores
-                    const anos = Math.floor(dias / 365.25); // Usamos 365.25 para anos bissextos
-                    const meses = Math.floor(dias / 30.44); // Média de dias por mês
-
-                    // O que vamos exibir
-                    const tempoFormatado = 
-                        `${anos} anos, ` +
-                        `${meses % 12} meses, ` + // Mês restante após contar os anos
-                        `${dias % 30} dias, ` + // Dia restante após contar os meses
-                        `${horas % 24}h, ` + // Hora restante no dia
-                        `${minutos % 60}m, ` + // Minuto restante na hora
-                        `${segundos % 60}s`; // Segundo restante no minuto
-
-                    elementoTempo.textContent = tempoFormatado;
-                }
-
-                // Atualiza o contador imediatamente ao carregar
-                atualizarContador();
-
-                // Atualiza o contador a cada 1 segundo (1000 milissegundos)
-                setInterval(atualizarContador, 1000);
-            </script>
-    
-    <div class="main-content-wrapper">
-        
-        <div class="container-romance">
-            
-            <header>
-                <h1>💌 Cartas e Desabafos do Coração</h1>
-                <p class="subtitulo-livro">Tudo que eu ja escrevi para você ou pensei, ou so oque está borbulhando na minha mente, so pra você</p>
-            </header>
-
-            <section class="sumario-capitulos">
-                <h3>Índice Rápido de Cartas</h3>
-                <ul class="lista-capitulos">
-                    <li><a href="#carta-1">Carta 1: 09/10/2025 18h18</a></li>
-                    <li><a href="#carta-2">Carta 2: 09/10/2025 19h40</a></li>
-
-                </ul>
-                <hr>
-            </section>
-
-            <section class="conteudo-livro">
-                
-                <h2 id="carta-1">Carta 1: 09/10/2025 18h18</h2>
-                <p>
-                    Hoje não esta fazendo nem 24h ainda que você se afastou um pouco, e bom ta feio kkk, to com saudades genuinas de você, acordar sem poder dar bom dia, ver reels e não poder mandar, so estar contigo, enfim, to sentindo su falta, volta pra mim...
-                </p>
-                
-                <h2 id="carta-2">carta 2: 09/10/2025 19h40</h2>
-                <p>
-                  Eu te amo! <br>
-                  Mas e se eu te machucar? <br>
-                  Eu te amo! <br>
-                  Mas eu sou uma grande confusão e... <br>
-                  Eu te amo! <br>
-                  Mas eu tenho medo...  <br>
-                  Eu te amo! <br>
-                  Mas e se algum dia agente... <br>
-                  Eu te amo! <br>
-                  Você ao menos esta escutando oque eu to falando? <br>
-                  Eu te amo! <br>
-                </p>
-                
-            </section>
-            
-            <br>
-            <a href="sumario.html" class="botao-navegacao">
-                ← Voltar ao Sumário
-            </a>
-        </div>
-    </div>
-
-     <script>
-        // Função de verificação de segurança
-        function verificarSessao() {
-            const acesso = localStorage.getItem('acessoConcedido');
-            const expiracao = localStorage.getItem('expiracao');
-            const horaAtual = new Date().getTime();
-
-            // 1. Verifica se o token existe OU se expirou
-            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-                // Se o token é inválido ou não existe, redireciona para a tela de login
-                window.location.replace("index.html");
-            }
+        // 1. Verifica se o token existe OU se expirou
+        if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+            // Se o token é inválido ou não existe, redireciona para a tela de login
+            window.location.replace("index.html");
         }
+    }
 
-        // Executa a verificação assim que a página é carregada
-        verificarSessao();
-    </script>
-</body>
+    // Executa a verificação assim que a página é carregada
+    verificarSessao();
+  </script>
+
+  <script>
+    function revelarConteudo(cartao) {
+      // Encontra o contentor do texto e o próprio cartão
+      const texto = cartao.querySelector('.texto-carta-escondido');
+
+      // Alterna a classe de visibilidade do texto
+      texto.classList.toggle('texto-visivel');
+
+      // Alterna a classe no cartão para mudar a cor/girar o ícone
+      cartao.classList.toggle('cartao-revelado');
+    }
+  </script>
+  </body>
+
 </html>

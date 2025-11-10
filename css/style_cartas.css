@@ -1,12 +1,66 @@
-/* css/style_cartas.css (Anulação do Dropcap) */
+/* css/style_cartas.css (NOVO ESTILO DE CARTÃO REVELÁVEL) */
 
-/* Esta regra TEM de ser a mais específica para anular a do style_livro.css */
-/* O valor font-size: 1em; volta ao tamanho normal. */
-.conteudo-livro h2 + p::first-letter,
-.conteudo-livro p:first-of-type::first-letter {
-    font-size: 1em; /* Tamanho normal da primeira letra */
-    float: none; /* Essencial: Remove o alinhamento flutuante que faz a letra parecer grande */
-    margin-right: 0; /* Remove o espaço extra */
-    font-weight: normal; /* Remove o negrito */
-    color: inherit; /* Volta à cor do texto normal */
+/* 1. Estilos dos Parágrafos (Mantemos a boa leitura) */
+.conteudo-livro p {
+    font-size: 1.15em; 
+    line-height: 1.8; 
+    color: #4a4a4a;
+    margin-bottom: 25px; 
+}
+
+/* 2. Estilo de Cada Cartão/Carta */
+.cartao-carta-revelavel {
+    background-color: #f7f7f7;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* Indica que é clicável */
+    transition: all 0.3s ease;
+    border-left: 5px solid #7b1fa2; /* Borda lateral para dar destaque roxo */
+    text-align: left;
+}
+
+.cartao-carta-revelavel:hover {
+    box-shadow: 0 6px 15px rgba(123, 31, 162, 0.4);
+    transform: translateY(-2px);
+}
+
+/* 3. Estilo do Título e Ícone */
+.header-carta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.header-carta h2 {
+    color: #5d167f; 
+    font-size: 1.6em;
+    margin: 0; /* Remove margem padrão */
+    /* REMOVER: border-bottom para que o título faça parte do cartão */
+}
+
+.icone-revelar {
+    font-size: 1.2em;
+    color: #7b1fa2;
+    transition: transform 0.3s;
+}
+
+/* 4. Esconder o Conteúdo e Mostrar ao Revelar */
+.texto-carta-escondido {
+    display: none; /* ESSENCIAL: Esconde o conteúdo por padrão */
+    padding-top: 15px;
+    border-top: 1px dashed #cccccc;
+    margin-top: 10px;
+}
+
+/* Classe que será adicionada pelo JS para mostrar */
+.texto-visivel {
+    display: block; 
+}
+
+/* Rotação do Ícone quando o conteúdo for revelado */
+.cartao-revelado .icone-revelar {
+    transform: rotate(180deg);
 }

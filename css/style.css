@@ -134,3 +134,27 @@ h3{
     display: block; /* Garante que o texto de "Desde" fica numa linha, e o tempo na outra */
     line-height: 1.4;
 }
+
+/* css/global.css (MODIFICAÇÃO NO BLOCO #contador-vida) */
+
+#contador-vida {
+    /* Posição Fixa no Viewport */
+    position: fixed; 
+    bottom: 20px;
+    
+    /* 🚨 MUDANÇA: Para o lado esquerdo */
+    left: 20px;   
+    right: auto; /* Garantimos que não há conflito com o right anterior */
+    
+    /* Aparência (restante do código...) */
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: #E0C090; /* Ouro Pálido */
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: monospace; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 999; 
+    text-align: center;
+}

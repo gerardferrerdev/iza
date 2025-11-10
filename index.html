@@ -1,132 +1,139 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔒 Acesso Exclusivo</title>
-    
-    <link rel="stylesheet" href="css/global.css">
-    
-    <style>
-        /* CENTRALIZAÇÃO E INPUTS (EXISTENTES) */
-        .container-romance form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔒 Acesso Exclusivo</title>
 
-        .container-romance input {
-            padding: 12px;
-            margin: 15px 0;
-            width: 80%;
-            max-width: 300px;
-            border: 2px solid #5d167f;
-            border-radius: 8px;
-            font-size: 1em;
-            text-align: center;
-        }
+  <link rel="stylesheet" href="css/global.css">
 
-        .container-romance button {
-            background-color: #7b1fa2;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .container-romance button:hover {
-            background-color: #5d167f;
-        }
+  <style>
+    /* CENTRALIZAÇÃO E INPUTS (EXISTENTES) */
+    .container-romance form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .mensagem-erro {
-            color: #ff4081;
-            margin-top: 10px;
-            font-weight: bold;
-            display: none;
-        }
+    .container-romance input {
+      padding: 12px;
+      margin: 15px 0;
+      width: 80%;
+      max-width: 300px;
+      border: 2px solid #5d167f;
+      border-radius: 8px;
+      font-size: 1em;
+      text-align: center;
+    }
 
-        /* index.html (ADICIONAR NO BLOCO <style>) */
+    .container-romance button {
+      background-color: #7b1fa2;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        .pista-senha {
-            font-size: 0.95em;
-            color: #5d167f; /* Roxo escuro para harmonizar */
-            font-style: italic; /* Texto em itálico para suavizar */
-            margin-top: -10px; /* Reduz o espaço com o campo de senha */
-            margin-bottom: 25px; /* Espaço antes do botão */
-            text-align: center;
-        }
-    </style>
+    .container-romance button:hover {
+      background-color: #5d167f;
+    }
+
+    .mensagem-erro {
+      color: #ff4081;
+      margin-top: 10px;
+      font-weight: bold;
+      display: none;
+    }
+
+    /* index.html (ADICIONAR NO BLOCO <style>) */
+
+    .pista-senha {
+      font-size: 0.95em;
+      color: #5d167f;
+      /* Roxo escuro para harmonizar */
+      font-style: italic;
+      /* Texto em itálico para suavizar */
+      margin-top: -10px;
+      /* Reduz o espaço com o campo de senha */
+      margin-bottom: 25px;
+      /* Espaço antes do botão */
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
-    
-    <div class="container-romance">
-        
-        <h1>🔒 Acesso Necessário</h1>
-        <p>Este portal foi criado com carinho e é exclusivo para nós.</p>
 
-        <form id="form-login">
-            <input type="password" id="senha" placeholder="Insere a nossa senha secreta" required>
-            <p class="pista-senha">
-                A senha é: como eu lhe chamava
-            </p>
-            <button type="submit">Entrar</button>
-            <p id="erro" class="mensagem-erro">Senha incorreta. Tenta novamente.</p>
-        </form>
+  <div class="container-romance">
 
-    </div>
+    <h1>🔒 Acesso Necessário</h1>
+    <p>Este portal foi criado com carinho e é exclusivo para nós.</p>
 
-    <script>
-        // -----------------------------------------------------
-        // 🚨 PASSO CRUCIAL: A SENHA SECRETA 🚨
-        const SENHA_CORRETA = "criança"; 
-        // -----------------------------------------------------
-        
-        const form = document.getElementById('form-login');
-        const campoSenha = document.getElementById('senha');
-        const mensagemErro = document.getElementById('erro');
-        
-        // Caminho para o Sumário
-        const PAGINA_CONTEUDO = "sumario.html"; 
+    <form id="form-login">
+      <input type="password" id="senha" placeholder="Insere a nossa senha secreta" required>
+      <p class="pista-senha">
+        A senha é: como eu lhe chamava
+      </p>
+      <button type="submit">Entrar</button>
+      <p id="erro" class="mensagem-erro">Senha incorreta. Tenta novamente.</p>
+    </form>
 
-        // 1. FUNÇÃO PARA PROCESSAR O LOGIN
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            
-            if (campoSenha.value === SENHA_CORRETA) {
-                // Senha correta: Concede o acesso e redireciona
-                const horaExpiracao = new Date().getTime() + (60 * 60 * 1000); 
-                localStorage.setItem('acessoConcedido', 'true');
-                localStorage.setItem('expiracao', horaExpiracao.toString());
+  </div>
 
-                window.location.href = PAGINA_CONTEUDO;
-            } else {
-                // Senha incorreta
-                mensagemErro.style.display = 'block';
-                campoSenha.value = ''; 
-            }
-        });
+  <script>
+    // -----------------------------------------------------
+    // 🚨 PASSO CRUCIAL: A SENHA SECRETA 🚨
+    const SENHA_CORRETA = "criança";
+    // -----------------------------------------------------
 
-        // 2. FUNÇÃO PARA VERIFICAR SE O ACESSO JÁ FOI CONCEDIDO (EXECUTA IMEDIATAMENTE)
-        function verificarAcesso() {
-            const acesso = localStorage.getItem('acessoConcedido');
-            const expiracao = localStorage.getItem('expiracao');
-            const horaAtual = new Date().getTime();
+    const form = document.getElementById('form-login');
+    const campoSenha = document.getElementById('senha');
+    const mensagemErro = document.getElementById('erro');
 
-            // Verifica se o token é válido
-            if (acesso === 'true' && expiracao && horaAtual < parseInt(expiracao)) {
-                window.location.href = PAGINA_CONTEUDO;
-            } else {
-                // Token inválido/expirado: Limpa e mantém a tela de login visível
-                localStorage.removeItem('acessoConcedido');
-                localStorage.removeItem('expiracao');
-            }
-        }
+    // Caminho para o Sumário
+    const PAGINA_CONTEUDO = "sumario.html";
 
-        verificarAcesso();
-        
-    </script>
+    // 1. FUNÇÃO PARA PROCESSAR O LOGIN
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      if (campoSenha.value === SENHA_CORRETA) {
+        // Senha correta: Concede o acesso e redireciona
+        const horaExpiracao = new Date().getTime() + (60 * 60 * 1000);
+        localStorage.setItem('acessoConcedido', 'true');
+        localStorage.setItem('expiracao', horaExpiracao.toString());
+
+        window.location.href = PAGINA_CONTEUDO;
+      } else {
+        // Senha incorreta
+        mensagemErro.style.display = 'block';
+        campoSenha.value = '';
+      }
+    });
+
+    // 2. FUNÇÃO PARA VERIFICAR SE O ACESSO JÁ FOI CONCEDIDO (EXECUTA IMEDIATAMENTE)
+    function verificarAcesso() {
+      const acesso = localStorage.getItem('acessoConcedido');
+      const expiracao = localStorage.getItem('expiracao');
+      const horaAtual = new Date().getTime();
+
+      // Verifica se o token é válido
+      if (acesso === 'true' && expiracao && horaAtual < parseInt(expiracao)) {
+        window.location.href = PAGINA_CONTEUDO;
+      } else {
+        // Token inválido/expirado: Limpa e mantém a tela de login visível
+        localStorage.removeItem('acessoConcedido');
+        localStorage.removeItem('expiracao');
+      }
+    }
+
+    verificarAcesso();
+
+  </script>
 </body>
+
 </html>

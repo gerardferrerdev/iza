@@ -1,186 +1,214 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playlist: As Nossas Músicas</title>
     <link rel="shortcut icon" href="img/velaris-removebg-preview.png" type="image/x-icon">
     <link rel="stylesheet" href="css/global.css">
-    
-    <link rel="stylesheet" href="css/style_musicas.css"> 
+
+    <link rel="stylesheet" href="css/style_musicas.css">
 </head>
+
 <body>
-    
+
 
     <div id="contador-tempo">
         <span>O Nosso Tempo Juntos Desde sua Volta</span>
         <span id="tempo-decorrido">A calcular...</span>
     </div>
 
+    <div id="contador-vida">
+        <span>Desde o Nosso Primeiro Encontro <br></span>
+        <span id="tempo-vida-decorrido">A calcular...</span>
+    </div>
+
     <div class="main-content-wrapper">
-        
-            <script>
-                // -----------------------------------------------------
-                // 🚨 PASSO CRUCIAL: DEFINE A DATA E HORA DE INÍCIO DO PROJETO
-                // Usa o formato: Ano, Mês-1 (Janeiro é 0), Dia, Hora, Minuto, Segundo
-                // Exemplo: 7 de Novembro de 2025 às 19:21:00
-                const DATA_INICIO = new Date(2025, 9, 17, 22, 0, 0); 
-                // -----------------------------------------------------
 
-                const elementoTempo = document.getElementById('tempo-decorrido');
+        <script>
+            // --- DADOS DE INÍCIO (CORRETOS) ---
+            const DATA_INICIO_PROJETO = new Date(2025, 9, 17, 22, 0, 0);
+            const DATA_PRIMEIRO_ENCONTRO = new Date(2021, 7, 14, 9, 10, 0);
 
-                function atualizarContador() {
-                    const agora = new Date();
-                    const diferencaMs = agora.getTime() - DATA_INICIO.getTime(); // Diferença em milissegundos
+            // --- ELEMENTOS HTML (CORRETOS) ---
+            const elementoTempoProjeto = document.getElementById('tempo-decorrido');
+            const elementoTempoEncontro = document.getElementById('tempo-vida-decorrido'); // Renomeado para clareza
 
-                    // Conversões
-                    const segundos = Math.floor(diferencaMs / 1000);
-                    const minutos = Math.floor(segundos / 60);
-                    const horas = Math.floor(minutos / 60);
-                    const dias = Math.floor(horas / 24);
-                    
-                    // Unidades maiores
-                    const anos = Math.floor(dias / 365.25); // Usamos 365.25 para anos bissextos
-                    const meses = Math.floor(dias / 30.44); // Média de dias por mês
+            function formatarTempo(diferencaMs) {
+                // Funções de formatação: Recebe milissegundos e devolve a string formatada
+                const segundos = Math.floor(diferencaMs / 1000);
+                const minutos = Math.floor(segundos / 60);
+                const horas = Math.floor(minutos / 60);
+                const dias = Math.floor(horas / 24);
 
-                    // O que vamos exibir
-                    const tempoFormatado = 
-                        `${anos} anos, ` +
-                        `${meses % 12} meses, ` + // Mês restante após contar os anos
-                        `${dias % 30} dias, ` + // Dia restante após contar os meses
-                        `${horas % 24}h, ` + // Hora restante no dia
-                        `${minutos % 60}m, ` + // Minuto restante na hora
-                        `${segundos % 60}s`; // Segundo restante no minuto
+                const anos = Math.floor(dias / 365.25);
+                const meses = Math.floor(dias / 30.44);
 
-                    elementoTempo.textContent = tempoFormatado;
+                return `${anos} anos, ` +
+                    `${meses % 12} meses, ` +
+                    `${dias % 30} dias, ` +
+                    `${horas % 24}h, ` +
+                    `${minutos % 60}m, ` +
+                    `${segundos % 60}s`;
+            }
+
+            // FUNÇÃO PRINCIPAL QUE ATUALIZA AMBOS OS CONTADORES
+            function atualizarContadores() {
+                const agora = new Date();
+
+                // 1. CÁLCULO E ATRIBUIÇÃO DO TEMPO DO PROJETO (JÁ EXISTENTE)
+                const diferencaProjetoMs = agora.getTime() - DATA_INICIO_PROJETO.getTime();
+                const tempoProjetoFormatado = formatarTempo(diferencaProjetoMs);
+                elementoTempoProjeto.textContent = tempoProjetoFormatado;
+
+                // 2. 🚨 NOVO CÁLCULO E ATRIBUIÇÃO: TEMPO DO ENCONTRO 🚨
+                const diferencaEncontroMs = agora.getTime() - DATA_PRIMEIRO_ENCONTRO.getTime();
+                const tempoEncontroFormatado = formatarTempo(diferencaEncontroMs);
+                elementoTempoEncontro.textContent = tempoEncontroFormatado; // Atribui ao elemento correto!
+            }
+
+            // Inicializa e atualiza a cada segundo
+            atualizarContadores();
+            setInterval(atualizarContadores, 1000);
+
+            // --- CÓDIGO DO BOTÃO TRANCAR (Permanece para o Logout) ---
+            document.addEventListener('DOMContentLoaded', function () {
+                const botaoTrancar = document.getElementById('trancar-segredos');
+
+                if (botaoTrancar) {
+                    botaoTrancar.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        localStorage.clear();
+                        window.location.href = "index.html";
+                    });
                 }
+            });
+        </script>
 
-                // Atualiza o contador imediatamente ao carregar
-                atualizarContador();
+        <div class="main-content-wrapper">
 
-                // Atualiza o contador a cada 1 segundo (1000 milissegundos)
-                setInterval(atualizarContador, 1000);
-            </script>
+            <div class="container-romance">
 
+                <header>
+                    <h1>🎶 O Acervo que te Joga em Meus Pensamentos</h1>
+                    <p class="subtitulo-musicas">As canções que marcam a minha trilha sonora.</p>
+                </header>
 
-    <div class="main-content-wrapper">
-        
-        <div class="container-romance">
-            
-            <header>
-                <h1>🎶 O Acervo que te Joga em Meus Pensamentos</h1>
-                <p class="subtitulo-musicas">As canções que marcam a minha trilha sonora.</p>
-            </header>
+                <section class="lista-musicas">
 
-            <section class="lista-musicas">
-                
-                <div class="musica-item">
-                    
-                    <div class="info-musica">
-                        
-                        <img src="img/Sem título.jpg" alt="Capa da Música 1" class="capa-musica">
-                        
-                        <div class="texto-musica">
-                            <h2>1. we fell in love in october</h2>
-                            <p>Você é tão bonita e eu amo essa vistaYou 
-                              <br>
-                              look so pretty and 
-                              <br>
-                              I love this view 
-                              <br>
-                              Nós nos apaixonamos em outubro, por isso eu amo o outono <br>
-                              We fell in love in October, that's why <br>
-                              I love fall <br>
-                              Olhando para as estrelas, admirando-as de longe <br>
-                              Looking at the stars, admiring from afar</p>
+                    <div class="musica-item">
+
+                        <div class="info-musica">
+
+                            <img src="img/Sem título.jpg" alt="Capa da Música 1" class="capa-musica">
+
+                            <div class="texto-musica">
+                                <h2>1. we fell in love in october</h2>
+                                <p>Você é tão bonita e eu amo essa vistaYou
+                                    <br>
+                                    look so pretty and
+                                    <br>
+                                    I love this view
+                                    <br>
+                                    Nós nos apaixonamos em outubro, por isso eu amo o outono <br>
+                                    We fell in love in October, that's why <br>
+                                    I love fall <br>
+                                    Olhando para as estrelas, admirando-as de longe <br>
+                                    Looking at the stars, admiring from afar
+                                </p>
+                            </div>
+
+                            <a href="https://open.spotify.com/intl-pt/track/6IPwKM3fUUzlElbvKw2sKl?si=0ce1a98867ec44ff"
+                                target="_blank" class="botao-ouvir">
+                                Ouvir Agora
+                            </a>
+
                         </div>
-                        
-                        <a href="https://open.spotify.com/intl-pt/track/6IPwKM3fUUzlElbvKw2sKl?si=0ce1a98867ec44ff" target="_blank" class="botao-ouvir">
-                            Ouvir Agora
-                        </a>
-
                     </div>
-                </div>
 
-                <div class="musica-item">
-                    
-                    <div class="info-musica">
-                        
-                        <img src="img/pupila.jpeg" alt="Capa da Música 2" class="capa-musica">
-                        
-                        <div class="texto-musica">
-                            <h2>2. Pupila</h2>
-                            <p>
-                                Como que eu vou dizer pra ela <br>
-                                Que eu gosto do seu cheiro <br>
-                                Da cor do seu cabelo?<br>
-                                Que ela faz minha pupila dilatar? <br>
-                            </p>
+                    <div class="musica-item">
+
+                        <div class="info-musica">
+
+                            <img src="img/pupila.jpeg" alt="Capa da Música 2" class="capa-musica">
+
+                            <div class="texto-musica">
+                                <h2>2. Pupila</h2>
+                                <p>
+                                    Como que eu vou dizer pra ela <br>
+                                    Que eu gosto do seu cheiro <br>
+                                    Da cor do seu cabelo?<br>
+                                    Que ela faz minha pupila dilatar? <br>
+                                </p>
+                            </div>
+
+                            <a href="https://open.spotify.com/intl-pt/track/7Gk5OrMYaMRtT2JmgJVAfk?si=877267452bdf4d1d"
+                                target="_blank" class="botao-ouvir">
+                                Ouvir Agora
+                            </a>
+
                         </div>
-                        
-                        <a href="https://open.spotify.com/intl-pt/track/7Gk5OrMYaMRtT2JmgJVAfk?si=877267452bdf4d1d" target="_blank" class="botao-ouvir">
-                            Ouvir Agora
-                        </a>
-
                     </div>
-                </div>
 
-                <div class="musica-item">
-                    
-                    <div class="info-musica">
-                        
-                        <img src="img/Kingston.jpeg" alt="Capa da Música 3" class="capa-musica">
-                        
-                        <div class="texto-musica">
-                            <h2>3. Kingston</h2>
-                            <p>
-                                Desde o dia em que te conheci, comecei a ter sonhos <br>
-                                The day that I met you I started dreaming <br>
-                                Agora coloco eles no papel se eu lembrar deles na manhã seguinte <br>
-                                Now I write them down if I remember in the morning time <br>
-                            </p>
+                    <div class="musica-item">
+
+                        <div class="info-musica">
+
+                            <img src="img/Kingston.jpeg" alt="Capa da Música 3" class="capa-musica">
+
+                            <div class="texto-musica">
+                                <h2>3. Kingston</h2>
+                                <p>
+                                    Desde o dia em que te conheci, comecei a ter sonhos <br>
+                                    The day that I met you I started dreaming <br>
+                                    Agora coloco eles no papel se eu lembrar deles na manhã seguinte <br>
+                                    Now I write them down if I remember in the morning time <br>
+                                </p>
+                            </div>
+
+                            <a href="https://open.spotify.com/intl-pt/track/5WbfFTuIldjL9x7W6y5l7R?si=f9d00c5f224f4bdb"
+                                target="_blank" class="botao-ouvir">
+                                Ouvir Agora
+                            </a>
+
                         </div>
-                        
-                        <a href="https://open.spotify.com/intl-pt/track/5WbfFTuIldjL9x7W6y5l7R?si=f9d00c5f224f4bdb" target="_blank" class="botao-ouvir">
-                            Ouvir Agora
-                        </a>
-
                     </div>
-                </div>
 
-                <div class="musica-item">
-                    
-                    <div class="info-musica">
-                        
-                        <img src="img/imprevisto.jpeg" alt="Capa da Música 4" class="capa-musica">
-                        
-                        <div class="texto-musica">
-                            <h2>4. Imprevisto</h2>
-                            <p>
-                                E eu entenderia pra falar <br>
-                                Meu gesto pra te enfeitiçar <br>
-                                Fico sentindo o batimento do seu peito <br>
-                                De um modo tão particular <br>
-                                Sem muita coisa pra falar <br>
-                                Só um silêncio e transmissão de pensamento <br>
-<br>
-                                Me juntaria pra te amar<br>
-                                Nos teus cabelos me enrolar<br>
-                                Mais enrolado que eu já tô nesse momento<br>
-                                Tem um mundão pra aventurar<br>
-                                Eu sei, seu ascendente é mar<br>
-                                E a nossa foto aumentou meu engajamento<br>
-                            </p>
+                    <div class="musica-item">
+
+                        <div class="info-musica">
+
+                            <img src="img/imprevisto.jpeg" alt="Capa da Música 4" class="capa-musica">
+
+                            <div class="texto-musica">
+                                <h2>4. Imprevisto</h2>
+                                <p>
+                                    E eu entenderia pra falar <br>
+                                    Meu gesto pra te enfeitiçar <br>
+                                    Fico sentindo o batimento do seu peito <br>
+                                    De um modo tão particular <br>
+                                    Sem muita coisa pra falar <br>
+                                    Só um silêncio e transmissão de pensamento <br>
+                                    <br>
+                                    Me juntaria pra te amar<br>
+                                    Nos teus cabelos me enrolar<br>
+                                    Mais enrolado que eu já tô nesse momento<br>
+                                    Tem um mundão pra aventurar<br>
+                                    Eu sei, seu ascendente é mar<br>
+                                    E a nossa foto aumentou meu engajamento<br>
+                                </p>
+                            </div>
+
+                            <a href="https://open.spotify.com/intl-pt/track/0gaZCBbtjEyTLhJrjnPbt5?si=3e483167c57340ee"
+                                target="_blank" class="botao-ouvir">
+                                Ouvir Agora
+                            </a>
+
                         </div>
-                        
-                        <a href="https://open.spotify.com/intl-pt/track/0gaZCBbtjEyTLhJrjnPbt5?si=3e483167c57340ee" target="_blank" class="botao-ouvir">
-                            Ouvir Agora
-                        </a>
-
                     </div>
-                </div>
 
-                <!--
+                    <!--
                 <div class="musica-item">
                     <div class="info-musica">
                         
@@ -198,33 +226,34 @@
                     </div>
                 </div>
                 -->
-                
+
                 </section>
-            
-            <br>
-            <a href="sumario.html" class="botao-navegacao">
-                ← Voltar ao Sumário
-            </a>
-            
+
+                <br>
+                <a href="sumario.html" class="botao-navegacao">
+                    ← Voltar ao Sumário
+                </a>
+
+            </div>
         </div>
-    </div>
 
-     <script>
-        // Função de verificação de segurança
-        function verificarSessao() {
-            const acesso = localStorage.getItem('acessoConcedido');
-            const expiracao = localStorage.getItem('expiracao');
-            const horaAtual = new Date().getTime();
+        <script>
+            // Função de verificação de segurança
+            function verificarSessao() {
+                const acesso = localStorage.getItem('acessoConcedido');
+                const expiracao = localStorage.getItem('expiracao');
+                const horaAtual = new Date().getTime();
 
-            // 1. Verifica se o token existe OU se expirou
-            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-                // Se o token é inválido ou não existe, redireciona para a tela de login
-                window.location.replace("index.html");
+                // 1. Verifica se o token existe OU se expirou
+                if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+                    // Se o token é inválido ou não existe, redireciona para a tela de login
+                    window.location.replace("index.html");
+                }
             }
-        }
 
-        // Executa a verificação assim que a página é carregada
-        verificarSessao();
-    </script>
+            // Executa a verificação assim que a página é carregada
+            verificarSessao();
+        </script>
 </body>
+
 </html>

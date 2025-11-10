@@ -10,55 +10,77 @@
 </head>
 <body>
 
-    <div id="contador-tempo">
+     <div id="contador-tempo">
         <span>O Nosso Tempo Juntos Desde sua Volta</span>
         <span id="tempo-decorrido">A calcular...</span>
     </div>
 
+    <div id="contador-vida">
+        <span>Desde o Nosso Primeiro Encontro <br></span>
+        <span id="tempo-vida-decorrido">A calcular...</span>
+    </div>
+
     <div class="main-content-wrapper">
-        
-            <script>
-                // -----------------------------------------------------
-                // 🚨 PASSO CRUCIAL: DEFINE A DATA E HORA DE INÍCIO DO PROJETO
-                // Usa o formato: Ano, Mês-1 (Janeiro é 0), Dia, Hora, Minuto, Segundo
-                // Exemplo: 7 de Novembro de 2025 às 19:21:00
-                const DATA_INICIO = new Date(2025, 9, 17, 22, 0, 0); 
-                // -----------------------------------------------------
 
-                const elementoTempo = document.getElementById('tempo-decorrido');
+        <script>
+            // --- DADOS DE INÍCIO (CORRETOS) ---
+            const DATA_INICIO_PROJETO = new Date(2025, 9, 17, 22, 0, 0);
+            const DATA_PRIMEIRO_ENCONTRO = new Date(2021, 7, 14, 9, 10, 0);
 
-                function atualizarContador() {
-                    const agora = new Date();
-                    const diferencaMs = agora.getTime() - DATA_INICIO.getTime(); // Diferença em milissegundos
+            // --- ELEMENTOS HTML (CORRETOS) ---
+            const elementoTempoProjeto = document.getElementById('tempo-decorrido');
+            const elementoTempoEncontro = document.getElementById('tempo-vida-decorrido'); // Renomeado para clareza
 
-                    // Conversões
-                    const segundos = Math.floor(diferencaMs / 1000);
-                    const minutos = Math.floor(segundos / 60);
-                    const horas = Math.floor(minutos / 60);
-                    const dias = Math.floor(horas / 24);
-                    
-                    // Unidades maiores
-                    const anos = Math.floor(dias / 365.25); // Usamos 365.25 para anos bissextos
-                    const meses = Math.floor(dias / 30.44); // Média de dias por mês
+            function formatarTempo(diferencaMs) {
+                // Funções de formatação: Recebe milissegundos e devolve a string formatada
+                const segundos = Math.floor(diferencaMs / 1000);
+                const minutos = Math.floor(segundos / 60);
+                const horas = Math.floor(minutos / 60);
+                const dias = Math.floor(horas / 24);
 
-                    // O que vamos exibir
-                    const tempoFormatado = 
-                        `${anos} anos, ` +
-                        `${meses % 12} meses, ` + // Mês restante após contar os anos
-                        `${dias % 30} dias, ` + // Dia restante após contar os meses
-                        `${horas % 24}h, ` + // Hora restante no dia
-                        `${minutos % 60}m, ` + // Minuto restante na hora
-                        `${segundos % 60}s`; // Segundo restante no minuto
+                const anos = Math.floor(dias / 365.25);
+                const meses = Math.floor(dias / 30.44);
 
-                    elementoTempo.textContent = tempoFormatado;
+                return `${anos} anos, ` +
+                    `${meses % 12} meses, ` +
+                    `${dias % 30} dias, ` +
+                    `${horas % 24}h, ` +
+                    `${minutos % 60}m, ` +
+                    `${segundos % 60}s`;
+            }
+
+            // FUNÇÃO PRINCIPAL QUE ATUALIZA AMBOS OS CONTADORES
+            function atualizarContadores() {
+                const agora = new Date();
+
+                // 1. CÁLCULO E ATRIBUIÇÃO DO TEMPO DO PROJETO (JÁ EXISTENTE)
+                const diferencaProjetoMs = agora.getTime() - DATA_INICIO_PROJETO.getTime();
+                const tempoProjetoFormatado = formatarTempo(diferencaProjetoMs);
+                elementoTempoProjeto.textContent = tempoProjetoFormatado;
+
+                // 2. 🚨 NOVO CÁLCULO E ATRIBUIÇÃO: TEMPO DO ENCONTRO 🚨
+                const diferencaEncontroMs = agora.getTime() - DATA_PRIMEIRO_ENCONTRO.getTime();
+                const tempoEncontroFormatado = formatarTempo(diferencaEncontroMs);
+                elementoTempoEncontro.textContent = tempoEncontroFormatado; // Atribui ao elemento correto!
+            }
+
+            // Inicializa e atualiza a cada segundo
+            atualizarContadores();
+            setInterval(atualizarContadores, 1000);
+
+            // --- CÓDIGO DO BOTÃO TRANCAR (Permanece para o Logout) ---
+            document.addEventListener('DOMContentLoaded', function () {
+                const botaoTrancar = document.getElementById('trancar-segredos');
+
+                if (botaoTrancar) {
+                    botaoTrancar.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        localStorage.clear();
+                        window.location.href = "index.html";
+                    });
                 }
-
-                // Atualiza o contador imediatamente ao carregar
-                atualizarContador();
-
-                // Atualiza o contador a cada 1 segundo (1000 milissegundos)
-                setInterval(atualizarContador, 1000);
-            </script>
+            });
+        </script>
 
     <div class="container-romance">
     </head>
@@ -95,21 +117,21 @@
     </div>
 
     <script>
-        // Função de verificação de segurança
-        function verificarSessao() {
-            const acesso = localStorage.getItem('acessoConcedido');
-            const expiracao = localStorage.getItem('expiracao');
-            const horaAtual = new Date().getTime();
+    // Função de verificação de segurança
+    function verificarSessao() {
+        const acesso = localStorage.getItem('acessoConcedido');
+        const expiracao = localStorage.getItem('expiracao');
+        const horaAtual = new Date().getTime();
 
-            // 1. Verifica se o token existe OU se expirou
-            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-                // Se o token é inválido ou não existe, redireciona para a tela de login
-                window.location.replace("index.html");
-            }
+        // 1. Verifica se o token existe OU se expirou
+        if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+            // Se o token é inválido ou não existe, redireciona para a tela de login
+            window.location.replace("index.html");
         }
+    }
 
-        // Executa a verificação assim que a página é carregada
-        verificarSessao();
+    // Executa a verificação assim que a página é carregada
+    verificarSessao();
     </script>
 </body>
 </html>
