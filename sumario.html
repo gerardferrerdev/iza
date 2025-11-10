@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartas: Os Meus Desabafos</title>
+    <title>O Nosso Portal do Amor</title>
+    <link rel="shortcut icon" href="img/velaris-removebg-preview.png" type="image/x-icon">
     
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/style_livro.css"> 
-    <link rel="stylesheet" href="css/style_cartas.css"> 
 
+    <link rel="stylesheet" href="css/global.css">
+    
+    <link rel="stylesheet" href="css/style_capitulo2.css"> 
 </head>
+<body>
+    
     <div id="contador-tempo">
         <span>O Nosso Tempo Juntos Desde sua Volta</span>
         <span id="tempo-decorrido">A calcular...</span>
@@ -64,50 +67,70 @@
         
         <div class="container-romance">
             
-            <header>
-                <h1>💌 Cartas e Desabafos do Coração</h1>
-                <p class="subtitulo-livro">Tudo que eu ja escrevi para você ou pensei, ou so oque está borbulhando na minha mente, so pra você</p>
-            </header>
-
-            <section class="sumario-capitulos">
-                <h3>Índice Rápido de Cartas</h3>
-                <ul class="lista-capitulos">
-                    <li><a href="#carta-1">Carta 1: 09/10/2025 18h18</a></li>
-                    <li><a href="#carta-2">Carta 2: 09/10/2025 19h40</a></li>
-
-                </ul>
-                <hr>
-            </section>
-
-            <section class="conteudo-livro">
-                
-                <h2 id="carta-1">Carta 1: 09/10/2025 18h18</h2>
-                <p>
-                    Hoje não esta fazendo nem 24h ainda que você se afastou um pouco, e bom ta feio kkk, to com saudades genuinas de você, acordar sem poder dar bom dia, ver reels e não poder mandar, so estar contigo, enfim, to sentindo su falta, volta pra mim...
-                </p>
-                
-                <h2 id="carta-2">carta 2: 09/10/2025 19h40</h2>
-                <p>
-                  Eu te amo! <br>
-                  Mas e se eu te machucar? <br>
-                  Eu te amo! <br>
-                  Mas eu sou uma grande confusão e... <br>
-                  Eu te amo! <br>
-                  Mas eu tenho medo...  <br>
-                  Eu te amo! <br>
-                  Mas e se algum dia agente... <br>
-                  Eu te amo! <br>
-                  Você ao menos esta escutando oque eu to falando? <br>
-                  Eu te amo! <br>
-                </p>
-                
-            </section>
+            <h1>O Nosso Portal do Amor</h1>
             
-            <br>
-            <a href="sumario.html" class="botao-navegacao">
-                ← Voltar ao Sumário
-            </a>
+            <p>Bem-vinda ao nosso cantinho de memórias! Podes escolher o que queres explorar:</p>
+
+            <div class="menu-sumario">
+    
+                <a href="boas_vindas.html" class="cartao-sumario">
+                    ❤️ Primeira homenagem digital
+                </a>
+                
+                <a href="livro.html" class="cartao-sumario">
+                    📚 O Livro que Estamos a Escrever
+                </a>
+                
+                <a href="fotos.html" class="cartao-sumario">
+                    📸 A Nossa Galeria de Fotos
+                </a>
+                
+                <a href="musicas.html" class="cartao-sumario">
+                    🎶 As Nossas Músicas Favoritas
+                </a>
+                
+                <a href="citacoes.html" class="cartao-sumario">
+                    ✨ As Nossas Poesias e Citações 
+                </a>
+
+                <a href="cartas.html" class="cartao-sumario">
+                    💌 Os Meus Desabafos e Cartas
+                </a>
+                
+            </div>
+            
+           
+            
         </div>
     </div>
+
+    
+</div> 
+
+<br>
+<a href="#" id="trancar-segredos" class="botao-navegacao">
+    🔒 Trancar Nossos Segredos
+</a>
+<script>
+    // Garante que o código só corre DEPOIS de todos os elementos HTML terem sido carregados.
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const botaoTrancar = document.getElementById('trancar-segredos');
+
+        if (botaoTrancar) {
+            botaoTrancar.addEventListener('click', function(event) {
+                event.preventDefault(); // Impede o link padrão (#)
+                
+                // 🚨 CORREÇÃO: Limpa TODO o armazenamento local (limpeza total) 🚨
+                // Isto garante que 'acessoConcedido' e 'expiracao' são removidos.
+                localStorage.clear(); 
+                
+                // 2. Redireciona para a página de bloqueio (index.html)
+                window.location.href = "index.html"; 
+            });
+        }
+        
+    });
+</script>
 </body>
 </html>
