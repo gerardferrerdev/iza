@@ -138,5 +138,23 @@
             cartao.classList.toggle('cartao-revelado');
         }
     </script>
+
+     <script>
+        // Função de verificação de segurança
+        function verificarSessao() {
+            const acesso = localStorage.getItem('acessoConcedido');
+            const expiracao = localStorage.getItem('expiracao');
+            const horaAtual = new Date().getTime();
+
+            // 1. Verifica se o token existe OU se expirou
+            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+                // Se o token é inválido ou não existe, redireciona para a tela de login
+                window.location.replace("index.html");
+            }
+        }
+
+        // Executa a verificação assim que a página é carregada
+        verificarSessao();
+    </script>
 </body>
 </html>
