@@ -102,8 +102,9 @@
           <li><a href="#carta-3">Carta 3: 09/10/2025 23h20</a></li>
           <li><a href="#carta-4">Carta 4: 09/10/2025 23h25</a></li>
           <li><a href="#carta-5">Carta 5: 09/10/2025 23h43</a></li>
-          <li><a href="#sumario">Sumario</a></li>
+          <li><a href="#carta-6">Carta 6: 10/10/2025 23h35</a></li>
 
+          <li><a href="#sumario">Sumario</a></li>
 
 
 
@@ -225,6 +226,41 @@
 
           </div>
 
+          <div class="cartao-carta-revelavel" id="carta-6" onclick="revelarConteudo(this)">
+
+            <div class="header-carta">
+              <h2>Carta 6: 10/10/2025 23h35</h2>
+              <span class="icone-revelar">▼</span>
+            </div>
+
+            <div class="texto-carta-escondido">
+              <p>
+                Oie. Não sei quando verá isso, mas enfim, hoje meu dia foi bem corrido, e o seu também, imagino, afinal hoje é uma segunda, e você não para dia de segunda, né?
+
+                Bom, hoje pela manhã eu fui ao centro de Belém comprar umas coisas para a vovó e pagar contas dela. Fui de motouber, né, e quase morri! ksksksk Um carro fechou a moto em que eu estava. Aí o motorista jogou a moto para a calçada, e caímos. Tipo, eu pulei do banco, né, e fiquei de pé. Ele botou o pé no chão, e a moto deitou, assim, bem de boa. Não foi algo brusco, sabe?
+
+                Enfim, aí fiz o que tinha para fazer. E de lá do supermercado que eu estava, peguei outro motouber para os Correios, na BR, para ver uma coisa do INSS da vovó. Eu tinha dito que só ela pode ver isso, mas ela teimou comigo, né? Enfim, feito e dito. Cheguei lá, tive que esperar porque quase fui expurgado por só querer tirar uma dúvida. E me foi dito isto: "Só ela pode!"
+
+                Aí voltei para casa. Até aí já tinha dado 12h. Beleza, voltei, e a vovó esqueceu de me dar a conta de energia para pagar lá na lotérica. Daí falei com a inquilina dela para ver se pagava no Pix. Aí a senhora pagou, e eu dei o dinheiro em espécie para ela.
+
+                Mas o que isso tem a ver? Ela me pediu para ver uma estante da casa que ela queria que eu colocasse. Aí, né, fui, vi, coloquei. Daí me pediu para trocar umas tomadas. Aí, né, disse que sim.
+
+                Aí lá fui eu atrás de uma estancia aberta em plena 13h da tarde!kkkkkkk Achei uma depois de uns 30 minutos andando. Comprei as tomadas, voltei para casa e fui instalar. Só que mais um problema surgiu: acho que a última vez que essas tomadas foram abertas foi quando fizeram a casa, porque eu abri a tampa da tomada. E sabe aquela caixa de plástico que fica dentro da parede? Pois é, estava tudo esfarelado e tudo mais. Daí, o problema: como vou fixar na parede se não tinha a caixa?
+
+                Lá fui eu atrás de ripas!kkkkk Fiz uma caixa de madeira, duas, no caso. Eram duas tomadas. Aí, sim, consegui trocar, e deu tudo certo. Mas aí olhei a hora: era 16h! ksksks Aí fui almoçar e descansar, mas ganhei 30 reais por isso, coisa boa.
+
+                Deu 18h. Levantei, fiz café, né, e aí sentei para estudar. Fiquei estudando até as 22h. Aí cansei e vim para cá, para o nosso projeto. E pensei: "Bom, conversar comigo é um problema, né? E se eu fizesse o nosso chat?"
+
+                Aí fui atrás de formas. Eu queria criar um, mas ia envolver umas ferramentas que iriam mudar o local da nossa URL (link). Aí deixei para lá e adicionei um já existente que é integrável. Assim, você manda mensagem e chega em um outro aplicativo para mim, e dá tudo certo.
+
+                Aí vim escrever essa carta. Vou começar o próximo capítulo do livro. Enfim, estou com saudades, bastante. Substituí o tempo que ficava com você por minhas músicas melancólicas kkk. Já estou com 4 mil minutos no Spotify. Você é mais necessária do que imagina.
+
+                Enfim, beijos. Amo muito você, princesa. Queria meu papel de parede exclusivo... Boa noite, meu bem. Volto a dizer: queria poder estar sendo visto por esse seu olhar que me encanta tanto.
+                              </p>
+            </div>
+
+          </div>
+
         </section>
 
         <br>
@@ -237,15 +273,15 @@
   <script>
     // Função de verificação de segurança
     function verificarSessao() {
-        const acesso = localStorage.getItem('acessoConcedido');
-        const expiracao = localStorage.getItem('expiracao');
-        const horaAtual = new Date().getTime();
+      const acesso = localStorage.getItem('acessoConcedido');
+      const expiracao = localStorage.getItem('expiracao');
+      const horaAtual = new Date().getTime();
 
-        // 1. Verifica se o token existe OU se expirou
-        if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-            // Se o token é inválido ou não existe, redireciona para a tela de login
-            window.location.replace("index.html");
-        }
+      // 1. Verifica se o token existe OU se expirou
+      if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+        // Se o token é inválido ou não existe, redireciona para a tela de login
+        window.location.replace("index.html");
+      }
     }
 
     // Executa a verificação assim que a página é carregada
@@ -266,18 +302,18 @@
   </script>
 
   <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
   </body>
 
 </html>
