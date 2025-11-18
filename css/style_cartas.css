@@ -79,3 +79,21 @@
 .dark-mode .texto-citacao {
     color: #e0e0e0 !important;
 }
+/* css/style_cartas.css (ADICIONAR PARA SUPORTE AO DARK MODE) */
+
+/* 1. MODO ESCURO: Fundo do Cartão (Substitui o fundo claro) */
+.dark-mode .cartao-carta-revelavel {
+    background-color: #333345; /* Fundo escuro sutil */
+    border: 2px solid #5d167f; /* Borda roxa escura */
+    border-left: 5px solid #c4b0ec; /* Borda lateral de destaque */
+}
+
+/* 2. MODO ESCURO: Título e Ícones */
+.dark-mode .cartao-carta-revelavel h2 {
+    color: #c4b0ec !important; /* Cor de destaque (Lavanda Pálido) */
+}
+
+/* 3. MODO ESCURO: Texto do Corpo (Garante contraste com o fundo escuro) */
+.dark-mode .texto-carta-escondido p {
+    color: #e0e0e0 !important; /* Texto claro sobre fundo escuro */
+}
