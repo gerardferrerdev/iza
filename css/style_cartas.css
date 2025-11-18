@@ -62,22 +62,26 @@
     transform: rotate(180deg);
 }
 
-/* 🚨 5. MODO ESCURO FINAL (Aplicado ao elemento CORRETO) 🚨 */
+/* 🚨 5. MODO ESCURO FINAL (SOLUÇÃO DE ESPECIFICIDADE MÁXIMA) 🚨 */
 
-.dark-mode .cartao-carta-revelavel {
-    background-color: #333345; 
+/* Força o fundo escuro, ignorando heranças conflituosas. */
+body.dark-mode .cartao-carta-revelavel {
+    background-color: #333345 !important; 
     border: 2px solid #5d167f; 
     border-left: 5px solid #c4b0ec; 
 }
 
-.dark-mode .cartao-carta-revelavel h2 {
+/* Garante que os títulos ficam claros */
+body.dark-mode .cartao-carta-revelavel h2 {
     color: #c4b0ec !important; 
 }
 
-.dark-mode .texto-carta-escondido p {
+/* Garante que o texto do corpo fica claro */
+body.dark-mode .texto-carta-escondido p {
     color: #e0e0e0 !important; 
 }
 
-.dark-mode .cartao-revelado .icone-revelar {
+/* Ajusta o ícone */
+body.dark-mode .cartao-revelado .icone-revelar {
     color: #c4b0ec;
 }
