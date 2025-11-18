@@ -8,80 +8,29 @@
 
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/style_livro.css">
-  <link rel="stylesheet" href="css/style_cartas.css">
+  <link rel="stylesheet" href="css/style_cartas.css"> 
 
 </head>
-<div id="contador-tempo">
-  <span>O Nosso Tempo Juntos Desde sua Volta</span>
-  <span id="tempo-decorrido">A calcular...</span>
-</div>
+<body>
 
-<div id="contador-vida">
-  <span>Desde o Nosso Primeiro Encontro <br></span>
-  <span id="tempo-vida-decorrido">A calcular...</span>
-</div>
+  <a href="#" id="trancar-segredos" class="botao-navegacao">
+    🔒 Trancar Segredos
+  </a>
 
-<div class="main-content-wrapper">
+  <div id="contador-tempo">
+    <span>O Nosso Tempo Juntos Desde sua Volta</span>
+    <span id="tempo-decorrido">A calcular...</span>
+  </div>
 
-  <script>
-    // --- DADOS DE INÍCIO (CORRETOS) ---
-    const DATA_INICIO_PROJETO = new Date(2025, 9, 17, 22, 0, 0);
-    const DATA_PRIMEIRO_ENCONTRO = new Date(2021, 7, 14, 9, 10, 0);
+  <span id="dark-mode-toggle" aria-label="Alternar modo de visualização">
+    🌙
+  </span>
 
-    // --- ELEMENTOS HTML (CORRETOS) ---
-    const elementoTempoProjeto = document.getElementById('tempo-decorrido');
-    const elementoTempoEncontro = document.getElementById('tempo-vida-decorrido'); // Renomeado para clareza
+  <div id="contador-vida">
+    <span id="tempo-titulo-encontro">Desde o Nosso Primeiro Encontro</span>
+    <span id="tempo-vida-decorrido">A calcular...</span>
+  </div>
 
-    function formatarTempo(diferencaMs) {
-      // Funções de formatação: Recebe milissegundos e devolve a string formatada
-      const segundos = Math.floor(diferencaMs / 1000);
-      const minutos = Math.floor(segundos / 60);
-      const horas = Math.floor(minutos / 60);
-      const dias = Math.floor(horas / 24);
-
-      const anos = Math.floor(dias / 365.25);
-      const meses = Math.floor(dias / 30.44);
-
-      return `${anos} anos, ` +
-        `${meses % 12} meses, ` +
-        `${dias % 30} dias, ` +
-        `${horas % 24}h, ` +
-        `${minutos % 60}m, ` +
-        `${segundos % 60}s`;
-    }
-
-    // FUNÇÃO PRINCIPAL QUE ATUALIZA AMBOS OS CONTADORES
-    function atualizarContadores() {
-      const agora = new Date();
-
-      // 1. CÁLCULO E ATRIBUIÇÃO DO TEMPO DO PROJETO (JÁ EXISTENTE)
-      const diferencaProjetoMs = agora.getTime() - DATA_INICIO_PROJETO.getTime();
-      const tempoProjetoFormatado = formatarTempo(diferencaProjetoMs);
-      elementoTempoProjeto.textContent = tempoProjetoFormatado;
-
-      // 2. 🚨 NOVO CÁLCULO E ATRIBUIÇÃO: TEMPO DO ENCONTRO 🚨
-      const diferencaEncontroMs = agora.getTime() - DATA_PRIMEIRO_ENCONTRO.getTime();
-      const tempoEncontroFormatado = formatarTempo(diferencaEncontroMs);
-      elementoTempoEncontro.textContent = tempoEncontroFormatado; // Atribui ao elemento correto!
-    }
-
-    // Inicializa e atualiza a cada segundo
-    atualizarContadores();
-    setInterval(atualizarContadores, 1000);
-
-    // --- CÓDIGO DO BOTÃO TRANCAR (Permanece para o Logout) ---
-    document.addEventListener('DOMContentLoaded', function () {
-      const botaoTrancar = document.getElementById('trancar-segredos');
-
-      if (botaoTrancar) {
-        botaoTrancar.addEventListener('click', function (event) {
-          event.preventDefault();
-          localStorage.clear();
-          window.location.href = "index.html";
-        });
-      }
-    });
-  </script>
 
   <div class="main-content-wrapper">
 
@@ -98,236 +47,81 @@
         <h3>Índice Rápido de Cartas</h3>
         <ul class="lista-capitulos">
           <li><a href="#carta-1">Carta 1: 09/10/2025 18h18</a></li>
-          <li><a href="#carta-2">Carta 2: 09/10/2025 19h40</a></li>
-          <li><a href="#carta-3">Carta 3: 09/10/2025 23h20</a></li>
-          <li><a href="#carta-4">Carta 4: 09/10/2025 23h25</a></li>
-          <li><a href="#carta-5">Carta 5: 09/10/2025 23h43</a></li>
-          <li><a href="#carta-6">Carta 6: 10/10/2025 23h35</a></li>
           <li><a href="#carta-7">Carta 7: 13/10/2025 11h30 - Seu Presente</a></li>
-
-
-          <li><a href="#sumario">Sumario</a></li>
-
-
-
-
         </ul>
         <hr>
+        
         <section class="conteudo-livro">
-
           <div class="cartao-carta-revelavel" id="carta-1" onclick="revelarConteudo(this)">
-
             <div class="header-carta">
               <h2>Carta 1: 09/10/2025 18h18</h2>
               <span class="icone-revelar">▼</span>
             </div>
-
             <div class="texto-carta-escondido">
-
-              <p>
-                Hoje não esta fazendo nem 24h ainda que você se afastou um pouco, e bom ta feio kkk, to com saudades
+              <p>Hoje não esta fazendo nem 24h ainda que você se afastou um pouco, e bom ta feio kkk, to com saudades
                 genuinas de você, acordar sem poder dar bom dia, ver reels e não poder mandar, so estar contigo, enfim,
-                to
-                sentindo su falta, volta pra mim...</p>
+                to sentindo su falta, volta pra mim...</p>
             </div>
-
           </div>
-
-          <div class="cartao-carta-revelavel" id="carta-2" onclick="revelarConteudo(this)">
-
-            <div class="header-carta">
-              <h2>Carta 2: 09/10/2025 19h40</h2>
-              <span class="icone-revelar">▼</span>
-            </div>
-
-            <div class="texto-carta-escondido">
-              <p>
-                Eu te amo! <br>
-                Mas e se eu te machucar? <br>
-                Eu te amo! <br>
-                Mas eu sou uma grande confusão e... <br>
-                Eu te amo! <br>
-                Mas eu tenho medo... <br>
-                Eu te amo! <br>
-                Mas e se algum dia agente... <br>
-                Eu te amo! <br>
-                Você ao menos esta escutando oque eu to falando? <br>
-                Eu te amo! <br>
-              </p>
-            </div>
-
-          </div>
-
-
-          <div class="cartao-carta-revelavel" id="carta-3" onclick="revelarConteudo(this)">
-
-            <div class="header-carta">
-              <h2>Carta 3: 09/10/2025 23h20</h2>
-              <span class="icone-revelar">▼</span>
-            </div>
-
-            <div class="texto-carta-escondido">
-              <p>
-                Hoje eu vou dormir sentindo saudades de você denovo, nem lembrava mais como era, por incrivel que
-                pareça.
-              </p>
-            </div>
-
-          </div>
-
-          <div class="cartao-carta-revelavel" id="carta-4" onclick="revelarConteudo(this)">
-
-            <div class="header-carta">
-              <h2>Carta 4: 09/10/2025 23h25</h2>
-              <span class="icone-revelar">▼</span>
-            </div>
-
-            <div class="texto-carta-escondido">
-              <p>
-                Enquanto houver o amanhã, estarei contigo; e, enquanto estiver contigo sempre desejarei que haja o
-                amanhã.
-              </p>
-            </div>
-
-          </div>
-
-          <div class="cartao-carta-revelavel" id="carta-5" onclick="revelarConteudo(this)">
-
-            <div class="header-carta">
-              <h2>Carta 5: 09/10/2025 23h43</h2>
-              <span class="icone-revelar">▼</span>
-            </div>
-
-            <div class="texto-carta-escondido">
-              <p>
-                Bom, já que estou sem você por agora, tive um dia bem estranho... Não estranho não. Só um dia normal,
-                sabe quando te perguntam: "Como foi seu dia?" e você solta só um "normal", genuíno mesmo? Pois é, foi o
-                meu hoje. Normal.
-
-                Concluí minhas matérias da Faculdade, agora é só revisar até o dia 13.
-
-                E também hoje me perguntaram o que é o amor. Que legal, né? Foi um amigo, ele se diz apaixonado e tal.
-                Essa pergunta dele me pegou desprevenido, sabe? Porque só me veio você à mente. Correlacionando o amor,
-                você é o meu amor, a minha definição, aparentemente.
-
-                Foi o que disse para ele: "Irmão, amor é você, independentemente de tudo, ainda ver que vale a pena. É
-                ver que nem tudo são rosas e, mesmo assim, ainda estar extremamente cativado. Amar é isso: querer o bem
-                mesmo de longe."
-
-                Ele riu e mandou um: "Tá bem, mano?" Eu ri e disse que sim, né.
-
-                Mas no fundo estou com saudades: muitas, muitas mesmo. Não tipo: "Meu Deus, você se distanciou um pouco
-                ontem e estou morrendo de saudades!" Em parte, sim, é isso. Mas eu sinto sua falta: já vai fazer um ano.
-                Um ano que pude te dar um abraço, te ter nele. Um ano que você me deu um beijo, um ano que tento lembrar
-                daquela sensação... Sei lá.
-
-                Amo você. Falo isso sem medo, sabe? Desculpa, sei lá. Beijos. Boa noite, minha princesa. Queria poder
-                estar olhando no fundo desses seus olhos que sou profundamente apaixonado...
-              </p>
-            </div>
-
-          </div>
-
-          <div class="cartao-carta-revelavel" id="carta-6" onclick="revelarConteudo(this)">
-
-            <div class="header-carta">
-              <h2>Carta 6: 10/10/2025 23h35</h2>
-              <span class="icone-revelar">▼</span>
-            </div>
-
-            <div class="texto-carta-escondido">
-              <p>
-                Oie. Não sei quando verá isso, mas enfim, hoje meu dia foi bem corrido, e o seu também, imagino, afinal hoje é uma segunda, e você não para dia de segunda, né?
-
-                Bom, hoje pela manhã eu fui ao centro de Belém comprar umas coisas para a vovó e pagar contas dela. Fui de motouber, né, e quase morri! ksksksk Um carro fechou a moto em que eu estava. Aí o motorista jogou a moto para a calçada, e caímos. Tipo, eu pulei do banco, né, e fiquei de pé. Ele botou o pé no chão, e a moto deitou, assim, bem de boa. Não foi algo brusco, sabe?
-
-                Enfim, aí fiz o que tinha para fazer. E de lá do supermercado que eu estava, peguei outro motouber para os Correios, na BR, para ver uma coisa do INSS da vovó. Eu tinha dito que só ela pode ver isso, mas ela teimou comigo, né? Enfim, feito e dito. Cheguei lá, tive que esperar porque quase fui expurgado por só querer tirar uma dúvida. E me foi dito isto: "Só ela pode!"
-
-                Aí voltei para casa. Até aí já tinha dado 12h. Beleza, voltei, e a vovó esqueceu de me dar a conta de energia para pagar lá na lotérica. Daí falei com a inquilina dela para ver se pagava no Pix. Aí a senhora pagou, e eu dei o dinheiro em espécie para ela.
-
-                Mas o que isso tem a ver? Ela me pediu para ver uma estante da casa que ela queria que eu colocasse. Aí, né, fui, vi, coloquei. Daí me pediu para trocar umas tomadas. Aí, né, disse que sim.
-
-                Aí lá fui eu atrás de uma estancia aberta em plena 13h da tarde!kkkkkkk Achei uma depois de uns 30 minutos andando. Comprei as tomadas, voltei para casa e fui instalar. Só que mais um problema surgiu: acho que a última vez que essas tomadas foram abertas foi quando fizeram a casa, porque eu abri a tampa da tomada. E sabe aquela caixa de plástico que fica dentro da parede? Pois é, estava tudo esfarelado e tudo mais. Daí, o problema: como vou fixar na parede se não tinha a caixa?
-
-                Lá fui eu atrás de ripas!kkkkk Fiz uma caixa de madeira, duas, no caso. Eram duas tomadas. Aí, sim, consegui trocar, e deu tudo certo. Mas aí olhei a hora: era 16h! ksksks Aí fui almoçar e descansar, mas ganhei 30 reais por isso, coisa boa.
-
-                Deu 18h. Levantei, fiz café, né, e aí sentei para estudar. Fiquei estudando até as 22h. Aí cansei e vim para cá, para o nosso projeto. E pensei: "Bom, conversar comigo é um problema, né? E se eu fizesse o nosso chat?"
-
-                Aí fui atrás de formas. Eu queria criar um, mas ia envolver umas ferramentas que iriam mudar o local da nossa URL (link). Aí deixei para lá e adicionei um já existente que é integrável. Assim, você manda mensagem e chega em um outro aplicativo para mim, e dá tudo certo.
-
-                Aí vim escrever essa carta. Vou começar o próximo capítulo do livro. Enfim, estou com saudades, bastante. Substituí o tempo que ficava com você por minhas músicas melancólicas kkk. Já estou com 4 mil minutos no Spotify. Você é mais necessária do que imagina.
-
-                Enfim, beijos. Amo muito você, princesa. Queria meu papel de parede exclusivo... Boa noite, meu bem. Volto a dizer: queria poder estar sendo visto por esse seu olhar que me encanta tanto.
-                              </p>
-            </div>
-
-          </div>
-
+          
           <div class="cartao-carta-revelavel" id="carta-7" onclick="revelarConteudo(this)">
-
             <div class="header-carta">
               <h2>Carta 7: 13/10/2025 11h30 - Seu Presente</h2>
               <span class="icone-revelar">▼</span>
             </div>
-
             <div class="texto-carta-escondido">
-              <p>
-                Sim, fui imprudente. Sim, estava errado. Sim, eu deveria ter ficado em casa. Mas isso estava me inquietando. Você estava a alguns passos meus e, enfim, eu precisava te ver e te dar um abraço.
-
-                Provavelmente, aquela sua amiga deve estar perturbando você e você está com um ódio genuíno de mim. E está tudo bem. Você está totalmente na razão. Não discordo de você nem um pouco. Mas eu precisava, precisava mesmo.
-
-                Essa carta é para o caso de você entrar no site durante o meu horário de prova, pois eu não consigo responder você depois, só quando você está online.
-
-                Enfim, sei que estou errado, e muito. Sei de tudo isso, mas eu não estava conseguindo passar o dia sem isso estar apertando o meu peito. Precisava ver você.
-
-                Desculpa pelas eventuais complicações.
-              </p>
+              <p>Sim, fui imprudente. Sim, estava errado. Sim, eu deveria ter ficado em casa. Mas isso estava me inquietando. Você estava a alguns passos meus e, enfim, eu precisava te ver e te dar um abraço.</p>
             </div>
-
           </div>
 
         </section>
         
-
         <br>
         <a href="sumario.html" id="sumario" class="botao-navegacao">
           ← Voltar ao Sumário
         </a>
-    </div>
-  </div>
+      </section> </div> </div> <script src="js/global.js"></script>
 
   <script>
-    // Função de verificação de segurança
+    // LÓGICA DE REVELAR CONTEÚDO (LOCAL: Só usada para estas cartas)
+    function revelarConteudo(cartao) {
+      const texto = cartao.querySelector('.texto-carta-escondido');
+      texto.classList.toggle('texto-visivel');
+      cartao.classList.toggle('cartao-revelado');
+    }
+
+    // LIGAÇÃO DE EVENTOS DE CLIQUE (APÓS O DOM SER CARREGADO)
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // LIGAÇÃO AO BOTÃO DARK MODE (Chama a função global.js)
+      document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
+
+      // LÓGICA DO BOTÃO TRANCAR SEGREDOS
+      const botaoTrancar = document.getElementById('trancar-segredos');
+      if (botaoTrancar) {
+        botaoTrancar.addEventListener('click', function (event) {
+          event.preventDefault();
+          localStorage.clear();
+          window.location.href = "index.html";
+        });
+      }
+    });
+
+  </script>
+
+  <script>
     function verificarSessao() {
       const acesso = localStorage.getItem('acessoConcedido');
       const expiracao = localStorage.getItem('expiracao');
       const horaAtual = new Date().getTime();
 
-      // 1. Verifica se o token existe OU se expirou
       if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-        // Se o token é inválido ou não existe, redireciona para a tela de login
         window.location.replace("index.html");
       }
     }
-
-    // Executa a verificação assim que a página é carregada
     verificarSessao();
   </script>
 
-  <script>
-    function revelarConteudo(cartao) {
-      // Encontra o contentor do texto e o próprio cartão
-      const texto = cartao.querySelector('.texto-carta-escondido');
-
-      // Alterna a classe de visibilidade do texto
-      texto.classList.toggle('texto-visivel');
-
-      // Alterna a classe no cartão para mudar a cor/girar o ícone
-      cartao.classList.toggle('cartao-revelado');
-    }
-  </script>
-
-  <!--Start of Tawk.to Script-->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
@@ -339,7 +133,6 @@
       s0.parentNode.insertBefore(s1, s0);
     })();
   </script>
-  <!--End of Tawk.to Script-->
   </body>
 
 </html>

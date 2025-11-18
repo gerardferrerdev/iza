@@ -7,554 +7,588 @@
     <title>O Nosso Livro: História de Nós</title>
     <link rel="shortcut icon" href="img/velaris-removebg-preview.png" type="image/x-icon">
 
-
     <link rel="stylesheet" href="css/global.css">
-
     <link rel="stylesheet" href="css/style_livro.css">
 </head>
 
 <body>
+
+    <a href="#" id="trancar-segredos" class="botao-navegacao">
+        🔒 Trancar Segredos
+    </a>
 
     <div id="contador-tempo">
         <span>O Nosso Tempo Juntos Desde sua Volta</span>
         <span id="tempo-decorrido">A calcular...</span>
     </div>
 
+    <span id="dark-mode-toggle" aria-label="Alternar modo de visualização">
+        🌙
+    </span>
+
     <div id="contador-vida">
-        <span>Desde o Nosso Primeiro Encontro <br></span>
+        <span id="tempo-titulo-encontro">Desde o Nosso Primeiro Encontro</span>
         <span id="tempo-vida-decorrido">A calcular...</span>
     </div>
 
+
     <div class="main-content-wrapper">
 
-        <script>
-            // --- DADOS DE INÍCIO (CORRETOS) ---
-            const DATA_INICIO_PROJETO = new Date(2025, 9, 17, 22, 0, 0);
-            const DATA_PRIMEIRO_ENCONTRO = new Date(2021, 7, 14, 9, 10, 0);
-
-            // --- ELEMENTOS HTML (CORRETOS) ---
-            const elementoTempoProjeto = document.getElementById('tempo-decorrido');
-            const elementoTempoEncontro = document.getElementById('tempo-vida-decorrido'); // Renomeado para clareza
-
-            function formatarTempo(diferencaMs) {
-                // Funções de formatação: Recebe milissegundos e devolve a string formatada
-                const segundos = Math.floor(diferencaMs / 1000);
-                const minutos = Math.floor(segundos / 60);
-                const horas = Math.floor(minutos / 60);
-                const dias = Math.floor(horas / 24);
-
-                const anos = Math.floor(dias / 365.25);
-                const meses = Math.floor(dias / 30.44);
-
-                return `${anos} anos, ` +
-                    `${meses % 12} meses, ` +
-                    `${dias % 30} dias, ` +
-                    `${horas % 24}h, ` +
-                    `${minutos % 60}m, ` +
-                    `${segundos % 60}s`;
-            }
-
-            // FUNÇÃO PRINCIPAL QUE ATUALIZA AMBOS OS CONTADORES
-            function atualizarContadores() {
-                const agora = new Date();
-
-                // 1. CÁLCULO E ATRIBUIÇÃO DO TEMPO DO PROJETO (JÁ EXISTENTE)
-                const diferencaProjetoMs = agora.getTime() - DATA_INICIO_PROJETO.getTime();
-                const tempoProjetoFormatado = formatarTempo(diferencaProjetoMs);
-                elementoTempoProjeto.textContent = tempoProjetoFormatado;
-
-                // 2. 🚨 NOVO CÁLCULO E ATRIBUIÇÃO: TEMPO DO ENCONTRO 🚨
-                const diferencaEncontroMs = agora.getTime() - DATA_PRIMEIRO_ENCONTRO.getTime();
-                const tempoEncontroFormatado = formatarTempo(diferencaEncontroMs);
-                elementoTempoEncontro.textContent = tempoEncontroFormatado; // Atribui ao elemento correto!
-            }
-
-            // Inicializa e atualiza a cada segundo
-            atualizarContadores();
-            setInterval(atualizarContadores, 1000);
-
-            // --- CÓDIGO DO BOTÃO TRANCAR (Permanece para o Logout) ---
-            document.addEventListener('DOMContentLoaded', function () {
-                const botaoTrancar = document.getElementById('trancar-segredos');
-
-                if (botaoTrancar) {
-                    botaoTrancar.addEventListener('click', function (event) {
-                        event.preventDefault();
-                        localStorage.clear();
-                        window.location.href = "index.html";
-                    });
-                }
-            });
-        </script>
-
-        <div class="main-content-wrapper">
-
-            <div class="container-romance">
-
-                <header>
-                    <h1>O Começo da Nossa História</h1>
-                    <p class="subtitulo-livro">Um livro escrito com o coração, só para ti.</p>
-                </header>
-
-                <section class="sumario-capitulos">
-                    <h3>Índice</h3>
-                    <ul class="lista-capitulos">
-
-                        <li><a href="#capitulo-prologo">Prólogo: Minhas Palavras</a></li>
-                        <li><a href="#capitulo-1">Capítulo 1: A Descoberta do Olhar</a></li>
-                        <li><a href="#capitulo-2">Capítulo 2: A Linha que Separava...</a></li>
-                        <li><a href="#capitulo-3">Capítulo 3: O Amor Sem Assinatura</a></li>
-                        <li><a href="#capitulo-4">Capítulo 4: O Risco que Valia a Pena</a></li>
-                        <li><a href="#capitulo-5">Capítulo 5: Nosso Contrato de Amor...</a></li>
-
-
-                    </ul>
-                    <hr>
-                </section>
-                <section class="conteudo-livro">
-
-
-                    <h2 id="capitulo-prologo">O Prólogo: Minhas Palvras</h2>
-                    <p>Bem, este livro que decidi fazer, já vem de muito tempo. Inicialmente, era para ser algo físico;
-                        no entanto, o tempo passou.
-
-                        Entrei no mundo da tecnologia e pensei "por que não eternizar esta ideia? Deixá-lo salvo para
-                        sempre num presente só teu".
-
-                        Então, o que tens nas mãos é a humilde tentativa de contar tudo o que representas para mim.</p>
-
-                    <p>
-                        Neste exato momento, estou aqui, a pensar em todas as coisas pelas quais te devia desculpas. O
-                        sofrimento que nos causamos, toda a culpa derramada sobre nós, tudo o que eu precisava que me
-                        tivesses dito. Sinto muito por tudo isto.
-
-                        Eu sempre vou te amar, porque crescemos juntos, querendo ou não, e me ajudaste a ser quem eu
-                        sou. Eu só quero que saibas que sempre haverá uma parte de mim em ti, e sou grato por essa
-                        ligação eterna.
-
-                        Seja quem for que te tornes, e onde quer que estejas no mundo... eu te envio o meu amor.
-                    </p>
-
-                    <p>
-                        Quando me perguntam qual é o lugar onde encontro a paz, a resposta é simples.
-
-                        Mas a verdade é que a minha paz não reside numa geografia; é, na verdade, uma pessoa. Uma pessoa
-                        com os olhos mais lindos que eu já vi.
-
-                        Naqueles oceanos de cor, onde me perdia e me reencontrava, havia o conforto silencioso que o
-                        mundo nunca me soube dar. A paz não era um destino; era um reflexo, a quietude que só se
-                        encontra ao olhar para quem se ama. E, de repente, todo o caos da minha vida parava.
-                    </p>
-
-                    <p>
-                        Então, esta jornada de lembranças e de confissões está pronta para começar. O que tens nas mãos
-                        é a nossa história, revista e sentida a partir do meu olhar.
-
-                        Em cada página, existe a verdade crua do que representas, a dor melancólica do que perdemos e a
-                        inabalável certeza da paz que encontraste em mim.
-
-                        Aproveita a leitura. Foi feita com o mais puro amor e carinho, na esperança de que esta
-                        perspectiva, eterna e sincera, possa chegar até ti.
-                    </p>
-
-                    <h2 id="capitulo-1">Capítulo 1: A Descoberta do Olhar</h2>
-                    <p>
-                        Era mais uma semana normal, nada muito diferente: idas para a escola, foco nos amigos e na
-                        rotina... Porém, nesse dia específico, eu notei-te por causa de um trabalho que precisava ser
-                        apresentado.
-
-                        Então, ali eu me vi a encarar-te, e notei que possuías uma beleza admirável. Definitivamente,
-                        interessei-me em ti.
-
-                        Coincidentemente, alguns dias depois, uma grande amiga minha aproximou-se de ti e foi para a tua
-                        casa no campo. Ali, vi a oportunidade de me aproximar. Numa atitude rápida e perspicaz, chamei
-                        essa amiga para lhe perguntar tudo: quem eras, o que fazias, de onde eras, se já estavas
-                        comprometida.
-                    </p>
-
-                    <p>
-                        Ali, foi-me revelado que te chamavas Izabela e que já estavas comprometida. Foi, infelizmente,
-                        uma revelação amarga, uma tristeza imediata. Mas eu não desisti.
-                        Fiquei ali, a querer saber mais e mais sobre ti, pois definitivamente eras alguém muito
-                        especial. Com as informações que eu tinha, meus sentimentos disseram-me para manter a distância
-                        necessária. No entanto, o meu coração insistia na proximidade.
-                    </p>
-
-                    <p>
-                        O tempo passou, e a amizade iniciou. Aos poucos, tu preenchias o espaço que eu tanto desejava.
-                        Mas, como já mencionei, era um processo vagaroso, demorado, pois, afinal, o teu coração já tinha
-                        dono, e naquela época eu respeitava isso.
-
-                        Com o passar do tempo, a tua amizade tornou-se algo muito bom, e indispensável. E quando dei por
-                        mim, o ano chegava ao fim. Surgiu, então, a possibilidade de realocação de instituição de
-                        ensino.
-
-                        Pensei que tudo poderia ter ido por água abaixo, mas tentei conformar-me, afinal, era algo que
-                        nem tinha se preenchido direito; ainda era apenas uma amizade em andamento.
-                    </p>
-
-                    <p>
-                        O próximo ano chegou. E, olha só, eu não mudei de escola, embora o prédio tivesse tido um
-                        "upgrade". E quando voltei, sinceramente, eu tinha esquecido toda aquela vontade imensa que
-                        havia surgido por ti.
-
-                        Afinal, tinha aceitado a ideia de que não estaríamos mais juntos. Contudo, para a minha
-                        surpresa, tu estavas na minha mesma sala.
-
-                        Só te notei, no entanto, passados uns quatro dias de aula. (O que me faz sorrir, porque aquele
-                        foi o teu primeiro dia. Tu gostavas mesmo de faltar, não é?) Bem, a vida seguiu. Não éramos
-                        muito próximos naquela época; apenas nos víamos de longe, e era isso.
-                    </p>
-
-                    <p>
-                        Mas houve algo que nos aproximou, ironicamente. Tu tinhas uma amiga, por quem eu tinha uma
-                        pequena atração naquela época. E tu, com toda a tua proatividade, sugeriste ajudar-me na árdua
-                        tarefa de conquistar aquela menina.
-
-                        Ali se iniciou o nosso "projeto": ler uma obra literária que ela apreciava, aprender o que ela
-                        gostava, e tudo o mais, tudo com o foco de a alcançar.
-
-                        Mas, para minha surpresa, o meu encanto virou-se totalmente para ti. Tu lendo comigo,
-                        ajudando-me, sendo simplesmente tu.
-
-                        Ali, encontrei-me num princípio de paixão, onde eu não tinha certeza. E mesmo que a tivesse, tu
-                        ainda estavas comprometida, o que me impossibilitava de muitas coisas. Contudo, o meu coração
-                        sentia-se estranhamente aquecido na tua presença.
-                    </p>
-
-                    <p>
-                        O tempo foi passando e esse sentimento aumentava. A cada dia que passava, eu me sentia mais
-                        próximo de ti e desejava ter-te ainda mais perto. Eu estudava contigo, passava o dia a conversar
-                        contigo.
-
-                        Anseava pela virada do dia só para chegar ao mesmo local onde estavas. Mesmo que
-                        involuntariamente, atribuía-te o máximo de atividades para te manter perto de mim.
-
-                        E, consequentemente, tu me puxaste para o teu grupo de amigos, onde comecei a socializar também.
-                        Apesar de tudo, eu não consegui perder o foco um foco que eu mal sabia que era apenas em ti.
-                    </p>
-
-                    <p>
-                        Assim, o "projeto" que tinha começado como uma missão para o coração de outra pessoa,
-                        transformou-se no meu próprio campo de batalha.
-
-                        Eu estava ali, na tua órbita, a desfrutar de uma proximidade que me aquecia a alma, mas que, ao
-                        mesmo tempo, me queimava lentamente. Tinha conquistado a amizade mais preciosa, mas a cada dia
-                        que passava, essa amizade tornava-se o meu maior conflito: o amor impossível.
-
-                        Eu sabia, no fundo da minha melancolia, que a situação era insustentável. A distância física
-                        havia acabado, mas a distância do teu coração, ainda ocupado, era mais real e dolorosa do que
-                        nunca. No entanto, o destino já havia dado o seu recado: não havia mais volta.
-                    </p>
-
-
-                    <h2 id="capitulo-2">Capítulo 2: A Linha que Separava a Amizade</h2>
-                    <p>
-                        Eu achava que tudo estava acabado, contudo, a nossa aproximação era real. Comecei a sentir a
-                        reciprocidade.
-
-                        Mais rápido do que imaginei, o espaço que eu desejava que tu preenchesses estava a ser ocupado a
-                        uma velocidade considerável. Simultaneamente, os meus sentimentos pela tua amiga se esvaíram,
-                        mostrando-me quem eu realmente queria no íntimo da minha alma.
-
-                        E, mesmo assim, eu não levava isso como a verdade absoluta, pois o teu coração ainda tinha dono.
-                        Mas notei a tua reciprocidade e, ali, enxerguei uma brecha. Eu estava correto? Provavelmente
-                        não. Definitivamente não! Mas eu não quis perder a oportunidade de me aproximar ainda mais.
-                    </p>
-
-                    <p>
-                        Ali, comecei a introduzir-me de forma romântica aos poucos, inicialmente com o objetivo de me
-                        tornar o teu melhor amigo. Com isso, os nossos momentos juntos intensificaram-se. Eu passava
-                        noventa por cento do meu tempo contigo, e isso ainda não parecia suficiente.
-
-                        Ali, encontrei uma necessidade incessante de te ter comigo a todo instante, e eu gostava de
-                        acreditar que esse sentimento era mútuo. Nós ficávamos juntos, e era incrível: chegar e
-                        abraçar-te, sentir o teu cheiro, e por aí vai.
-
-                        O meu objetivo ia chegando à conclusão: éramos um só, vivíamos juntos. Havia brincadeiras até
-                        que meio suspeitas, mas nenhum de nós questionava. A melhor parte era quando nos debruçávamos
-                        sobre a carteira, ficando um de frente para o outro, na escuridão criada pelo meu moletom e
-                        pelos meus braços, e ali falávamos encostando os nossos lábios de forma tímida e vergonhosa.
-
-                        Era bom, trazia-me entusiasmo. Era algo só nosso que, por mais que parecesse errado naquela
-                        época (pois ainda havia um vínculo), eu não questionava, e tu também não. Eu já ansiava pelo teu
-                        término — é até engraçado dizer isto —, mas eu já te desejava para mim.
-                    </p>
-
-                    <p>
-                        Tal como os meus desejos ansiavam, a quebra do teu relacionamento ocorreu. E ali, vi-te num
-                        estado de tristeza. No início, fiquei comovido e apenas incentivado a estar ali por ti, sem
-                        segundas intenções.
-
-                        Aquele foi o ponto em que finalmente te conheci na tua essência os teus medos, os teus sonhos,
-                        os teus objetivos. Pois enxergaste em mim alguém de confiança, tendo ali a tão esperada Quebra
-                        da Linha que Separava a Amizade.
-
-                        Ali me dispus a ser quem mais precisavas: um amigo, um conselheiro, um amor, um romance... o que
-                        fosse. Eu seria e fui. Entreguei-me a ti, criando um afeto que me mostrou o quão bela tu eras
-                        por dentro. Encantaste-me de um modo que colocar em palavras é impossível. Ali tive a certeza de
-                        que te queria, e dispus-me a andar na linha para alcançar o meu novo e definitivo objetivo: ser
-                        teu!
-                    </p>
-
-                    <p>
-                        Ali, eu tinha certeza do meu novo objetivo, mas a transição não era instantânea. Sabíamos que a
-                        linha da amizade tinha sido quebrada pelo sentimento, contudo, entramos num limbo delicioso e
-                        incerto. Era um jogo de sedução consciente, onde o afeto era visível, mas a palavra
-                        "relacionamento" permanecia uma barreira silenciosa entre nós. Era a hora de ousar, mas eu
-                        queria que o primeiro passo fosse tão monumental quanto o sentimento que nos unia.
-                    </p>
-
-                    <h2 id="capitulo-3">Capítulo 3: O Amor Sem Assinatura</h2>
-
-                    <p>
-                        Ali, vi-me perante a oportunidade de finalmente ser algo mais, de ser definitivamente teu. Não
-                        sei porquê, mas tu cativavas-me de uma forma surreal. Sentia uma forte atração, uma grande
-                        vontade de estar contigo. Eras uma pessoa incrível, uma pessoa amável na tua essência.
-
-                        Então, foi para isso que me lancei: para me tornar o teu motivo de sorrir, tal como tu eras o
-                        meu. Contudo, havia um pequeno (e grande) problema: eu nunca fui bom com garotas, né? Afinal, eu
-                        era... meio estranho demais.
-
-                        Mas eu tinha a vantagem de ser teu amigo; já vivia contigo e não teria de passar pela terrível
-                        aproximação com duzentos por cento de chance de rejeição.
-
-                        Fomos, então, construindo passo a passo, fazendo coisas por ti, dando-te a atenção desejada. E,
-                        por incrível que pareça, não era cansativo, era até gratificante ver-te feliz e tudo o mais. Por
-                        algum motivo, se tu tinhas um problema, nós tínhamos um problema. Assim tu conseguias respirar,
-                        e isso era bom. Parecia que eu finalmente era necessário, sabes? E aquilo fazia-me bem.
-                    </p>
-
-                    <p>
-                        E, para minha surpresa, fui correspondido. Passávamos a abraçar-nos mais, a rir juntos, a
-                        conhecer-nos na essência. A cada dia que passava, reforçávamos a nossa conexão, o que me deixava
-                        incrédulo de certo modo. Eu era... um garoto muito respeitoso, por assim dizer. Medo: essa era a
-                        palavra. Medo de tentar algo brusco e te afastar.
-
-                        E por que isso me deixava incrédulo? Pois eu definitivamente achava que era um garoto que te
-                        cansava, já que correspondias à minha paixão mesmo que aos poucos. Eu não tinha atitude alguma.
-                        E, mesmo assim, ficamos durante muito tempo sendo a companhia um do outro para absolutamente
-                        tudo.
-
-                        E meu Deus, como aquilo era reconfortante! Dava prazer estar ali. Tu fazias-me ser alguém
-                        melhor. Eu estudava, lia, aprendi a melhorar a minha letra, moldei os meus ouvidos para escutar
-                        a música (não apenas o ruído), aprendi a dar valor às pequenas coisas, aprendi a ser um homem ao
-                        teu lado. Aos poucos, tu moldaste-me para ser quem sou hoje.
-
-                        Quem sou agora, enquanto me debruço sobre o teclado para escrever sobre nós. E isso deixa-me
-                        feliz, pois consigo ver o quão desprazeroso é ser homem (não, menino, tendo em vista o desdém
-                        com o sentimento alheio) nos dias atuais.
-
-                        Mas existe uma parte ruim em tudo isso: a única pessoa que o meu coração permite usufruir deste
-                        homem melhor que tu me ajudaste a construir, chama-se Izabella Beatriz da Costa Pinheiro.
-                        Familiar? Talvez. Mas, enfim: "O preço de amar muito alguém é nunca mais amar ninguém." (Fiódor
-                        Dostoiévski). Ele sabia do que estava a falar, mesmo há cento e quarenta anos atrás.
-                    </p>
-
-                    <p>
-                        Aquele era o ciclo do nosso amor sem assinatura: tu moldavas-me, eu dedicava-me, e a nossa
-                        proximidade dissolvia os contornos de qualquer definição. Por mais que tentasse racionalizar a
-                        situação, ou convencer-me de que a amizade bastava, a verdade era incontornável: eu já te
-                        pertencia. O meu coração, que tu fizeste melhor, não aceitava que a única barreira entre nós
-                        fosse uma formalidade externa e teimosa. Tínhamos partilhado sonhos, medos e segredos – eu sabia
-                        que era tempo de partilhar o resto. Era a hora da paixão, há tanto tempo contida e disfarçada em
-                        abraços e risos, finalmente tomar a sua forma inegável.
-                    </p>
-
-
-                    <h2 id="capitulo-4">Capítulo 4: O Risco que Valia a Pena</h2>
-
-                    <p>
-                        Estávamos a ir tão bem que eu queria mais, queria poder quebrar a linha da amizade e iniciar o
-                        nosso lado romântico de uma vez por todas. A única coisa que faltava era a confirmação, pois
-                        todos os outros quesitos já estavam mais do que confirmados: nos nossos abraços, nas conversas,
-                        na demonstração de afeto, em tudo.
-
-                        O que faltava?
-
-                        Faltava a cereja do bolo, faltava o marco que definitivamente assumiria aquilo que nenhum dos
-                        dois colocava em palavras.
-                    </p>
-
-                    <p>
-                        Foi então numa manhã, mais especificamente a de 14 de junho, que, após a realização de um
-                        trabalho escolar, fomos ver um filme em aula para toda a turma. Como de costume, sentei-me atrás
-                        de ti, junto à carteira, e ali te abracei para vermos o filme. Estava legendado e, naturalmente,
-                        todos estavam com a atenção redobrada, o que ironicamente favoreceu o meu propósito.
-
-                        Ali, comecei a sentir algo diferente: uma batida descontrolada do coração, um ar rarefeito, um
-                        estado de transe em que entramos noutra dimensão. Aos poucos, alinhámos as nossas cabeças. Fui
-                        pensando se valeria a pena o risco, com medo, mil pensamentos a questionar tudo... até que te
-                        reclinaste sobre os meus lábios. E ali...
-
-                        Senti o meu mundo mudar. Tive o contacto tão aguardado. O meu peito parou de acelerar e
-                        alinhou-se com o teu. Senti o mundo de outra forma, senti a tua respiração, os teus lábios, o
-                        teu coração alinhado ao meu. A paixão ali sentida transbordou-me.
-
-                        Ali eu tive a certeza. Faria de tudo, literalmente de tudo, para nunca te perder. Pois ali eu
-                        entendi que tinha achado a mulher da minha vida.
-
-                        "O charme é a maneira de obter a resposta 'sim' sem ter feito uma pergunta clara." (Albert
-                        Camus). Isso descreve bem o nosso momento.
-                    </p>
-
-                    <p>
-                        A partir daí, o meu mais puro e singelo sentimento de pertencimento ganhou forma. E tu não
-                        consegues compreender o quão mágico isso foi para mim.
-
-                        Tu, o ser que mais me tinhas, acabavas finalmente de confirmar as minhas suspeitas: o amor era
-                        recíproco.
-
-                        Tudo aquilo não era um grande conto criado por mim para amenizar o fato de tu não me querer. Tu
-                        realmente me quiseste ali. Tu mostraste ser a pessoa que eu queria ao meu lado para sempre.
-                    </p>
-
-                    <p>
-                        Aquele beijo, ocorrido sob o olhar irónico da nossa rotina escolar, foi a certidão de nascimento
-                        do nosso amor não oficial. Entendemo-nos em silêncio: o risco tinha valido a pena, mas a jornada
-                        apenas começava. O destino tinha-nos forçado a encontrar o nosso caminho juntos, e agora, com a
-                        certeza do amor recíproco, estávamos prontos para viver a plenitude da paixão dentro da nossa
-                        bolha proibida, desafiando as regras que nunca poderíamos quebrar por inteiro.
-                    </p>
-                    <br>
-                    <p>
-                        "O meu único mapa tem os teus olhos castanhos como bússola e o teu sorriso como a lua. (Vá lá,
-                        ilumina minha noite, nem que seja só para eu não me perder de novo na escuridão)." (Seu G).
-                    </p>
-
-                    <h2 id="capitulo-5">Capítulo 5: Nosso Contrato de Amor Silencioso</h2>
-
-                    <p>
-                        O grande passo foi dado. Nós selámos as nossas dúvidas naquele momento único e que jamais vou
-                        esquecer. Ali tive a minha maior certeza: seria tu.
-
-                        E, a partir daí, surgiu a necessidade de falar sobre. Por um tempo, ficamos "reclusos" em
-                        relação a esse beijo, fingindo que nada ocorreu (mas, nitidamente, ocorreu). Ali passei os meus
-                        dias mais felizes, mas ainda era algo meio que segredo nosso. Então, o que fiz? Num dia
-                        qualquer, na hora de irmos embora, roubei-te mais um beijo.
-
-                        E, bom, ali tu não fizeste nada. Contudo, ao chegarmos em casa, paramos para conversar. Chegamos
-                        ao ponto que tínhamos combinado que não ia mais ocorrer, e mesmo assim ocorreu. Ali ocorreu a
-                        nossa aceitação, pois beijar-te virou a minha atividade preferida; sentir o teu gosto era algo
-                        incrível.
-
-                        Por semanas, abrimo-nos para que o outro pudesse habitar, ali tendo a aceitação genuína. O nosso
-                        grande amor, dramático e meloso, tomava forma. Eu ficava ainda mais tempo contigo, mais tempo
-                        agarrado a ti. Tu dormias em mim durante as aulas, ou só te debruçavas sobre mim, deixando clara
-                        a tua segurança de estares comigo.
-
-                        E ali eu tive muitas vezes o pensamento: "Ela é minha..." Por mais que não fosse oficial, tu
-                        eras. Ali foi marcada a grande mudança para o coração um do outro. Ali fizemos casa, decorámos e
-                        firmámos. Ali garantimos o espaço na alma do outro, sem sabermos que seria eterno.
-                    </p>
-
-                    <p>
-                        Pois é, ali tu acabavas de construir o teu espaço no meu coração, espaço esse totalmente feito
-                        para ti. Tu entraste, tomaste conta, decoraste, arrumaste como bem entendeste.
-
-                        Ali tu garantias uma certeza para ti pelo resto da tua vida: ali tu terias um espaço só teu, que
-                        ninguém conseguiria entrar, nem mesmo que forçasse. E, bom, como esperado, esse espaço foi
-                        colocado à prova diversas vezes. E, adivinha só? Ninguém jamais conseguiu entrar e bagunçar o
-                        teu lugar.
-
-                        Afinal, só tu tens a chave, essa chave maravilhosa que eu fiz questão de te deixar. Uma única
-                        cópia, só tua. Cópia essa que nem eu tenho, não consigo entrar para limpar nem nada. (00h00, ja
-                        fiz meu amor...kkk).
-
-                        Sempre está como tu deixaste da última vez. E é tão bom quando tu voltas, sabes? Tu acendes a
-                        lareira e tudo fica mais confortável, mais tolerável, mais agradável.
-
-                        Enfim, ali naquela época tu tinhas feito o teu terreno em mim, garantindo que, aonde eu
-                        estivesse, o meu peito sempre batesse mais forte. Só de escutar o teu nome já seria o suficiente
-                        para me deixar em alerta e com a ânsia da tua presença.
-                    </p>
-
-                    <p>
-                        E assim se firmou o nosso contrato, escrito não em papel, mas nas regras não ditas de dois
-                        corações que se encontraram e se reconheceram. Aquele era o auge da nossa bolha proibida: eu era
-                        o guardião do teu sorriso e tu eras a única dona da chave que eu, com todo o meu ser, te
-                        entreguei. O nosso amor atingiu uma plenitude estranha, vivida na penumbra da sala de aula, nos
-                        abraços apertados e no conforto de saber que em meio a todo o caos do mundo, havia a certeza de
-                        que a alma do outro era o único refúgio seguro.
-
-                        Tu entraste e fizeste casa em mim, e a perfeição da tua decoração, dos teus sonhos e dos teus
-                        medos que ali deixaste, permanece intocável até hoje. A inocência daquela época permitiu-nos
-                        decorar esse espaço com a certeza de que a nossa união não dependia de testemunhas nem de
-                        assinaturas, mas apenas daquele sentir mútuo que nos fazia respirar. Era um amor com uma coragem
-                        silenciosa, onde o risco era insignificante perante a necessidade vital de estarmos lado a lado.
-
-                        Eu sabia que essa segurança, essa plenitude conquistada, viria a ter um preço amargo; afinal, a
-                        felicidade absoluta num amor clandestino está sempre a um passo de se desmoronar. Mas naquele
-                        momento, enquanto tu dormias no meu ombro e o teu coração se alinhava com o meu, não havia
-                        futuro, não havia passado, apenas o presente. E esse presente era tu, era eu, éramos nós, um
-                        contrato eterno, selado no silêncio, pronto para ser testado pelo tempo.
-                    </p>
-
-                </section>
-
-
-                <div id="disqus_thread"></div>
-                <script>
-                    var disqus_config = function () {
-                        // 🚨 Ponto Crítico 1: Define o URL EXATO da página do livro
-                        this.page.url = "https://gerardferrerdev.github.io/iza/livro.html";
-
-                        // 🚨 Ponto Crítico 2: ID ÚNICO (usamos o nome do ficheiro)
-                        this.page.identifier = "livro_principal";
-                    };
-
-                    (function () { // DON'T EDIT BELOW THIS LINE
-                        var d = document, s = d.createElement('script');
-
-                        // 🚨 Ponto Crítico 3: SUBSTITUA o domínio pelo SEU Shortname
-                        // O seu Shortname está no link que eles te deram (bells-1)
-                        s.src = 'https://bells-1.disqus.com/embed.js';
-
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
-                    })();
-                </script>
-                <noscript>Por favor, ative o JavaScript para ver os comentários Disqus.</noscript>
-
+        <div class="container-romance">
+
+            <header>
+                <h1>O Começo da Nossa História</h1>
+                <p class="subtitulo-livro">Um livro escrito com o coração, só para ti.</p>
+            </header>
+
+            <section class="sumario-capitulos">
+                <h3>Índice</h3>
+                <ul class="lista-capitulos">
+                    <li><a href="#capitulo-prologo">Prólogo: Minhas Palavras</a></li>
+                    <li><a href="#capitulo-1">Capítulo 1: A Descoberta do Olhar</a></li>
+                    <li><a href="#capitulo-2">Capítulo 2: A Linha que Separava...</a></li>
+                    <li><a href="#capitulo-3">Capítulo 3: O Amor Sem Assinatura</a></li>
+                    <li><a href="#capitulo-4">Capítulo 4: O Risco que Valia a Pena</a></li>
+                    <li><a href="#capitulo-5">Capítulo 5: Nosso Contrato de Amor...</a></li>
+                </ul>
+                <hr>
+            </section>
+            
+            <section class="conteudo-livro">
+                
+                <h2 id="capitulo-prologo">O Prólogo: Minhas Palvras</h2>
+                <p>Bem, este livro que decidi fazer, já vem de muito tempo. Inicialmente, era para ser algo físico;
+                    no entanto, o tempo passou.</p>
+
+                <p>Entrei no mundo da tecnologia e pensei "por que não eternizar esta ideia? Deixá-lo salvo para
+                    sempre num presente só teu".</p>
+
+                <p>Então, o que tens nas mãos é a humilde tentativa de contar tudo o que representas para mim.</p>
+
+                <p>Neste exato momento, estou aqui, a pensar em todas as coisas pelas quais te devia desculpas. O
+                    sofrimento que nos causamos, toda a culpa derramada sobre nós, tudo o que eu precisava que me
+                    tivesses dito. Sinto muito por tudo isto.</p>
+
+                <p>Eu sempre vou te amar, porque crescemos juntos, querendo ou não, e me ajudaste a ser quem eu
+                    sou. Eu só quero que saibas que sempre haverá uma parte de mim em ti, e sou grato por essa
+                    ligação eterna.</p>
+
+                <p>Seja quem for que te tornes, e onde quer que estejas no mundo... eu te envio o meu amor.</p>
+
+                <p>Quando me perguntam qual é o lugar onde encontro a paz, a resposta é simples.</p>
+
+                <p>Mas a verdade é que a minha paz não reside numa geografia; é, na verdade, uma pessoa. Uma pessoa
+                    com os olhos mais lindos que eu já vi.</p>
+
+                <p>Naqueles oceanos de cor, onde me perdia e me reencontrava, havia o conforto silencioso que o
+                    mundo nunca me soube dar. A paz não era um destino; era um reflexo, a quietude que só se
+                    encontra ao olhar para quem se ama. E, de repente, todo o caos da minha vida parava.</p>
+
+                <p>Então, esta jornada de lembranças e de confissões está pronta para começar. O que tens nas mãos
+                    é a nossa história, revista e sentida a partir do meu olhar.</p>
+
+                <p>Em cada página, existe a verdade crua do que representas, a dor melancólica do que perdemos e a
+                    inabalável certeza da paz que encontraste em mim.</p>
+
+                <p>Aproveita a leitura. Foi feita com o mais puro amor e carinho, na esperança de que esta
+                    perspectiva, eterna e sincera, possa chegar até ti.</p>
+
+                <h2 id="capitulo-1">Capítulo 1: A Descoberta do Olhar</h2>
+                <p>
+                    Era mais uma semana normal, nada muito diferente: idas para a escola, foco nos amigos e na
+                    rotina... Porém, nesse dia específico, eu notei-te por causa de um trabalho que precisava ser
+                    apresentado.
+                </p>
+
+                <p>
+                    Então, ali eu me vi a encarar-te, e notei que possuías uma beleza admirável. Definitivamente,
+                    interessei-me em ti.
+                </p>
+
+                <p>
+                    Coincidentemente, alguns dias depois, uma grande amiga minha aproximou-se de ti e foi para a tua
+                    casa no campo. Ali, vi a oportunidade de me aproximar. Numa atitude rápida e perspicaz, chamei
+                    essa amiga para lhe perguntar tudo: quem eras, o que fazias, de onde eras, se já estavas
+                    comprometida.
+                </p>
+
+                <p>
+                    Ali, foi-me revelado que te chamavas Izabela e que já estavas comprometida. Foi, infelizmente,
+                    uma revelação amarga, uma tristeza imediata. Mas eu não desisti.
+                    Fiquei ali, a querer saber mais e mais sobre ti, pois definitivamente eras alguém muito
+                    especial. Com as informações que eu tinha, meus sentimentos disseram-me para manter a distância
+                    necessária. No entanto, o meu coração insistia na proximidade.
+                </p>
+
+                <p>
+                    O tempo passou, e a amizade iniciou. Aos poucos, tu preenchias o espaço que eu tanto desejava.
+                    Mas, como já mencionei, era um processo vagaroso, demorado, pois, afinal, o teu coração já tinha
+                    dono, e naquela época eu respeitava isso.
+                </p>
+
+                <p>
+                    Com o passar do tempo, a tua amizade tornou-se algo muito bom, e indispensável. E quando dei por
+                    mim, o ano chegava ao fim. Surgiu, então, a possibilidade de realocação de instituição de
+                    ensino.
+                </p>
+
+                <p>
+                    Pensei que tudo poderia ter ido por água abaixo, mas tentei conformar-me, afinal, era algo que
+                    nem tinha se preenchido direito; ainda era apenas uma amizade em andamento.
+                </p>
+
+                <p>
+                    O próximo ano chegou. E, olha só, eu não mudei de escola, embora o prédio tivesse tido um
+                    "upgrade". E quando voltei, sinceramente, eu tinha esquecido toda aquela vontade imensa que
+                    havia surgido por ti.
+                </p>
+
+                <p>
+                    Afinal, tinha aceitado a ideia de que não estaríamos mais juntos. Contudo, para a minha
+                    surpresa, tu estavas na minha mesma sala.
+                </p>
+
+                <p>
+                    Só te notei, no entanto, passados uns quatro dias de aula. (O que me faz sorrir, porque aquele
+                    foi o teu primeiro dia. Tu gostavas mesmo de faltar, não é?) Bem, a vida seguiu. Não éramos
+                    muito próximos naquela época; apenas nos víamos de longe, e era isso.
+                </p>
+
+                <p>
+                    Mas houve algo que nos aproximou, ironicamente. Tu tinhas uma amiga, por quem eu tinha uma
+                    pequena atração naquela época. E tu, com toda a tua proatividade, sugeriste ajudar-me na árdua
+                    tarefa de conquistar aquela menina.
+                </p>
+
+                <p>
+                    Ali se iniciou o nosso "projeto": ler uma obra literária que ela apreciava, aprender o que ela
+                    gostava, e tudo o mais, tudo com o foco de a alcançar.
+                </p>
+
+                <p>
+                    Mas, para minha surpresa, o meu encanto virou-se totalmente para ti. Tu lendo comigo,
+                    ajudando-me, sendo simplesmente tu.
+                </p>
+
+                <p>
+                    Ali, encontrei-me num princípio de paixão, onde eu não tinha certeza. E mesmo que a tivesse, tu
+                    ainda estavas comprometida, o que me impossibilitava de muitas coisas. Contudo, o meu coração
+                    sentia-se estranhamente aquecido na tua presença.
+                </p>
+
+                <p>
+                    O tempo foi passando e esse sentimento aumentava. A cada dia que passava, eu me sentia mais
+                    próximo de ti e desejava ter-te ainda mais perto. Eu estudava contigo, passava o dia a conversar
+                    contigo.
+                </p>
+
+                <p>
+                    Anseava pela virada do dia só para chegar ao mesmo local onde estavas. Mesmo que
+                    involuntariamente, atribuía-te o máximo de atividades para te manter perto de mim.
+                </p>
+
+                <p>
+                    E, consequentemente, tu me puxaste para o teu grupo de amigos, onde comecei a socializar também.
+                    Apesar de tudo, eu não consegui perder o foco um foco que eu mal sabia que era apenas em ti.
+                </p>
+
+                <p>
+                    Assim, o "projeto" que tinha começado como uma missão para o coração de outra pessoa,
+                    transformou-se no meu próprio campo de batalha.
+                </p>
+
+                <p>
+                    Eu estava ali, na tua órbita, a desfrutar de uma proximidade que me aquecia a alma, mas que, ao
+                    mesmo tempo, me queimava lentamente. Tinha conquistado a amizade mais preciosa, mas a cada dia
+                    que passava, essa amizade tornava-se o meu maior conflito: o amor impossível.
+                </p>
+
+                <p>
+                    Eu sabia, no fundo da minha melancolia, que a situação era insustentável. A distância física
+                    havia acabado, mas a distância do teu coração, ainda ocupado, era mais real e dolorosa do que
+                    nunca. No entanto, o destino já havia dado o seu recado: não havia mais volta.
+                </p>
+
+
+                <h2 id="capitulo-2">Capítulo 2: A Linha que Separava a Amizade</h2>
+                <p>
+                    Eu achava que tudo estava acabado, contudo, a nossa aproximação era real. Comecei a sentir a
+                    reciprocidade.
+                </p>
+
+                <p>
+                    Mais rápido do que imaginei, o espaço que eu desejava que tu preenchesses estava a ser ocupado a
+                    uma velocidade considerável. Simultaneamente, os meus sentimentos pela tua amiga se esvaíram,
+                    mostrando-me quem eu realmente queria no íntimo da minha alma.
+                </p>
+
+                <p>
+                    E, mesmo assim, eu não levava isso como a verdade absoluta, pois o teu coração ainda tinha dono.
+                    Mas notei a tua reciprocidade e, ali, enxerguei uma brecha. Eu estava correto? Provavelmente
+                    não. Definitivamente não! Mas eu não quis perder a oportunidade de me aproximar ainda mais.
+                </p>
+
+                <p>
+                    Ali, comecei a introduzir-me de forma romântica aos poucos, inicialmente com o objetivo de me
+                    tornar o teu melhor amigo. Com isso, os nossos momentos juntos intensificaram-se. Eu passava
+                    noventa por cento do meu tempo contigo, e isso ainda não parecia suficiente.
+                </p>
+
+                <p>
+                    Ali, encontrei uma necessidade incessante de te ter comigo a todo instante, e eu gostava de
+                    acreditar que esse sentimento era mútuo. Nós ficávamos juntos, e era incrível: chegar e
+                    abraçar-te, sentir o teu cheiro, e por aí vai.
+                </p>
+
+                <p>
+                    O meu objetivo ia chegando à conclusão: éramos um só, vivíamos juntos. Havia brincadeiras até
+                    que meio suspeitas, mas nenhum de nós questionava. A melhor parte era quando nos debruçávamos
+                    sobre a carteira, ficando um de frente para o outro, na escuridão criada pelo meu moletom e
+                    pelos meus braços, e ali falávamos encostando os nossos lábios de forma tímida e vergonhosa.
+                </p>
+
+                <p>
+                    Era bom, trazia-me entusiasmo. Era algo só nosso que, por mais que parecesse errado naquela
+                    época (pois ainda havia um vínculo), eu não questionava, e tu também não. Eu já ansiava pelo teu
+                    término — é até engraçado dizer isto —, mas eu já te desejava para mim.
+                </p>
+
+                <p>
+                    Tal como os meus desejos ansiavam, a quebra do teu relacionamento ocorreu. E ali, vi-te num
+                    estado de tristeza. No início, fiquei comovido e apenas incentivado a estar ali por ti, sem
+                    segundas intenções.
+                </p>
+
+                <p>
+                    Aquele foi o ponto em que finalmente te conheci na tua essência os teus medos, os teus sonhos,
+                    os teus objetivos. Pois enxergaste em mim alguém de confiança, tendo ali a tão esperada Quebra
+                    da Linha que Separava a Amizade.
+                </p>
+
+                <p>
+                    Ali me dispus a ser quem mais precisavas: um amigo, um conselheiro, um amor, um romance... o que
+                    fosse. Eu seria e fui. Entreguei-me a ti, criando um afeto que me mostrou o quão bela tu eras
+                    por dentro. Encantaste-me de um modo que colocar em palavras é impossível. Ali tive a certeza de
+                    que te queria, e dispus-me a andar na linha para alcançar o meu novo e definitivo objetivo: ser
+                    teu!
+                </p>
+
+                <p>
+                    Ali, eu tinha certeza do meu novo objetivo, mas a transição não era instantânea. Sabíamos que a
+                    linha da amizade tinha sido quebrada pelo sentimento, contudo, entramos num limbo delicioso e
+                    incerto. Era um jogo de sedução consciente, onde o afeto era visível, mas a palavra
+                    "relacionamento" permanecia uma barreira silenciosa entre nós. Era a hora de ousar, mas eu
+                    queria que o primeiro passo fosse tão monumental quanto o sentimento que nos unia.
+                </p>
+
+
+                <h2 id="capitulo-3">Capítulo 3: O Amor Sem Assinatura</h2>
+
+                <p>
+                    Ali, vi-me perante a oportunidade de finalmente ser algo mais, de ser definitivamente teu. Não
+                    sei porquê, mas tu cativavas-me de uma forma surreal. Sentia uma forte atração, uma grande
+                    vontade de estar contigo. Eras uma pessoa incrível, uma pessoa amável na tua essência.
+                </p>
+
+                <p>
+                    Então, foi para isso que me lancei: para me tornar o teu motivo de sorrir, tal como tu eras o
+                    meu. Contudo, havia um pequeno (e grande) problema: eu nunca fui bom com garotas, né? Afinal, eu
+                    era... meio estranho demais.
+                </p>
+
+                <p>
+                    Mas eu tinha a vantagem de ser teu amigo; já vivia contigo e não teria de passar pela terrível
+                    aproximação com duzentos por cento de chance de rejeição.
+                </p>
+
+                <p>
+                    Fomos, então, construindo passo a passo, fazendo coisas por ti, dando-te a atenção desejada. E,
+                    por incrível que pareça, não era cansativo, era até gratificante ver-te feliz e tudo o mais. Por
+                    algum motivo, se tu tinhas um problema, nós tínhamos um problema. Assim tu conseguias respirar,
+                    e isso era bom. Parecia que eu finalmente era necessário, sabes? E aquilo fazia-me bem.
+                </p>
+
+                <p>
+                    E, para minha surpresa, fui correspondido. Passávamos a abraçar-nos mais, a rir juntos, a
+                    conhecer-nos na essência. A cada dia que passava, reforçávamos a nossa conexão, o que me deixava
+                    incrédulo de certo modo. Eu era... um garoto muito respeitoso, por assim dizer. Medo: essa era a
+                    palavra. Medo de tentar algo brusco e te afastar.
+                </p>
+
+                <p>
+                    E por que isso me deixava incrédulo? Pois eu definitivamente achava que era um garoto que te
+                    cansava, já que correspondias à minha paixão mesmo que aos poucos. Eu não tinha atitude alguma.
+                    E, mesmo assim, ficamos durante muito tempo sendo a companhia um do outro para absolutamente
+                    tudo.
+                </p>
+
+                <p>
+                    E meu Deus, como aquilo era reconfortante! Dava prazer estar ali. Tu fazias-me ser alguém
+                    melhor. Eu estudava, lia, aprendi a melhorar a minha letra, moldei os meus ouvidos para escutar
+                    a música (não apenas o ruído), aprendi a dar valor às pequenas coisas, aprendi a ser um homem ao
+                    teu lado. Aos poucos, tu moldaste-me para ser quem sou hoje.
+                </p>
+
+                <p>
+                    Quem sou agora, enquanto me debruço sobre o teclado para escrever sobre nós. E isso deixa-me
+                    feliz, pois consigo ver o quão desprazeroso é ser homem (não, menino, tendo em vista o desdém
+                    com o sentimento alheio) nos dias atuais.
+                </p>
+
+                <p>
+                    Mas existe uma parte ruim em tudo isso: a única pessoa que o meu coração permite usufruir deste
+                    homem melhor que tu me ajudaste a construir, chama-se Izabella Beatriz da Costa Pinheiro.
+                    Familiar? Talvez. Mas, enfim: "O preço de amar muito alguém é nunca mais amar ninguém." (Fiódor
+                    Dostoiévski). Ele sabia do que estava a falar, mesmo há cento e quarenta anos atrás.
+                </p>
+
+                <p>
+                    Aquele era o ciclo do nosso amor sem assinatura: tu moldavas-me, eu dedicava-me, e a nossa
+                    proximidade dissolvia os contornos de qualquer definição. Por mais que tentasse racionalizar a
+                    situação, ou convencer-me de que a amizade bastava, a verdade era incontornável: eu já te
+                    pertencia. O meu coração, que tu fizeste melhor, não aceitava que a única barreira entre nós
+                    fosse uma formalidade externa e teimosa. Tínhamos partilhado sonhos, medos e segredos – eu sabia
+                    que era tempo de partilhar o resto. Era a hora da paixão, há tanto tempo contida e disfarçada em
+                    abraços e risos, finalmente tomar a sua forma inegável.
+                </p>
+
+                <p>
+                    Aquele era o ciclo do nosso amor sem assinatura: tu moldavas-me, eu dedicava-me, e a nossa
+                    proximidade dissolvia os contornos de qualquer definição. Por mais que tentasse racionalizar a
+                    situação, ou convencer-me de que a amizade bastava, a verdade era incontornável: eu já te
+                    pertencia. O meu coração, que tu fizeste melhor, não aceitava que a única barreira entre nós
+                    fosse uma formalidade externa e teimosa. Tínhamos partilhado sonhos, medos e segredos – eu sabia
+                    que era tempo de partilhar o resto. Era a hora da paixão, há tanto tempo contida e disfarçada em
+                    abraços e risos, finalmente tomar a sua forma inegável.
+                </p>
+
+
+                <h2 id="capitulo-4">Capítulo 4: O Risco que Valia a Pena</h2>
+
+                <p>
+                    Estávamos a ir tão bem que eu queria mais, queria poder quebrar a linha da amizade e iniciar o
+                    nosso lado romântico de uma vez por todas. A única coisa que faltava era a confirmação, pois
+                    todos os outros quesitos já estavam mais do que confirmados: nos nossos abraços, nas conversas,
+                    na demonstração de afeto, em tudo.
+                </p>
+
+                <p>
+                    O que faltava?
+                </p>
+
+                <p>
+                    Faltava a cereja do bolo, faltava o marco que definitivamente assumiria aquilo que nenhum dos
+                    dois colocava em palavras.
+                </p>
+
+                <p>
+                    Foi então numa manhã, mais especificamente a de 14 de junho, que, após a realização de um
+                    trabalho escolar, fomos ver um filme em aula para toda a turma. Como de costume, sentei-me atrás
+                    de ti, junto à carteira, e ali te abracei para vermos o filme. Estava legendado e, naturalmente,
+                    todos estavam com a atenção redobrada, o que ironicamente favoreceu o meu propósito.
+                </p>
+
+                <p>
+                    Ali, comecei a sentir algo diferente: uma batida descontrolada do coração, um ar rarefeito, um
+                    estado de transe em que entramos noutra dimensão. Aos poucos, alinhámos as nossas cabeças. Fui
+                    pensando se valeria a pena o risco, com medo, mil pensamentos a questionar tudo... até que te
+                    reclinaste sobre os meus lábios. E ali...
+                </p>
+
+                <p>
+                    Senti o meu mundo mudar. Tive o contacto tão aguardado. O meu peito parou de acelerar e
+                    alinhou-se com o teu. Senti o mundo de outra forma, senti a tua respiração, os teus lábios, o
+                    teu coração alinhado ao meu. A paixão ali sentida transbordou-me.
+                </p>
+
+                <p>
+                    Ali eu tive a certeza. Faria de tudo, literalmente de tudo, para nunca te perder. Pois ali eu
+                    entendi que tinha achado a mulher da minha vida.
+                </p>
+
+                <p>
+                    "O charme é a maneira de obter a resposta 'sim' sem ter feito uma pergunta clara." (Albert
+                    Camus). Isso descreve bem o nosso momento.
+                </p>
+
+                <p>
+                    A partir daí, o meu mais puro e singelo sentimento de pertencimento ganhou forma. E tu não
+                    consegues compreender o quão mágico isso foi para mim.
+                </p>
+
+                <p>
+                    Tu, o ser que mais me tinhas, acabavas finalmente de confirmar as minhas suspeitas: o amor era
+                    recíproco.
+                </p>
+
+                <p>
+                    Tudo aquilo não era um grande conto criado por mim para amenizar o fato de tu não me querer. Tu
+                    realmente me quiseste ali. Tu mostraste ser a pessoa que eu queria ao meu lado para sempre.
+                </p>
+
+                <p>
+                    Aquele beijo, ocorrido sob o olhar irónico da nossa rotina escolar, foi a certidão de nascimento
+                    do nosso amor não oficial. Entendemo-nos em silêncio: o risco tinha valido a pena, mas a jornada
+                    apenas começava. O destino tinha-nos forçado a encontrar o nosso caminho juntos, e agora, com a
+                    certeza do amor recíproco, estávamos prontos para viver a plenitude da paixão dentro da nossa
+                    bolha proibida, desafiando as regras que nunca poderíamos quebrar por inteiro.
+                </p>
                 <br>
-                <a href="sumario.html" class="botao-navegacao">
-                    ← Voltar ao Sumário
-                </a>
+                <p>
+                    "O meu único mapa tem os teus olhos castanhos como bússola e o teu sorriso como a lua. (Vá lá,
+                    ilumina minha noite, nem que seja só para eu não me perder de novo na escuridão)." (Seu G).
+                </p>
 
-            </div>
+                <h2 id="capitulo-5">Capítulo 5: Nosso Contrato de Amor Silencioso</h2>
+
+                <p>
+                    O grande passo foi dado. Nós selámos as nossas dúvidas naquele momento único e que jamais vou
+                    esquecer. Ali tive a minha maior certeza: seria tu.
+                </p>
+
+                <p>
+                    E, a partir daí, surgiu a necessidade de falar sobre. Por um tempo, ficamos "reclusos" em
+                    relação a esse beijo, fingindo que nada ocorreu (mas, nitidamente, ocorreu). Ali passei os meus
+                    dias mais felizes, mas ainda era algo meio que segredo nosso. Então, o que fiz? Num dia
+                    qualquer, na hora de irmos embora, roubei-te mais um beijo.
+                </p>
+
+                <p>
+                    E, bom, ali tu não fizeste nada. Contudo, ao chegarmos em casa, paramos para conversar. Chegamos
+                    ao ponto que tínhamos combinado que não ia mais ocorrer, e mesmo assim ocorreu. Ali ocorreu a
+                    nossa aceitação, pois beijar-te virou a minha atividade preferida; sentir o teu gosto era algo
+                    incrível.
+                </p>
+
+                <p>
+                    Por semanas, abrimo-nos para que o outro pudesse habitar, ali tendo a aceitação genuína. O nosso
+                    grande amor, dramático e meloso, tomava forma. Eu ficava ainda mais tempo contigo, mais tempo
+                    agarrado a ti. Tu dormias em mim durante as aulas, ou só te debruçavas sobre mim, deixando clara
+                    a tua segurança de estares comigo.
+                </p>
+
+                <p>
+                    E ali eu tive muitas vezes o pensamento: "Ela é minha..." Por mais que não fosse oficial, tu
+                    eras. Ali foi marcada a grande mudança para o coração um do outro. Ali fizemos casa, decorámos e
+                    firmámos. Ali garantimos o espaço na alma do outro, sem sabermos que seria eterno.
+                </p>
+
+                <p>
+                    Pois é, ali tu acabavas de construir o teu espaço no meu coração, espaço esse totalmente feito
+                    para ti. Tu entraste, tomaste conta, decoraste, arrumaste como bem entendeste.
+                </p>
+
+                <p>
+                    Ali tu garantias uma certeza para ti pelo resto da tua vida: ali tu terias um espaço só teu, que
+                    ninguém conseguiria entrar, nem mesmo que forçasse. E, bom, como esperado, esse espaço foi
+                    colocado à prova diversas vezes. E, adivinha só? Ninguém jamais conseguiu entrar e bagunçar o
+                    teu lugar.
+                </p>
+
+                <p>
+                    Afinal, só tu tens a chave, essa chave maravilhosa que eu fiz questão de te deixar. Uma única
+                    cópia, só tua. Cópia essa que nem eu tenho, não consigo entrar para limpar nem nada. (00h00, ja
+                    fiz meu amor...kkk).
+                </p>
+
+                <p>
+                    Sempre está como tu deixaste da última vez. E é tão bom quando tu voltas, sabes? Tu acendes a
+                    lareira e tudo fica mais confortável, mais tolerável, mais agradável.
+                </p>
+
+                <p>
+                    Enfim, ali naquela época tu tinhas feito o teu terreno em mim, garantindo que, aonde eu
+                    estivesse, o meu peito sempre batesse mais forte. Só de escutar o teu nome já seria o suficiente
+                    para me deixar em alerta e com a ânsia da tua presença.
+                </p>
+
+                <p>
+                    E assim se firmou o nosso contrato, escrito não em papel, mas nas regras não ditas de dois
+                    corações que se encontraram e se reconheceram. Aquele era o auge da nossa bolha proibida: eu era
+                    o guardião do teu sorriso e tu eras a única dona da chave que eu, com todo o meu ser, te
+                    entreguei. O nosso amor atingiu uma plenitude estranha, vivida na penumbra da sala de aula, nos
+                    abraços apertados e no conforto de saber que a nossa união não dependia de testemunhas nem de
+                    assinaturas, mas apenas daquele sentir mútuo que nos fazia respirar. Era um amor com uma coragem
+                    silenciosa, onde o risco era insignificante perante a necessidade vital de estarmos lado a lado.
+                </p>
+
+                <p>
+                    Eu sabia que essa segurança, essa plenitude conquistada, viria a ter um preço amargo; afinal, a
+                    felicidade absoluta num amor clandestino está sempre a um passo de se desmoronar. Mas naquele
+                    momento, enquanto tu dormias no meu ombro e o teu coração se alinhava com o meu, não havia
+                    futuro, não havia passado, apenas o presente. E esse presente era tu, era eu, éramos nós, um
+                    contrato eterno, selado no silêncio, pronto para ser testado pelo tempo.
+                </p>
+                </section>
+
+
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = "https://gerardferrerdev.github.io/iza/livro.html";
+                    this.page.identifier = "livro_principal";
+                };
+
+                (function () {
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bells-1.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Por favor, ative o JavaScript para ver os comentários Disqus.</noscript>
+
+            <br>
+            <a href="sumario.html" class="botao-navegacao">
+                ← Voltar ao Sumário
+            </a>
+
         </div>
+    </div>
 
-        <script>
-            // Função de verificação de segurança
-            function verificarSessao() {
-                const acesso = localStorage.getItem('acessoConcedido');
-                const expiracao = localStorage.getItem('expiracao');
-                const horaAtual = new Date().getTime();
+    <script src="js/global.js"></script>
 
-                // 1. Verifica se o token existe OU se expirou
-                if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-                    // Se o token é inválido ou não existe, redireciona para a tela de login
-                    window.location.replace("index.html");
-                }
+    <script>
+        // Função de verificação de segurança (Executa imediatamente)
+        function verificarSessao() {
+            const acesso = localStorage.getItem('acessoConcedido');
+            const expiracao = localStorage.getItem('expiracao');
+            const horaAtual = new Date().getTime();
+
+            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+                window.location.replace("index.html");
             }
+        }
+        verificarSessao();
 
-            // Executa a verificação assim que a página é carregada
-            verificarSessao();
-        </script>
+        // LIGAÇÃO DE EVENTOS DE CLIQUE (Após o DOM ser carregado)
+        document.addEventListener('DOMContentLoaded', function () {
+            // LIGAÇÃO AO BOTÃO DARK MODE
+            document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
 
-        <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
-            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-            (function () {
-                var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-                s1.async = true;
-                s1.src = 'https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
-                s1.charset = 'UTF-8';
-                s1.setAttribute('crossorigin', '*');
-                s0.parentNode.insertBefore(s1, s0);
-            })();
-        </script>
-        <!--End of Tawk.to Script-->
+            // LÓGICA DO BOTÃO TRANCAR SEGREDOS
+            const botaoTrancar = document.getElementById('trancar-segredos');
+            if (botaoTrancar) {
+                botaoTrancar.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    localStorage.clear();
+                    window.location.replace("index.html");
+                });
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
 </body>
 
 </html>

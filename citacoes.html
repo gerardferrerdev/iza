@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="img/velaris-removebg-preview.png" type="image/x-icon">
 
     <link rel="stylesheet" href="css/global.css">
-
     <link rel="stylesheet" href="css/style_citacoes.css">
 </head>
 
@@ -20,185 +19,137 @@
         <span id="tempo-decorrido">A calcular...</span>
     </div>
 
+    <span id="dark-mode-toggle" aria-label="Alternar modo de visualização">
+        🌙
+    </span>
+    
     <div id="contador-vida">
-        <span>Desde o Nosso Primeiro Encontro <br></span>
+        <span id="tempo-titulo-encontro">Desde o Nosso Primeiro Encontro</span>
         <span id="tempo-vida-decorrido">A calcular...</span>
     </div>
+    
+    <a href="#" id="trancar-segredos" class="botao-navegacao">
+        🔒 Trancar Segredos
+    </a>
 
     <div class="main-content-wrapper">
 
-        <script>
-            // --- DADOS DE INÍCIO (CORRETOS) ---
-            const DATA_INICIO_PROJETO = new Date(2025, 9, 17, 22, 0, 0);
-            const DATA_PRIMEIRO_ENCONTRO = new Date(2021, 7, 14, 9, 10, 0);
+        <div class="container-romance">
 
-            // --- ELEMENTOS HTML (CORRETOS) ---
-            const elementoTempoProjeto = document.getElementById('tempo-decorrido');
-            const elementoTempoEncontro = document.getElementById('tempo-vida-decorrido'); // Renomeado para clareza
+            <header>
+                <h1>✨ Palavras do Nosso Amor</h1>
+                <p class="subtitulo-poesias">Citações e poemas que nos fazem sorrir e recordar o nosso sentimento.</p>
+            </header>
 
-            function formatarTempo(diferencaMs) {
-                // Funções de formatação: Recebe milissegundos e devolve a string formatada
-                const segundos = Math.floor(diferencaMs / 1000);
-                const minutos = Math.floor(segundos / 60);
-                const horas = Math.floor(minutos / 60);
-                const dias = Math.floor(horas / 24);
+            <section class="lista-citacoes">
 
-                const anos = Math.floor(dias / 365.25);
-                const meses = Math.floor(dias / 30.44);
+                <div class="cartao-citacao" onclick="revelarConteudo(this)">
+                    <div class="header-citacao">
+                        <h2>O Amor é Mestre</h2>
+                        <span class="coracao">❤️</span>
+                    </div>
 
-                return `${anos} anos, ` +
-                    `${meses % 12} meses, ` +
-                    `${dias % 30} dias, ` +
-                    `${horas % 24}h, ` +
-                    `${minutos % 60}m, ` +
-                    `${segundos % 60}s`;
-            }
+                    <p class="texto-citacao escondido">
+                        "O amor é mestre, mas é preciso saber adquirí-lo, porque se adquire dificilmente, ao preço
+                        de um esforço prolongado; é preciso amar, de fato, não por um instante, mas até o fim." -
+                        Adaptado de "Os Irmãos Karamazov"
+                        <br><br>
 
-            // FUNÇÃO PRINCIPAL QUE ATUALIZA AMBOS OS CONTADORES
-            function atualizarContadores() {
-                const agora = new Date();
-
-                // 1. CÁLCULO E ATRIBUIÇÃO DO TEMPO DO PROJETO (JÁ EXISTENTE)
-                const diferencaProjetoMs = agora.getTime() - DATA_INICIO_PROJETO.getTime();
-                const tempoProjetoFormatado = formatarTempo(diferencaProjetoMs);
-                elementoTempoProjeto.textContent = tempoProjetoFormatado;
-
-                // 2. 🚨 NOVO CÁLCULO E ATRIBUIÇÃO: TEMPO DO ENCONTRO 🚨
-                const diferencaEncontroMs = agora.getTime() - DATA_PRIMEIRO_ENCONTRO.getTime();
-                const tempoEncontroFormatado = formatarTempo(diferencaEncontroMs);
-                elementoTempoEncontro.textContent = tempoEncontroFormatado; // Atribui ao elemento correto!
-            }
-
-            // Inicializa e atualiza a cada segundo
-            atualizarContadores();
-            setInterval(atualizarContadores, 1000);
-
-            // --- CÓDIGO DO BOTÃO TRANCAR (Permanece para o Logout) ---
-            document.addEventListener('DOMContentLoaded', function () {
-                const botaoTrancar = document.getElementById('trancar-segredos');
-
-                if (botaoTrancar) {
-                    botaoTrancar.addEventListener('click', function (event) {
-                        event.preventDefault();
-                        localStorage.clear();
-                        window.location.href = "index.html";
-                    });
-                }
-            });
-        </script>
-
-        <div class="main-content-wrapper">
-
-            <div class="container-romance">
-
-                <header>
-                    <h1>✨ Palavras do Nosso Amor</h1>
-                    <p class="subtitulo-poesias">Citações e poemas que nos fazem sorrir e recordar o nosso sentimento.
                     </p>
-                </header>
+                </div>
 
-                <section class="lista-citacoes">
-
-                    <div class="cartao-citacao" onclick="revelarCitacao(this)">
-                        <div class="header-citacao">
-                            <h2>O Amor é Mestre</h2>
-                            <span class="coracao">❤️</span>
-                        </div>
-
-                        <p class="texto-citacao escondido">
-                            "O amor é mestre, mas é preciso saber adquirí-lo, porque se adquire dificilmente, ao preço
-                            de um esforço prolongado; é preciso amar, de fato, não por um instante, mas até o fim." -
-                            Adaptado de "Os Irmãos Karamazov"
-                            <br><br>
-
-                        </p>
+                <div class="cartao-citacao" onclick="revelarCitacao(this)">
+                    <div class="header-citacao">
+                        <h2>Tu És Uma Mulher Rara</h2>
+                        <span class="coracao">❤️</span>
                     </div>
 
-                    <div class="cartao-citacao" onclick="revelarCitacao(this)">
-                        <div class="header-citacao">
-                            <h2>Tu És Uma Mulher Rara</h2>
-                            <span class="coracao">❤️</span>
-                        </div>
+                    <p class="texto-citacao escondido">
+                        "Tu és uma mulher rara, e, além do mais, a melhor de todas as mulheres. Tu própria não
+                        sonhas as qualidades que tens. Para mim és um encanto, não tens igual, e qualquer homem de
+                        sentimentos e bom gosto to dirá, se atentar em ti." — Excerto de Carta a Anna Dostoiévskaia
+                    </p>
+                </div>
 
-                        <p class="texto-citacao escondido">
-                            "Tu és uma mulher rara, e, além do mais, a melhor de todas as mulheres. Tu própria não
-                            sonhas as qualidades que tens. Para mim és um encanto, não tens igual, e qualquer homem de
-                            sentimentos e bom gosto to dirá, se atentar em ti." — Excerto de Carta a Anna Dostoiévskaia
-                        </p>
+                <div class="cartao-citacao" onclick="revelarCitacao(this)">
+                    <div class="header-citacao">
+                        <h2>Enjoo</h2>
+                        <span class="coracao">❤️</span>
                     </div>
 
-                    <div class="cartao-citacao" onclick="revelarCitacao(this)">
-                        <div class="header-citacao">
-                            <h2>Enjoo</h2>
-                            <span class="coracao">❤️</span>
-                        </div>
+                    <p class="texto-citacao escondido">
+                        "Repito minhas roupas. <br>
+                        Peço sempre o mesmo sabor. <br>
+                        Reassisto filmes. <br>
+                        Ouço sempre as mesmas musicas. <br>
+                        Afinal a gente nuca enjoa do que realmente gosta. "
+                    </p>
+                </div>
 
-                        <p class="texto-citacao escondido">
-                            "Repito minhas roupas. <br>
-                            Peço sempre o mesmo sabor. <br>
-                            Reassisto filmes. <br>
-                            Ouço sempre as mesmas musicas. <br>
-                            Afinal a gente nuca enjoa do que realmente gosta. "
-                        </p>
-                    </div>
+            </section>
 
-                </section>
+            <br>
+            <a href="sumario.html" class="botao-navegacao">
+                ← Voltar ao Sumário
+            </a>
 
-                <br>
-                <a href="sumario.html" class="botao-navegacao">
-                    ← Voltar ao Sumário
-                </a>
-
-            </div>
         </div>
+    </div>
 
-        <script>
-            // FUNÇÃO PARA REVELAR O CONTEÚDO DA POESIA
-            function revelarCitacao(cartao) {
-                // 1. Encontra o texto escondido dentro deste cartão
-                const texto = cartao.querySelector('.texto-citacao');
 
-                // 2. Alterna a classe 'escondido' e 'revelado'
-                // O 'toggle' remove a classe se ela estiver presente, e adiciona se não estiver.
-                texto.classList.toggle('escondido');
-                texto.classList.toggle('revelado');
+    <script src="js/global.js"></script>
 
-                // 3. Alterna a classe 'cartao-revelado' no próprio cartão para mudar a cor do coração
-                cartao.classList.toggle('cartao-revelado');
-            }
-        </script>
+    <script>
+        // LÓGICA DE REVELAR CONTEÚDO (DEVE SER MOVIDA PARA GLOBAL.JS SE USADA EM CARTAS.HTML!)
+        // POR ENQUANTO MANTIDA AQUI PARA FUNCIONALIDADE IMEDIATA:
+        function revelarCitacao(cartao) {
+            const texto = cartao.querySelector('.texto-citacao');
+            texto.classList.toggle('escondido');
+            texto.classList.toggle('revelado');
+            cartao.classList.toggle('cartao-revelado');
+        }
 
-        <script>
-            // Função de verificação de segurança
-            function verificarSessao() {
-                const acesso = localStorage.getItem('acessoConcedido');
-                const expiracao = localStorage.getItem('expiracao');
-                const horaAtual = new Date().getTime();
+        // LIGAÇÃO DE EVENTOS DE CLIQUE E SEGURANÇA
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // LIGAÇÃO AO BOTÃO DARK MODE
+            document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
 
-                // 1. Verifica se o token existe OU se expirou
-                if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-                    // Se o token é inválido ou não existe, redireciona para a tela de login
+            // LÓGICA DO BOTÃO TRANCAR SEGREDOS
+            const botaoTrancar = document.getElementById('trancar-segredos');
+            if (botaoTrancar) {
+                botaoTrancar.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    localStorage.clear();
                     window.location.replace("index.html");
-                }
+                });
             }
+        });
+        
+        // SCRIPT DE SEGURANÇA
+        function verificarSessao() {
+            const acesso = localStorage.getItem('acessoConcedido');
+            const expiracao = localStorage.getItem('expiracao');
+            const horaAtual = new Date().getTime();
 
-            // Executa a verificação assim que a página é carregada
-            verificarSessao();
-        </script>
+            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+                window.location.replace("index.html");
+            }
+        }
+        verificarSessao();
+    </script>
 
-        <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
-            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-            (function () {
-                var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-                s1.async = true;
-                s1.src = 'https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
-                s1.charset = 'UTF-8';
-                s1.setAttribute('crossorigin', '*');
-                s0.parentNode.insertBefore(s1, s0);
-            })();
-        </script>
-        <!--End of Tawk.to Script-->
-</body>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    </body>
 
 </html>

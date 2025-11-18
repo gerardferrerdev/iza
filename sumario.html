@@ -30,65 +30,6 @@
         <span id="tempo-titulo-encontro">Desde o Nosso Primeiro Encontro</span>
         <span id="tempo-vida-decorrido">A calcular...</span>
     </div>
-    <script>
-        // --- DADOS DE INÍCIO (CORRETOS) ---
-        const DATA_INICIO_PROJETO = new Date(2025, 9, 17, 22, 0, 0);
-        const DATA_PRIMEIRO_ENCONTRO = new Date(2021, 7, 14, 9, 10, 0);
-
-        // --- ELEMENTOS HTML (CORRETOS) ---
-        const elementoTempoProjeto = document.getElementById('tempo-decorrido');
-        const elementoTempoEncontro = document.getElementById('tempo-vida-decorrido');
-
-        function formatarTempo(diferencaMs) {
-            // Funções de formatação: Recebe milissegundos e devolve a string formatada
-            const segundos = Math.floor(diferencaMs / 1000);
-            const minutos = Math.floor(segundos / 60);
-            const horas = Math.floor(minutos / 60);
-            const dias = Math.floor(horas / 24);
-
-            const anos = Math.floor(dias / 365.25);
-            const meses = Math.floor(dias / 30.44);
-
-            return `${anos} anos, ` +
-                `${meses % 12} meses, ` +
-                `${dias % 30} dias, ` +
-                `${horas % 24}h, ` +
-                `${minutos % 60}m, ` +
-                `${segundos % 60}s`;
-        }
-
-        // FUNÇÃO PRINCIPAL QUE ATUALIZA AMBOS OS CONTADORES
-        function atualizarContadores() {
-            const agora = new Date();
-
-            // 1. CÁLCULO E ATRIBUIÇÃO DO TEMPO DO PROJETO
-            const diferencaProjetoMs = agora.getTime() - DATA_INICIO_PROJETO.getTime();
-            const tempoProjetoFormatado = formatarTempo(diferencaProjetoMs);
-            elementoTempoProjeto.textContent = tempoProjetoFormatado;
-
-            // 2. CÁLCULO E ATRIBUIÇÃO: TEMPO DO ENCONTRO
-            const diferencaEncontroMs = agora.getTime() - DATA_PRIMEIRO_ENCONTRO.getTime();
-            const tempoEncontroFormatado = formatarTempo(diferencaEncontroMs);
-            elementoTempoEncontro.textContent = tempoEncontroFormatado;
-        }
-
-        // Inicializa e atualiza a cada segundo
-        atualizarContadores();
-        setInterval(atualizarContadores, 1000);
-
-        // --- CÓDIGO DO BOTÃO TRANCAR (Continua aqui) ---
-        document.addEventListener('DOMContentLoaded', function () {
-            const botaoTrancar = document.getElementById('trancar-segredos');
-
-            if (botaoTrancar) {
-                botaoTrancar.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    localStorage.clear();
-                    window.location.href = "index.html";
-                });
-            }
-        });
-    </script>
 
 
     <div class="main-content-wrapper">
@@ -100,51 +41,29 @@
             <p>Bem-vinda ao nosso cantinho de memórias! Podes escolher o que queres explorar:</p>
 
             <div class="menu-sumario">
-
-                <a href="boas_vindas.html" class="cartao-sumario">
-                    ❤️ Primeira homenagem digital
-                </a>
-
-                <a href="livro.html" class="cartao-sumario">
-                    📚 O Livro que Estamos a Escrever
-                </a>
-
-                <a href="fotos.html" class="cartao-sumario">
-                    📸 A Nossa Galeria de Fotos
-                </a>
-
-                <a href="musicas.html" class="cartao-sumario">
-                    🎶 As Nossas Músicas Favoritas
-                </a>
-
-                <a href="citacoes.html" class="cartao-sumario">
-                    ✨ As Nossas Poesias e Citações
-                </a>
-
-                <a href="cartas.html" class="cartao-sumario">
-                    💌 Os Meus Desabafos e Cartas
-                </a>
-
+                <a href="boas_vindas.html" class="cartao-sumario">❤️ Primeira homenagem digital</a>
+                <a href="livro.html" class="cartao-sumario">📚 O Livro que Estamos a Escrever</a>
+                <a href="fotos.html" class="cartao-sumario">📸 A Nossa Galeria de Fotos</a>
+                <a href="musicas.html" class="cartao-sumario">🎶 As Nossas Músicas Favoritas</a>
+                <a href="citacoes.html" class="cartao-sumario">✨ As Nossas Poesias e Citações</a>
+                <a href="cartas.html" class="cartao-sumario">💌 Os Meus Desabafos e Cartas</a>
             </div>
 
         </div>
 
     </div>
 
-    <span id="dark-mode-toggle" aria-label="Alternar modo de visualização">
-        🌙
-    </span>
-
     <script src="js/global.js"></script>
 
     <script>
+        // LIGAÇÃO DE EVENTOS E FUNÇÕES LOCAIS
         document.addEventListener('DOMContentLoaded', function () {
 
-            // LIGAÇÃO AO BOTÃO DARK MODE (Chama a função global.js)
+            // LIGAÇÃO DO BOTÃO DARK MODE (Chama a função toggleDarkMode de global.js)
             document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
 
+            // LÓGICA DO BOTÃO TRANCAR SEGREDOS (CÓDIGO LOCAL PARA LOGOUT)
             const botaoTrancar = document.getElementById('trancar-segredos');
-
             if (botaoTrancar) {
                 botaoTrancar.addEventListener('click', function (event) {
                     event.preventDefault();
@@ -154,39 +73,34 @@
             }
         });
     </script>
-</body>
-<script>
-    // Função de verificação de segurança
-    /* function verificarSessao() {
-         const acesso = localStorage.getItem('acessoConcedido');
-         const expiracao = localStorage.getItem('expiracao');
-         const horaAtual = new Date().getTime();
+    
+    <script>
+        /*function verificarSessao() {
+            const acesso = localStorage.getItem('acessoConcedido');
+            const expiracao = localStorage.getItem('expiracao');
+            const horaAtual = new Date().getTime();
 
-         // 1. Verifica se o token existe OU se expirou
-         if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-             // Se o token é inválido ou não existe, redireciona para a tela de login
-             window.location.replace("index.html");
-         }
-     }
-
-     // Executa a verificação assim que a página é carregada
-     verificarSessao();
-     */
-</script>
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function () {
-        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
-</body>
-
+            // 1. Verifica se o token existe OU se expirou
+            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+                // Se o token é inválido, redireciona
+                window.location.replace("index.html");
+            }
+        }
+        // Executa a verificação imediatamente
+        verificarSessao();
+        */
+    </script>
+    
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    </body>
 </html>

@@ -15,165 +15,119 @@
 
 <body>
 
+    <a href="#" id="trancar-segredos" class="botao-navegacao">
+        🔒 Trancar Segredos
+    </a>
+
     <div id="contador-tempo">
         <span>O Nosso Tempo Juntos Desde sua Volta</span>
         <span id="tempo-decorrido">A calcular...</span>
     </div>
 
+    <span id="dark-mode-toggle" aria-label="Alternar modo de visualização">
+        🌙
+    </span>
+
     <div id="contador-vida">
-        <span>Desde o Nosso Primeiro Encontro <br></span>
+        <span id="tempo-titulo-encontro">Desde o Nosso Primeiro Encontro</span>
         <span id="tempo-vida-decorrido">A calcular...</span>
     </div>
 
+
     <div class="main-content-wrapper">
 
-        <script>
-            // --- DADOS DE INÍCIO (CORRETOS) ---
-            const DATA_INICIO_PROJETO = new Date(2025, 9, 17, 22, 0, 0);
-            const DATA_PRIMEIRO_ENCONTRO = new Date(2021, 7, 14, 9, 10, 0);
+        <div class="container-romance">
 
-            // --- ELEMENTOS HTML (CORRETOS) ---
-            const elementoTempoProjeto = document.getElementById('tempo-decorrido');
-            const elementoTempoEncontro = document.getElementById('tempo-vida-decorrido'); // Renomeado para clareza
+            <header>
+                <h1>📸 A Nossa Galeria de Momentos</h1>
+                <p class="subtitulo-galeria">Um olhar sobre as memórias que mais amamos partilhar.</p>
+            </header>
 
-            function formatarTempo(diferencaMs) {
-                // Funções de formatação: Recebe milissegundos e devolve a string formatada
-                const segundos = Math.floor(diferencaMs / 1000);
-                const minutos = Math.floor(segundos / 60);
-                const horas = Math.floor(minutos / 60);
-                const dias = Math.floor(horas / 24);
+            <section class="galeria-fotos">
+                <div class="foto-item">
+                    <img src="img/Screenshot_20251021-211719.Instagram~2.png" alt="Descrição da foto 1">
+                    <p class="legenda">Admirei tanto, que descidi eternizar, vai que você descide dar sumiço.</p>
+                </div>
+                <div class="foto-item">
+                    <img src="img/Screenshot_20251021-211347.Instagram~2.png" alt="Descrição da foto 2">
+                    <p class="legenda">O Descobrimento de uma das melhores pessoas que poderiam passar em minha
+                        vida.</p>
+                </div>
+                <div class="foto-item">
+                    <img src="img/Screenshot_20251021-211803.Instagram~2.png" alt="Descrição da foto 2">
+                    <p class="legenda">Admiro você um cadin.</p>
+                </div>
+                <div class="foto-item">
+                    <img src="img/Screenshot_20251021-211822.Instagram~2.png" alt="Descrição da foto 2">
+                    <p class="legenda">Ta Talvez adimire demais heehehe.</p>
+                </div>
+                <div class="foto-item">
+                    <img src="img/G+Icorrimao.jpg" alt="Descrição da foto 2">
+                    <p class="legenda">Nos eternnizei no mirante la em SC.</p>
+                </div>
+                <div class="foto-item">
+                    <img src="img/localG+Icahoeira.jpg" alt="Descrição da foto 2">
+                    <p class="legenda">O local onde eternizei, veja como lembra você, lindo e bello</p>
+                </div>
+                <div class="foto-item">
+                    <img src="img/G+Ipedra.jpg" alt="Descrição da foto 2">
+                    <p class="legenda">Tambem está nesse pico de serra...</p>
+                </div>
+            </section>
 
-                const anos = Math.floor(dias / 365.25);
-                const meses = Math.floor(dias / 30.44);
+            <br>
+            <a href="sumario.html" class="botao-navegacao">
+                ← Voltar ao Sumário
+            </a>
 
-                return `${anos} anos, ` +
-                    `${meses % 12} meses, ` +
-                    `${dias % 30} dias, ` +
-                    `${horas % 24}h, ` +
-                    `${minutos % 60}m, ` +
-                    `${segundos % 60}s`;
-            }
-
-            // FUNÇÃO PRINCIPAL QUE ATUALIZA AMBOS OS CONTADORES
-            function atualizarContadores() {
-                const agora = new Date();
-
-                // 1. CÁLCULO E ATRIBUIÇÃO DO TEMPO DO PROJETO (JÁ EXISTENTE)
-                const diferencaProjetoMs = agora.getTime() - DATA_INICIO_PROJETO.getTime();
-                const tempoProjetoFormatado = formatarTempo(diferencaProjetoMs);
-                elementoTempoProjeto.textContent = tempoProjetoFormatado;
-
-                // 2. 🚨 NOVO CÁLCULO E ATRIBUIÇÃO: TEMPO DO ENCONTRO 🚨
-                const diferencaEncontroMs = agora.getTime() - DATA_PRIMEIRO_ENCONTRO.getTime();
-                const tempoEncontroFormatado = formatarTempo(diferencaEncontroMs);
-                elementoTempoEncontro.textContent = tempoEncontroFormatado; // Atribui ao elemento correto!
-            }
-
-            // Inicializa e atualiza a cada segundo
-            atualizarContadores();
-            setInterval(atualizarContadores, 1000);
-
-            // --- CÓDIGO DO BOTÃO TRANCAR (Permanece para o Logout) ---
-            document.addEventListener('DOMContentLoaded', function () {
-                const botaoTrancar = document.getElementById('trancar-segredos');
-
-                if (botaoTrancar) {
-                    botaoTrancar.addEventListener('click', function (event) {
-                        event.preventDefault();
-                        localStorage.clear();
-                        window.location.href = "index.html";
-                    });
-                }
-            });
-        </script>
-
-        <div class="main-content-wrapper">
-
-            <div class="container-romance">
-
-                <header>
-                    <h1>📸 A Nossa Galeria de Momentos</h1>
-                    <p class="subtitulo-galeria">Um olhar sobre as memórias que mais amamos partilhar.</p>
-                </header>
-
-                <section class="galeria-fotos">
-
-                    <div class="foto-item">
-                        <img src="img/Screenshot_20251021-211719.Instagram~2.png" alt="Descrição da foto 1">
-                        <p class="legenda">Admirei tanto, que descidi eternizar, vai que você descide dar sumiço.</p>
-                    </div>
-
-                    <div class="foto-item">
-                        <img src="img/Screenshot_20251021-211347.Instagram~2.png" alt="Descrição da foto 2">
-                        <p class="legenda">O Descobrimento de uma das melhores pessoas que poderiam passar em minha
-                            vida.</p>
-                    </div>
-
-                    <div class="foto-item">
-                        <img src="img/Screenshot_20251021-211803.Instagram~2.png" alt="Descrição da foto 2">
-                        <p class="legenda">Admiro você um cadin.</p>
-                    </div>
-
-                    <div class="foto-item">
-                        <img src="img/Screenshot_20251021-211822.Instagram~2.png" alt="Descrição da foto 2">
-                        <p class="legenda">Ta Talvez adimire demais heehehe.</p>
-                    </div>
-
-                    <div class="foto-item">
-                        <img src="img/G+Icorrimao.jpg" alt="Descrição da foto 2">
-                        <p class="legenda">Nos eternnizei no mirante la em SC.</p>
-                    </div>
-
-                    <div class="foto-item">
-                        <img src="img/localG+Icahoeira.jpg" alt="Descrição da foto 2">
-                        <p class="legenda">O local onde eternizei, veja como lembra você, lindo e bello</p>
-                    </div>
-
-                    <div class="foto-item">
-                        <img src="img/G+Ipedra.jpg" alt="Descrição da foto 2">
-                        <p class="legenda">Tambem está nesse pico de serra...</p>
-                    </div>
-                </section>
-
-                <br>
-                <a href="sumario.html" class="botao-navegacao">
-                    ← Voltar ao Sumário
-                </a>
-
-            </div>
         </div>
+    </div>
 
-        <script>
-            // Função de verificação de segurança
-            function verificarSessao() {
-                const acesso = localStorage.getItem('acessoConcedido');
-                const expiracao = localStorage.getItem('expiracao');
-                const horaAtual = new Date().getTime();
+    <script src="js/global.js"></script>
 
-                // 1. Verifica se o token existe OU se expirou
-                if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-                    // Se o token é inválido ou não existe, redireciona para a tela de login
-                    window.location.replace("index.html");
-                }
+    <script>
+        // Função de verificação de segurança (Executa imediatamente)
+        function verificarSessao() {
+            const acesso = localStorage.getItem('acessoConcedido');
+            const expiracao = localStorage.getItem('expiracao');
+            const horaAtual = new Date().getTime();
+
+            // 1. Verifica se o token existe OU se expirou
+            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+                // Se o token é inválido ou não existe, redireciona para a tela de login
+                window.location.replace("index.html");
             }
+        }
+        verificarSessao();
 
-            // Executa a verificação assim que a página é carregada
-            verificarSessao();
-        </script>
+        // LIGAÇÃO DE EVENTOS DE CLIQUE (Após o DOM ser carregado)
+        document.addEventListener('DOMContentLoaded', function () {
+            // LIGAÇÃO AO BOTÃO DARK MODE
+            document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
 
-        <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
-            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-            (function () {
-                var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-                s1.async = true;
-                s1.src = 'https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
-                s1.charset = 'UTF-8';
-                s1.setAttribute('crossorigin', '*');
-                s0.parentNode.insertBefore(s1, s0);
-            })();
-        </script>
-        <!--End of Tawk.to Script-->
-</body>
+            // LÓGICA DO BOTÃO TRANCAR SEGREDOS
+            const botaoTrancar = document.getElementById('trancar-segredos');
+            if (botaoTrancar) {
+                botaoTrancar.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    localStorage.clear();
+                    window.location.replace("index.html");
+                });
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    </body>
 
 </html>
