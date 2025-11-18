@@ -117,19 +117,21 @@
 
 /* css/style_livro.css (ADICIONAR NO FINAL) */
 
+/* css/style_livro.css (MODIFICAÇÃO DO DARK MODE DO ÍNDICE RÁPIDO) */
+
 /* Estilo do Modo Escuro para o Índice Rápido */
 .dark-mode .sumario-capitulos {
     background-color: #333345; /* Fundo escuro sutil */
-    box-shadow: 0 2px 8px rgba(200, 200, 200, 0.1); /* Sombra clara */
+    box-shadow: 0 2px 8px rgba(200, 200, 200, 0.1); 
 }
 
-/* Garante que o texto dentro do índice fica claro */
+/* Garante que o texto (títulos e links) dentro do índice usa a nova cor de destaque */
 .dark-mode .sumario-capitulos h3,
 .dark-mode .sumario-capitulos a {
-    color: #d0c0f0 !important; /* Roxo claro / Branco */
+    color: #c4b0ec !important; /* 🚨 NOVA COR: Lavanda Pálido (Coerente com o Global.css) */
 }
 
 /* Ajusta a linha divisória (hr) que fica clara em dark mode */
 .dark-mode .sumario-capitulos hr {
-    border-color: #5d167f; /* Roxo escuro para contraste na linha */
+    border-color: #5d167f; 
 }
