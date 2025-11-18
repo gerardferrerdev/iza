@@ -146,3 +146,50 @@ body {
     display: block; /* Garante que o título e o tempo ficam em linhas separadas */
     line-height: 1.4;
 }
+
+/* css/global.css (MODO ALTO CONTRASTE NOTURNO) */
+
+/* 1. ESTILO DO BOTÃO DE MODO NOTURNO (LUA/SOL) */
+#dark-mode-toggle {
+    position: fixed;
+    top: 100px; /* Logo abaixo da caixa do contador (top: 20px + padding + altura) */
+    right: 20px;
+    cursor: pointer;
+    font-size: 1.5em; /* Tamanho bom para o ícone */
+    color: #E0C090; /* Cor de destaque (Ouro Pálido) */
+    z-index: 999;
+    transition: color 0.3s;
+}
+
+#dark-mode-toggle:hover {
+    color: #ffffff;
+}
+
+/* 2. ESTILOS QUANDO O MODO ESCURO ESTÁ ATIVO */
+.dark-mode .container-romance {
+    /* Inverte o fundo: De branco opaco para cinza/roxo escuro opaco */
+    background-color: rgba(30, 30, 40, 0.95); 
+    box-shadow: 0 10px 30px rgba(200, 200, 200, 0.15); /* Sombra mais suave */
+}
+
+.dark-mode .container-romance h1, 
+.dark-mode .container-romance h2 {
+    /* Inverte a cor dos títulos: De roxo escuro para roxo claro */
+    color: #d0c0f0 !important; 
+}
+
+.dark-mode .container-romance p,
+.dark-mode .container-romance span {
+    /* Inverte a cor do texto: De preto para branco/cinza claro */
+    color: #e0e0e0 !important; 
+}
+
+/* 3. Ajuste para Cartões do Sumário em Modo Escuro (Fundo do Cartão) */
+.dark-mode .cartao-sumario {
+    background-color: #333345; /* Fundo do cartão ligeiramente escuro */
+    border: 1px solid #5d167f;
+    color: #e0e0e0;
+}
+.dark-mode .cartao-sumario:hover {
+    background-color: #5d167f; /* Roxo vibrante no hover */
+}
