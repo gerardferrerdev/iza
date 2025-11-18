@@ -114,3 +114,22 @@
     font-family: 'Times New Roman', serif; 
     font-weight: bold;
 }
+
+/* css/style_livro.css (ADICIONAR NO FINAL) */
+
+/* Estilo do Modo Escuro para o Índice Rápido */
+.dark-mode .sumario-capitulos {
+    background-color: #333345; /* Fundo escuro sutil */
+    box-shadow: 0 2px 8px rgba(200, 200, 200, 0.1); /* Sombra clara */
+}
+
+/* Garante que o texto dentro do índice fica claro */
+.dark-mode .sumario-capitulos h3,
+.dark-mode .sumario-capitulos a {
+    color: #d0c0f0 !important; /* Roxo claro / Branco */
+}
+
+/* Ajusta a linha divisória (hr) que fica clara em dark mode */
+.dark-mode .sumario-capitulos hr {
+    border-color: #5d167f; /* Roxo escuro para contraste na linha */
+}
