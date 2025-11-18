@@ -74,3 +74,18 @@
 .botao-ouvir:hover {
     background-color: #5d167f; /* Roxo mais escuro no hover */
 }
+
+/* css/style_musicas.css (ADICIONAR NO FINAL) */
+
+.dark-mode .musica-item {
+    background-color: #333345;
+    box-shadow: 0 4px 10px rgba(200, 200, 200, 0.1);
+}
+
+/* Garante que o texto dentro do card da música fica claro */
+.dark-mode .musica-item h2 {
+    color: #c4b0ec !important; 
+}
+.dark-mode .musica-item p {
+    color: #e0e0e0 !important; 
+}

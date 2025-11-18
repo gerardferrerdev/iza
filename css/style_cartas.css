@@ -64,3 +64,18 @@
 .cartao-revelado .icone-revelar {
     transform: rotate(180deg);
 }
+
+/* css/style_citacoes.css (ADICIONAR NO FINAL) */
+
+.dark-mode .cartao-citacao {
+    background-color: #333345;
+    border-color: #5d167f;
+}
+
+.dark-mode .cartao-citacao h2 {
+    color: #c4b0ec !important;
+}
+
+.dark-mode .texto-citacao {
+    color: #e0e0e0 !important;
+}

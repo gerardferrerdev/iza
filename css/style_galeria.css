@@ -55,3 +55,18 @@
     transform: scale(1.05); /* Aumenta ligeiramente a foto ao passar o mouse */
     box-shadow: 0 8px 15px rgba(123, 31, 162, 0.5); /* Sombra roxa no hover */
 }
+
+/* css/style_galeria.css (ADICIONAR NO FINAL) */
+
+.dark-mode .foto-item {
+    background-color: #333345;
+    box-shadow: 0 4px 10px rgba(200, 200, 200, 0.1);
+}
+
+.dark-mode .foto-item:hover {
+    box-shadow: 0 8px 15px rgba(123, 31, 162, 0.5);
+}
+
+.dark-mode .legenda {
+    color: #c4b0ec !important;
+}
