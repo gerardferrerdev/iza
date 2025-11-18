@@ -81,3 +81,28 @@
 .cartao-revelado .coracao {
     color: #ff4081; /* Cor de coração vibrante (Magenta/Rosa) quando revelado */
 }
+
+/* css/style_citacoes.css (AJUSTES FINAIS PARA DARK MODE) */
+
+/* 1. MODO ESCURO: Fundo do Cartão (Substitui o fundo branco) */
+.dark-mode .cartao-citacao {
+    background-color: #333345; /* Fundo escuro sutil que harmoniza com o gradiente */
+    border: 2px solid #5d167f; /* Borda roxa escura */
+}
+
+/* 2. MODO ESCURO: Título e Ícones (Garante boa legibilidade e a cor de destaque #c4b0ec) */
+.dark-mode .cartao-citacao h2,
+.dark-mode .coracao {
+    color: #c4b0ec; /* Cor de destaque (Lavanda Pálido) */
+}
+
+/* 3. MODO ESCURO: Texto do Poema Revelado (Garante contraste com o fundo escuro) */
+.dark-mode .cartao-citacao .texto-citacao {
+    color: #e0e0e0; /* Texto cinza claro sobre fundo escuro */
+}
+
+/* 4. MODO ESCURO: Ajuste no Hover para manter a coerência */
+.dark-mode .cartao-citacao:hover {
+    box-shadow: 0 6px 20px rgba(123, 31, 162, 0.5); /* Sombra roxa mais forte no hover */
+    border-color: #c4b0ec;
+}
