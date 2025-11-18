@@ -135,3 +135,11 @@
 .dark-mode .sumario-capitulos hr {
     border-color: #5d167f; 
 }
+
+/* css/style_livro.css (AJUSTE PARA O DROP-CAP NO DARK MODE) */
+
+/* Garante que a primeira letra gigante usa a cor de destaque do Dark Mode */
+.dark-mode .conteudo-livro h2 + p::first-letter,
+.dark-mode .conteudo-livro p:first-of-type::first-letter {
+    color: #c4b0ec !important; /* Nova cor: Lavanda Pálido, para harmonizar com os títulos */
+}
