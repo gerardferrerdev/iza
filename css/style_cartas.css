@@ -1,6 +1,6 @@
-/* css/style_cartas.css (NOVO ESTILO DE CARTÃO REVELÁVEL) */
+/* css/style_cartas.css (CÓDIGO COMPLETO E CORRIGIDO) */
 
-/* 1. Estilos dos Parágrafos (Mantemos a boa leitura) */
+/* 1. Estilos de Leitura (Para manter a formatação do Livro) */
 .conteudo-livro p {
     font-size: 1.15em; 
     line-height: 1.8; 
@@ -8,16 +8,16 @@
     margin-bottom: 25px; 
 }
 
-/* 2. Estilo de Cada Cartão/Carta */
+/* 2. Estilo Padrão (Modo Claro) de Cada Cartão */
 .cartao-carta-revelavel {
     background-color: #f7f7f7;
     padding: 25px;
     border-radius: 12px;
     margin-bottom: 25px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer; /* Indica que é clicável */
+    cursor: pointer;
     transition: all 0.3s ease;
-    border-left: 5px solid #7b1fa2; /* Borda lateral para dar destaque roxo */
+    border-left: 5px solid #7b1fa2; /* Borda lateral de destaque roxo */
     text-align: left;
 }
 
@@ -26,7 +26,7 @@
     transform: translateY(-2px);
 }
 
-/* 3. Estilo do Título e Ícone */
+/* 3. Estilo do Título e Ícone (Mantido) */
 .header-carta {
     display: flex;
     justify-content: space-between;
@@ -37,8 +37,7 @@
 .header-carta h2 {
     color: #5d167f; 
     font-size: 1.6em;
-    margin: 0; /* Remove margem padrão */
-    /* REMOVER: border-bottom para que o título faça parte do cartão */
+    margin: 0;
 }
 
 .icone-revelar {
@@ -47,53 +46,38 @@
     transition: transform 0.3s;
 }
 
-/* 4. Esconder o Conteúdo e Mostrar ao Revelar */
+/* 4. Esconder/Mostrar Conteúdo */
 .texto-carta-escondido {
-    display: none; /* ESSENCIAL: Esconde o conteúdo por padrão */
+    display: none; 
     padding-top: 15px;
     border-top: 1px dashed #cccccc;
     margin-top: 10px;
 }
 
-/* Classe que será adicionada pelo JS para mostrar */
 .texto-visivel {
     display: block; 
 }
 
-/* Rotação do Ícone quando o conteúdo for revelado */
 .cartao-revelado .icone-revelar {
     transform: rotate(180deg);
 }
 
-/* css/style_citacoes.css (ADICIONAR NO FINAL) */
+/* 🚨 5. MODO ESCURO FINAL (Aplicado ao elemento CORRETO) 🚨 */
 
-.dark-mode .cartao-citacao {
-    background-color: #333345;
-    border-color: #5d167f;
-}
-
-.dark-mode .cartao-citacao h2 {
-    color: #c4b0ec !important;
-}
-
-.dark-mode .texto-citacao {
-    color: #e0e0e0 !important;
-}
-/* css/style_cartas.css (ADICIONAR PARA SUPORTE AO DARK MODE) */
-
-/* 1. MODO ESCURO: Fundo do Cartão (Substitui o fundo claro) */
 .dark-mode .cartao-carta-revelavel {
-    background-color: #333345; /* Fundo escuro sutil */
-    border: 2px solid #5d167f; /* Borda roxa escura */
-    border-left: 5px solid #c4b0ec; /* Borda lateral de destaque */
+    background-color: #333345; 
+    border: 2px solid #5d167f; 
+    border-left: 5px solid #c4b0ec; 
 }
 
-/* 2. MODO ESCURO: Título e Ícones */
 .dark-mode .cartao-carta-revelavel h2 {
-    color: #c4b0ec !important; /* Cor de destaque (Lavanda Pálido) */
+    color: #c4b0ec !important; 
 }
 
-/* 3. MODO ESCURO: Texto do Corpo (Garante contraste com o fundo escuro) */
 .dark-mode .texto-carta-escondido p {
-    color: #e0e0e0 !important; /* Texto claro sobre fundo escuro */
+    color: #e0e0e0 !important; 
+}
+
+.dark-mode .cartao-revelado .icone-revelar {
+    color: #c4b0ec;
 }
