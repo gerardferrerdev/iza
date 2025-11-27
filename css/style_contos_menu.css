@@ -1,0 +1,56 @@
+/* css/style_contos_menu.css */
+
+.subtitulo-menu {
+    font-style: italic;
+    color: #6a6a6a;
+    margin-bottom: 40px;
+}
+
+/* Estilo do Cartão de Conto (100% da Largura) */
+.cartao-conto {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #f0f0f0; /* Fundo cinza claro */
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    border-left: 5px solid #7b1fa2; /* Destaque roxo */
+}
+
+.cartao-conto:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo-conto {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #5d167f; /* Roxo escuro */
+    margin-bottom: 5px;
+}
+
+.resumo-conto {
+    font-size: 0.9em;
+    color: #6a6a6a;
+}
+
+/* Estilos DARK MODE para o Menu */
+.dark-mode .cartao-conto {
+    background-color: #333345;
+    border-color: #c4b0ec;
+}
+
+.dark-mode .cartao-conto:hover {
+    background-color: #444455;
+}
+
+.dark-mode .titulo-conto {
+    color: #c4b0ec;
+}
+.dark-mode .resumo-conto {
+    color: #a0a0a0;
+}

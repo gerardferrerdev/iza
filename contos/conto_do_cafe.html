@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onde a Minha Sombra Descansa no Brilho Castanho da Lua</title>
-    <link rel="shortcut icon" href="img/velaris-removebg-preview.png" type="image/x-icon">
-
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/style_capitulo2.css">
-</head>
-
+    <title>Conto: O Brilho Castanho da Lua</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/style_livro.css"> </head>
 <body>
-
+    
     <a href="#" id="trancar-segredos" class="botao-navegacao">
         🔒 Trancar Segredos
     </a>
@@ -30,65 +26,64 @@
         <span id="tempo-titulo-encontro">Desde o Nosso Primeiro Encontro</span>
         <span id="tempo-vida-decorrido">A calcular...</span>
     </div>
-
-
+    
+    
     <div class="main-content-wrapper">
-
         <div class="container-romance">
+            
+            <header>
+                <h1>Titulo do conto</h1>
+                <p class="subtitulo-livro">subtitulo/data</p>
+            </header>
 
-            <h1>Onde a Minha Sombra Descansa no Brilho Castanho da Lua</h1>
-
-            <p>Bem-vinda ao nosso cantinho de memórias! Podes escolher o que queres explorar:</p>
-
-            <div class="menu-sumario">
-                <a href="boas_vindas.html" class="cartao-sumario">❤️ Primeira homenagem digital</a>
-                <a href="livro.html" class="cartao-sumario">📚 O Livro que Estamos a Escrever</a>
-                <a href="fotos.html" class="cartao-sumario">📸 A Nossa Galeria de Fotos</a>
-                <a href="musicas.html" class="cartao-sumario">🎶 As Nossas Músicas Favoritas</a>
-                <a href="citacoes.html" class="cartao-sumario">✨ As Nossas Poesias e Citações</a>
-                <a href="cartas.html" class="cartao-sumario">💌 Os Meus Desabafos e Cartas</a>
-                <a href="contos_menu.html" class="cartao-sumario">📜 Nossos Contos e Crônicas</a>
-            </div>
-
+            <section class="conteudo-livro">
+                <p>Só to padronizando a estrutura minha princesa, xeiro amo muito você garota.</p>
+                
+            </section>
+            
+            <br>
+            <a href="../contos_menu.html" class="botao-navegacao">
+                ← Voltar ao Acervo de Contos
+            </a>
+            
         </div>
-
     </div>
-
-    <script src="js/global.js"></script>
+    
+    
+    <script src="../js/global.js"></script>
 
     <script>
-        // LIGAÇÃO DE EVENTOS E FUNÇÕES LOCAIS
+        // LIGAÇÃO DE EVENTOS DE CLIQUE E SEGURANÇA LOCAL
         document.addEventListener('DOMContentLoaded', function () {
-
-            // LIGAÇÃO DO BOTÃO DARK MODE (Chama a função toggleDarkMode de global.js)
+            
+            // LIGAÇÃO AO BOTÃO DARK MODE (Chama a função global.js)
             document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
 
-            // LÓGICA DO BOTÃO TRANCAR SEGREDOS (CÓDIGO LOCAL PARA LOGOUT)
+            // LÓGICA DO BOTÃO TRANCAR SEGREDOS
             const botaoTrancar = document.getElementById('trancar-segredos');
             if (botaoTrancar) {
                 botaoTrancar.addEventListener('click', function (event) {
                     event.preventDefault();
                     localStorage.clear();
-                    window.location.href = "index.html";
+                    // O index.html está na raiz, então usamos ../
+                    window.location.replace("../index.html"); 
                 });
             }
         });
-    </script>
-    
-    <script>
+        
+        // SCRIPT DE SEGURANÇA OBRIGATÓRIO
         function verificarSessao() {
             const acesso = localStorage.getItem('acessoConcedido');
             const expiracao = localStorage.getItem('expiracao');
             const horaAtual = new Date().getTime();
 
-            // 1. Verifica se o token existe OU se expirou
             if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-                // Se o token é inválido, redireciona
-                window.location.replace("index.html");
+                // Redireciona para o index.html na raiz
+                window.location.replace("../index.html"); 
             }
         }
-        // Executa a verificação imediatamente
         verificarSessao();
+        
         
     </script>
     
@@ -103,5 +98,5 @@
             s0.parentNode.insertBefore(s1, s0);
         })();
     </script>
-    </body>
+</body>
 </html>
