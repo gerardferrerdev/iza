@@ -21,38 +21,38 @@
         <span>O Nosso Tempo Juntos Desde sua Volta</span>
         <span id="tempo-decorrido">A calcular...</span>
     </div>
-
-    <span id="dark-mode-toggle" aria-label="Alternar modo de visualização">
-        🌙
-    </span>
-
+    
     <div id="contador-vida">
         <span id="tempo-titulo-encontro">Desde o Nosso Primeiro Encontro</span>
         <span id="tempo-vida-decorrido">A calcular...</span>
     </div>
 
-    <div id="notificacao-container">
-    <span id="notificacao-icone">
-        🔔
-        <span id="notificacao-contador" data-count="3">3</span>
+    <span id="dark-mode-toggle" aria-label="Alternar modo de visualização">
+        🌙
     </span>
     
-    <div id="notificacao-janela" class="janela-escondida">
-        <h3>📢 Novidades do Romantismo!</h3>
-        <ul id="lista-atualizacoes">
-            <li class="nova-notificacao">
-                <span class="tag-novo">NOVO!</span> Conto: "Conto da Lua..." adicionado ao Acervo.
-            </li>
-            <li class="nova-notificacao">
-                <span class="tag-novo">UPDATE!</span> Correções de CSS no Dropcap do Livro.
-            </li>
-            <li class="nova-notificacao">
-                <span class="tag-novo">MÚSICA!</span> Nova trilha sonora na playlist.
-            </li>
+    <div id="notificacao-container">
+        <span id="notificacao-icone">
+            🔔
+            <span id="notificacao-contador" data-count="3">3</span>
+        </span>
+        
+        <div id="notificacao-janela" class="janela-escondida">
+            <h3>📢 Novidades do Romantismo!</h3>
+            <ul id="lista-atualizacoes">
+                <li class="nova-notificacao">
+                    <span class="tag-novo">NOVO!</span> Conto: "Conto da Lua..." adicionado ao Acervo.
+                </li>
+                <li class="nova-notificacao">
+                    <span class="tag-novo">UPDATE!</span> Correções de CSS no Dropcap do Livro.
+                </li>
+                <li class="nova-notificacao">
+                    <span class="tag-novo">MÚSICA!</span> Nova trilha sonora na playlist.
+                </li>
             </ul>
-        <button id="marcar-lido">Marcar tudo como lido</button>
+            <button id="marcar-lido">Marcar tudo como lido</button>
+        </div>
     </div>
-</div>
 
 
     <div class="main-content-wrapper">
@@ -80,13 +80,27 @@
     <script src="js/global.js"></script>
 
     <script>
-        // LIGAÇÃO DE EVENTOS E FUNÇÕES LOCAIS
-        document.addEventListener('DOMContentLoaded', function () {
+        // LÓGICA DE EVENTOS E FUNÇÕES LOCAIS UNIFICADAS
+        
+        // SCRIPT DE SEGURANÇA OBRIGATÓRIO
+        function verificarSessao() {
+            const acesso = localStorage.getItem('acessoConcedido');
+            const expiracao = localStorage.getItem('expiracao');
+            const horaAtual = new Date().getTime();
 
-            // LIGAÇÃO DO BOTÃO DARK MODE (Chama a função toggleDarkMode de global.js)
+            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+                window.location.replace("index.html");
+            }
+        }
+        verificarSessao(); // Executa imediatamente para segurança
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // LIGAÇÃO DARK MODE
             document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
 
-            // LÓGICA DO BOTÃO TRANCAR SEGREDOS (CÓDIGO LOCAL PARA LOGOUT)
+            // LÓGICA DO BOTÃO TRANCAR SEGREDOS
             const botaoTrancar = document.getElementById('trancar-segredos');
             if (botaoTrancar) {
                 botaoTrancar.addEventListener('click', function (event) {
@@ -95,23 +109,24 @@
                     window.location.href = "index.html";
                 });
             }
-        });
 
-        // NOVO: LÓGICA DE NOTIFICAÇÕES
+            // 🚨 LÓGICA DE NOTIFICAÇÕES (MOVIDA PARA DENTRO DO DOMContentLoaded) 🚨
             const iconeNotificacao = document.getElementById('notificacao-icone');
             const janelaNotificacao = document.getElementById('notificacao-janela');
             const contadorNotificacao = document.getElementById('notificacao-contador');
             const botaoMarcarLido = document.getElementById('marcar-lido');
             
-            // Função para ligar/desligar o pop-up
-            iconeNotificacao.addEventListener('click', function (event) {
-                event.stopPropagation(); // Evita que o clique feche a janela imediatamente
-                janelaNotificacao.classList.toggle('janela-visivel');
-            });
+            // Lógica para ligar/desligar o pop-up
+            if (iconeNotificacao) {
+                iconeNotificacao.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    janelaNotificacao.classList.toggle('janela-visivel');
+                });
+            }
 
-            // Função para fechar o pop-up se clicar fora dele
+            // Lógica para fechar o pop-up se clicar fora dele (Com verificação de elementos)
             document.addEventListener('click', function (event) {
-                if (janelaNotificacao.classList.contains('janela-visivel') && 
+                if (janelaNotificacao && janelaNotificacao.classList.contains('janela-visivel') && 
                     !janelaNotificacao.contains(event.target) && 
                     event.target !== iconeNotificacao) {
                     janelaNotificacao.classList.remove('janela-visivel');
@@ -119,42 +134,22 @@
             });
 
             // Lógica do botão Marcar como Lido
-            botaoMarcarLido.addEventListener('click', function () {
-                // Zera o contador
-                contadorNotificacao.textContent = '0';
-                contadorNotificacao.classList.remove('visivel');
-                
-                // Esconde o pop-up
-                janelaNotificacao.classList.remove('janela-visivel');
-                
-                // [OPCIONAL] Remove as tags "NOVO" ou muda o estilo dos <li> se desejar
-                document.querySelectorAll('.nova-notificacao .tag-novo').forEach(tag => {
-                    tag.style.display = 'none';
+            if (botaoMarcarLido) {
+                 botaoMarcarLido.addEventListener('click', function () {
+                    contadorNotificacao.textContent = '0';
+                    contadorNotificacao.classList.remove('visivel');
+                    janelaNotificacao.classList.remove('janela-visivel');
+                    document.querySelectorAll('.nova-notificacao .tag-novo').forEach(tag => {
+                        tag.style.display = 'none';
+                    });
                 });
-            });
+            }
 
             // LÓGICA INICIAL: Se o contador for zero, esconde o crachá
-            if (parseInt(contadorNotificacao.getAttribute('data-count')) > 0) {
+            if (contadorNotificacao && parseInt(contadorNotificacao.getAttribute('data-count')) > 0) {
                 contadorNotificacao.classList.add('visivel');
             }
         });
-    </script>
-    
-    <script>
-        function verificarSessao() {
-            const acesso = localStorage.getItem('acessoConcedido');
-            const expiracao = localStorage.getItem('expiracao');
-            const horaAtual = new Date().getTime();
-
-            // 1. Verifica se o token existe OU se expirou
-            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-                // Se o token é inválido, redireciona
-                window.location.replace("index.html");
-            }
-        }
-        // Executa a verificação imediatamente
-        verificarSessao();
-        
     </script>
     
     <script type="text/javascript">
@@ -168,5 +163,6 @@
             s0.parentNode.insertBefore(s1, s0);
         })();
     </script>
-    </body>
+</body>
+
 </html>
