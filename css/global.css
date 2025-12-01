@@ -320,17 +320,3 @@ body {
     color: #333; 
 }
 
-/* ========================================= */
-/* AJUSTE ESSENCIAL PARA O DARK MODE NOS CARTÕES DO SUMÁRIO */
-/* ========================================= */
-
-.dark-mode .cartao-sumario {
-    background-color: #333345 !important; /* Fundo do cartão ligeiramente escuro */
-    color: #e0e0e0 !important; /* Cor do texto dentro do cartão */
-    border: 1px solid #5d167f !important; /* Borda sutil para o Dark Mode */
-}
-
-.dark-mode .cartao-sumario:hover {
-    background-color: #5d167f !important; /* Roxo vibrante no hover para o Dark Mode */
-    color: #ffffff !important; /* Texto branco no hover */
-}
