@@ -21,11 +21,6 @@
         <span>O Nosso Tempo Juntos Desde sua Volta</span>
         <span id="tempo-decorrido">A calcular...</span>
     </div>
-    
-    <div id="contador-vida">
-        <span id="tempo-titulo-encontro">Desde o Nosso Primeiro Encontro</span>
-        <span id="tempo-vida-decorrido">A calcular...</span>
-    </div>
 
     <span id="dark-mode-toggle" aria-label="Alternar modo de visualização">
         🌙
@@ -53,12 +48,15 @@
             <button id="marcar-lido">Marcar tudo como lido</button>
         </div>
     </div>
+    <div id="contador-vida">
+        <span id="tempo-titulo-encontro">Desde o Nosso Primeiro Encontro</span>
+        <span id="tempo-vida-decorrido">A calcular...</span>
+    </div>
 
 
     <div class="main-content-wrapper">
 
         <div class="container-romance">
-
             <h1>Onde a Minha Sombra Descansa no Brilho Castanho da Lua</h1>
 
             <p>Bem-vinda ao nosso cantinho de memórias! Podes escolher o que queres explorar:</p>
@@ -80,8 +78,6 @@
     <script src="js/global.js"></script>
 
     <script>
-        // LÓGICA DE EVENTOS E FUNÇÕES LOCAIS UNIFICADAS
-        
         // SCRIPT DE SEGURANÇA OBRIGATÓRIO
         function verificarSessao() {
             const acesso = localStorage.getItem('acessoConcedido');
@@ -96,7 +92,7 @@
 
 
         document.addEventListener('DOMContentLoaded', function () {
-            
+
             // LIGAÇÃO DARK MODE
             document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
 
