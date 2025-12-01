@@ -31,6 +31,29 @@
         <span id="tempo-vida-decorrido">A calcular...</span>
     </div>
 
+    <div id="notificacao-container">
+    <span id="notificacao-icone">
+        🔔
+        <span id="notificacao-contador" data-count="3">3</span>
+    </span>
+    
+    <div id="notificacao-janela" class="janela-escondida">
+        <h3>📢 Novidades do Romantismo!</h3>
+        <ul id="lista-atualizacoes">
+            <li class="nova-notificacao">
+                <span class="tag-novo">NOVO!</span> Conto: "Conto da Lua..." adicionado ao Acervo.
+            </li>
+            <li class="nova-notificacao">
+                <span class="tag-novo">UPDATE!</span> Correções de CSS no Dropcap do Livro.
+            </li>
+            <li class="nova-notificacao">
+                <span class="tag-novo">MÚSICA!</span> Nova trilha sonora na playlist.
+            </li>
+            </ul>
+        <button id="marcar-lido">Marcar tudo como lido</button>
+    </div>
+</div>
+
 
     <div class="main-content-wrapper">
 
@@ -71,6 +94,48 @@
                     localStorage.clear();
                     window.location.href = "index.html";
                 });
+            }
+        });
+
+        // NOVO: LÓGICA DE NOTIFICAÇÕES
+            const iconeNotificacao = document.getElementById('notificacao-icone');
+            const janelaNotificacao = document.getElementById('notificacao-janela');
+            const contadorNotificacao = document.getElementById('notificacao-contador');
+            const botaoMarcarLido = document.getElementById('marcar-lido');
+            
+            // Função para ligar/desligar o pop-up
+            iconeNotificacao.addEventListener('click', function (event) {
+                event.stopPropagation(); // Evita que o clique feche a janela imediatamente
+                janelaNotificacao.classList.toggle('janela-visivel');
+            });
+
+            // Função para fechar o pop-up se clicar fora dele
+            document.addEventListener('click', function (event) {
+                if (janelaNotificacao.classList.contains('janela-visivel') && 
+                    !janelaNotificacao.contains(event.target) && 
+                    event.target !== iconeNotificacao) {
+                    janelaNotificacao.classList.remove('janela-visivel');
+                }
+            });
+
+            // Lógica do botão Marcar como Lido
+            botaoMarcarLido.addEventListener('click', function () {
+                // Zera o contador
+                contadorNotificacao.textContent = '0';
+                contadorNotificacao.classList.remove('visivel');
+                
+                // Esconde o pop-up
+                janelaNotificacao.classList.remove('janela-visivel');
+                
+                // [OPCIONAL] Remove as tags "NOVO" ou muda o estilo dos <li> se desejar
+                document.querySelectorAll('.nova-notificacao .tag-novo').forEach(tag => {
+                    tag.style.display = 'none';
+                });
+            });
+
+            // LÓGICA INICIAL: Se o contador for zero, esconde o crachá
+            if (parseInt(contadorNotificacao.getAttribute('data-count')) > 0) {
+                contadorNotificacao.classList.add('visivel');
             }
         });
     </script>

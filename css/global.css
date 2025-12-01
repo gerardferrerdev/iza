@@ -193,3 +193,154 @@ body {
 .dark-mode .cartao-sumario:hover {
     background-color: #5d167f; /* Roxo vibrante no hover */
 }
+
+
+
+/* css/global.css (NOVO BLOCO: ESTILOS DE NOTIFICAÇÃO) */
+
+/* 1. Container Fixo da Notificação */
+#notificacao-container {
+    position: fixed;
+    top: 60px; /* Abaixo do Contador do Projeto (que geralmente está em 20px) */
+    right: 20px;
+    z-index: 1000; /* Garante que fique acima de tudo */
+    cursor: pointer;
+}
+
+/* 2. Ícone do Sino */
+#notificacao-icone {
+    font-size: 1.8em;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: #f7f7f7; /* Fundo claro para o modo claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    display: inline-block;
+    position: relative;
+    line-height: 1;
+}
+
+#notificacao-icone:hover {
+    transform: scale(1.1);
+}
+
+/* 3. Crachá/Contador (A Bolinha Vermelha) */
+#notificacao-contador {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #d32f2f; /* Vermelho vibrante */
+    color: white;
+    font-size: 0.7em;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 4px 6px;
+    min-width: 10px; /* Para garantir o formato de bolinha */
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: none; /* Escondido por padrão, só aparece se tiver count > 0 */
+}
+
+/* Classe para mostrar o contador */
+#notificacao-contador.visivel {
+    display: block;
+}
+
+/* 4. Janela de Pop-up (Onde o texto aparece) */
+#notificacao-janela {
+    position: absolute;
+    top: 50px; /* Posição abaixo do ícone */
+    right: 0;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    z-index: 999;
+    display: none; /* ESSENCIAL: Escondida por padrão */
+    text-align: left;
+}
+
+#notificacao-janela.janela-visivel {
+    display: block;
+}
+
+#notificacao-janela h3 {
+    color: #5d167f;
+    margin-top: 0;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    font-size: 1.3em;
+}
+
+#lista-atualizacoes {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+#lista-atualizacoes li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    color: #4a4a4a;
+}
+
+.tag-novo {
+    background-color: #7b1fa2; /* Roxo principal */
+    color: white;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: bold;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+#marcar-lido {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #5d167f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#marcar-lido:hover {
+    background-color: #7b1fa2;
+}
+
+/* 5. MODO NOTURNO PARA NOTIFICAÇÕES */
+
+.dark-mode #notificacao-icone {
+    background-color: #444455;
+    color: white;
+}
+
+.dark-mode #notificacao-janela {
+    background-color: #333345;
+    border-color: #5d167f;
+    box-shadow: 0 8px 16px rgba(123, 31, 162, 0.5); /* Sombra roxa no dark mode */
+}
+
+.dark-mode #notificacao-janela h3 {
+    color: #c4b0ec; /* Lavanda Pálido */
+    border-bottom-color: #5d167f;
+}
+
+.dark-mode #lista-atualizacoes li {
+    color: #e0e0e0;
+    border-bottom-color: #444455;
+}
+
+.dark-mode .tag-novo {
+    background-color: #c4b0ec; /* Lavanda Pálido */
+    color: #333;
+}
