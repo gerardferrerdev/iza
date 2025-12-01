@@ -40,3 +40,17 @@
     transform: translateY(-5px); /* Efeito suave de "levantar" */
     box-shadow: 0 8px 15px rgba(123, 31, 162, 0.5); /* Sombra roxa no hover */
 }
+
+/* css/style_capitulo2.css (ADICIONAR NO FINAL) */
+
+/* MODO ESCURO FORÇADO PARA CARTÕES DE NAVEGAÇÃO */
+.dark-mode .cartao-sumario {
+    background-color: #333345 !important; /* Força o fundo escuro do cartão */
+    color: #e0e0e0 !important; /* Cor do texto dentro do cartão */
+    border: 1px solid #5d167f !important; /* Borda sutil para o Dark Mode */
+}
+
+.dark-mode .cartao-sumario:hover {
+    background-color: #5d167f !important; /* Roxo vibrante no hover para o Dark Mode */
+    color: #ffffff !important; /* Texto branco no hover */
+}
