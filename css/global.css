@@ -295,3 +295,35 @@ body {
     background-color: #c4b0ec; 
     color: #333;
 }
+
+/* css/global.css (REGRAS ESSENCIAIS DO DARK MODE) */
+
+/* 2. ESTILOS QUANDO O MODO ESCURO ESTÁ ATIVO */
+/* Esta é a regra que muda a cor da sua caixa central de branco para escuro */
+.dark-mode .container-romance {
+    /* Inverte o fundo: De branco opaco para cinza/roxo escuro opaco */
+    background-color: rgba(30, 30, 40, 0.95) !important; 
+    box-shadow: 0 10px 30px rgba(200, 200, 200, 0.15); /* Sombra mais suave */
+}
+
+.dark-mode .container-romance h1, 
+.dark-mode .container-romance h2 {
+    /* Inverte a cor dos títulos: De roxo escuro para roxo claro */
+    color: #c4b0ec !important; 
+}
+
+.dark-mode .container-romance p,
+.dark-mode .container-romance span {
+    /* Inverte a cor do texto: De preto para branco/cinza claro */
+    color: #e0e0e0 !important; 
+}
+
+/* 3. Ajuste para Cartões do Sumário (Global) */
+/* Garante que os cartões de navegação respondem */
+.dark-mode .cartao-sumario {
+    background-color: #333345 !important; /* Fundo do cartão ligeiramente escuro */
+    border: 1px solid #5d167f;
+}
+.dark-mode .cartao-sumario:hover {
+    background-color: #5d167f; /* Roxo vibrante no hover */
+}
