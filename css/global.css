@@ -1,40 +1,31 @@
+/* ========================================= */
+/* ESTILOS BASE E FUNDO */
+/* ========================================= */
 
 body {
-    /* Remove margens e padding padrão para que o fundo ocupe 100% da tela */
+    /* Remove margens e padding padrão */
     margin: 0;
     padding: 0;
-    font-family: 'Georgia', serif; /* Uma fonte clássica e romântica */
-    color: #333; /* Cor do texto padrão para a caixa central */
-    min-height: 100vh; /* Garante que o corpo ocupa, no mínimo, a altura total da janela */
+    font-family: 'Georgia', serif; 
+    color: #333; 
     
-    /* O Fundo Gradiente: Preto para Roxo Suave */
-    /* A função linear-gradient cria a transição de cor */
-    /* to bottom: faz a transição de cima para baixo */
-    /* #000000: Cor preta (começa) */
-    /* #3a1c4a: Um roxo violeta profundo e elegante (termina) */
+    min-height: 100vh; /* Garante que o fundo se estende */
     background: linear-gradient(to bottom, #000000, #3a1c4a);
+    background-repeat: no-repeat; /* Evita a repetição do gradiente */
+}
+
+/* O .main-content-wrapper (Contém a caixa branca) */
+/* Mantemos o Flexbox aqui para centralizar o conteúdo, pois a correção anterior exige este Flexbox */
+.main-content-wrapper {
+    width: 100%;
+    min-height: 100vh; 
     
-    /* Centraliza o conteúdo (o container-romance) na vertical e horizontal */
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
 }
 
-
-/* O .main-content-wrapper deve ter as regras de centralização: */
-.main-content-wrapper {
-    width: 100%;
-    
-    /* ESSENCIAL PARA A CENTRALIZAÇÃO VERTICAL */
-    min-height: 100vh; 
-    
-    /* O BLOCO FLEXBOX DEVE ESTAR AQUI! */
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente (o que faltava!) */
-    align-items: center; /* Centraliza verticalmente (o que faltava!) */
-}
-
-/* O container principal também é geral, pois todas as páginas terão uma "caixa ao centro" */
+/* A Caixa Branca Central */
 .container-romance {
     width: 85%;
     max-width: 700px;
@@ -45,13 +36,17 @@ body {
     text-align: center;
 }
 
-/* 7. Estilos do Botão de Navegação (novo botão) */
+/* ========================================= */
+/* ESTILOS DE NAVEGAÇÃO E BOTÕES */
+/* ========================================= */
+
+/* Botões de Navegação (Voltar, Ir para Sumário) */
 .botao-navegacao {
     display: inline-block; 
-    margin-top: 40px; /* Um pouco menos de espaço que o botão da música */
+    margin-top: 40px; 
     padding: 12px 25px; 
     
-    background-color: #5d167f; /* Roxo mais profundo para diferenciá-lo ligeiramente */
+    background-color: #5d167f; 
     color: #ffffff; 
     text-decoration: none; 
     
@@ -59,78 +54,37 @@ body {
     font-weight: bold; 
     transition: background-color 0.3s ease; 
     letter-spacing: 1px;
-
-
 }
 
-/* Estilo para quando o mouse passar por cima (hover) */
 .botao-navegacao:hover {
-    background-color: #7b1fa2; /* Volta para o roxo vibrante no hover */
+    background-color: #7b1fa2; 
     transform: translateY(-2px); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* ========================================= */
+/* ESTILOS DOS ELEMENTOS FIXOS (position: fixed) */
+/* ========================================= */
 
-/* css/global.css ( ESTILO DO CONTADOR) */
-
-#contador-tempo {
-    /* Posição Fixa no Canto Superior Direito */
-    position: fixed; 
-    top: 20px;
-    right: 20px;
-    
-    /* Aparência */
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo preto semi-transparente */
-    color: #E0C090; /* Cor amarela/dourada para o tempo (destaque) */
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-size: 0.9em;
-    font-weight: bold;
-    font-family: monospace; /* Fonte com espaçamento fixo para o tempo */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 999; /* Garante que fica por cima de tudo */
-    text-align: center;
-}
-
-#contador-tempo span {
-    display: block; /* Garante que o texto de "Desde" fica numa linha, e o tempo na outra */
-    line-height: 1.4;
-}
-
-/* css/global.css (AJUSTE PARA O BOTÃO FIXO DE LOGOUT) */
-
-/* css/global.css (MODIFICAÇÃO NO BLOCO #trancar-segredos) */
-
+/* BOTÃO TRANCAR SEGREDOS (Canto Superior Esquerdo) */
 #trancar-segredos {
     position: fixed; 
-    
-    /* 🚨 MUDANÇA: Para o canto superior esquerdo */
     top: 20px; 
     left: 20px; 
-    bottom: auto; /* Remove o bottom: 20px anterior */
-    
-    /* Tamanho e Estilo (restante do código...) */
+    bottom: auto;
     font-size: 0.8em; 
     padding: 8px 12px;
     z-index: 1000; 
 }
 
-/* css/global.css (MODIFICAÇÃO NO BLOCO #contador-vida) */
-
-/* css/global.css (BLOCO #contador-vida CORRIGIDO) */
-
-#contador-vida {
-    /* Posição Fixa no Viewport */
+/* CONTADOR DE PROJETO (Canto Superior Direito) */
+#contador-tempo {
     position: fixed; 
-    bottom: 20px;
+    top: 20px;
+    right: 20px;
     
-    /* 🚨 MUDANÇA: Para o lado esquerdo */
-    left: 20px;   
-    right: auto; /* Garantimos que não há conflito com o right anterior */
-    
-    /* Aparência (restante do código...) */
     background-color: rgba(0, 0, 0, 0.6); 
-    color: #E0C090; /* Ouro Pálido */
+    color: #E0C090; 
     padding: 10px 15px;
     border-radius: 8px;
     font-size: 0.9em;
@@ -141,22 +95,19 @@ body {
     text-align: center;
 }
 
-/* 🚨 AJUSTE ESSENCIAL para o JS 🚨 */
-#contador-vida span {
-    display: block; /* Garante que o título e o tempo ficam em linhas separadas */
+#contador-tempo span {
+    display: block; 
     line-height: 1.4;
 }
 
-/* css/global.css (MODO ALTO CONTRASTE NOTURNO) */
-
-/* 1. ESTILO DO BOTÃO DE MODO NOTURNO (LUA/SOL) */
+/* BOTÃO MODO NOTURNO (Abaixo do Contador de Projeto) */
 #dark-mode-toggle {
     position: fixed;
-    top: 100px; /* Logo abaixo da caixa do contador (top: 20px + padding + altura) */
+    top: 100px; /* Alinhamento abaixo do contador (#contador-tempo) */
     right: 20px;
     cursor: pointer;
-    font-size: 1.5em; /* Tamanho bom para o ícone */
-    color: #E0C090; /* Cor de destaque (Ouro Pálido) */
+    font-size: 1.5em; 
+    color: #E0C090; 
     z-index: 999;
     transition: color 0.3s;
 }
@@ -165,45 +116,41 @@ body {
     color: #ffffff;
 }
 
-/* 2. ESTILOS QUANDO O MODO ESCURO ESTÁ ATIVO */
-.dark-mode .container-romance {
-    /* Inverte o fundo: De branco opaco para cinza/roxo escuro opaco */
-    background-color: rgba(30, 30, 40, 0.95); 
-    box-shadow: 0 10px 30px rgba(200, 200, 200, 0.15); /* Sombra mais suave */
+/* CONTADOR DE ENCONTRO (Canto Inferior Esquerdo) */
+#contador-vida {
+    position: fixed; 
+    bottom: 20px;
+    left: 20px;   
+    right: auto;
+    
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: #E0C090; 
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: monospace; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 999; 
+    text-align: center;
 }
 
-.dark-mode .container-romance h1, 
-.dark-mode .container-romance h2 {
-    /* Inverte a cor dos títulos: De roxo escuro para roxo claro */
-    color: #c4b0ec !important; 
-}
-
-.dark-mode .container-romance p,
-.dark-mode .container-romance span {
-    /* Inverte a cor do texto: De preto para branco/cinza claro */
-    color: #e0e0e0 !important; 
-}
-
-/* 3. Ajuste para Cartões do Sumário em Modo Escuro (Fundo do Cartão) */
-.dark-mode .cartao-sumario {
-    background-color: #333345; /* Fundo do cartão ligeiramente escuro */
-    border: 1px solid #5d167f;
-    color: #e0e0e0;
-}
-.dark-mode .cartao-sumario:hover {
-    background-color: #5d167f; /* Roxo vibrante no hover */
+#contador-vida span {
+    display: block; 
+    line-height: 1.4;
 }
 
 
+/* ========================================= */
+/* ESTILOS DE NOTIFICAÇÃO (CORREÇÃO DE POSICIONAMENTO) */
+/* ========================================= */
 
-/* css/global.css (NOVO BLOCO: ESTILOS DE NOTIFICAÇÃO) */
-
-/* 1. Container Fixo da Notificação */
+/* 1. Container Fixo da Notificação (Superior Direito, mas deve ficar alinhado ao DARK MODE TOGGLE) */
 #notificacao-container {
     position: fixed;
-    top: 60px; /* Abaixo do Contador do Projeto (que geralmente está em 20px) */
+    top: 150px; /* Colocado um pouco mais abaixo do Dark Mode toggle */
     right: 20px;
-    z-index: 1000; /* Garante que fique acima de tudo */
+    z-index: 1000; 
     cursor: pointer;
 }
 
@@ -212,7 +159,7 @@ body {
     font-size: 1.8em;
     padding: 8px;
     border-radius: 50%;
-    background-color: #f7f7f7; /* Fundo claro para o modo claro */
+    background-color: #f7f7f7; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease;
     display: inline-block;
@@ -224,22 +171,22 @@ body {
     transform: scale(1.1);
 }
 
-/* 3. Crachá/Contador (A Bolinha Vermelha) */
+/* 3. Crachá/Contador */
 #notificacao-contador {
     position: absolute;
     top: -5px;
     right: -5px;
-    background-color: #d32f2f; /* Vermelho vibrante */
+    background-color: #d32f2f; 
     color: white;
     font-size: 0.7em;
     font-weight: bold;
     border-radius: 50%;
     padding: 4px 6px;
-    min-width: 10px; /* Para garantir o formato de bolinha */
+    min-width: 10px; 
     text-align: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     z-index: 1001;
-    display: none; /* Escondido por padrão, só aparece se tiver count > 0 */
+    display: none; 
 }
 
 /* Classe para mostrar o contador */
@@ -247,11 +194,11 @@ body {
     display: block;
 }
 
-/* 4. Janela de Pop-up (Onde o texto aparece) */
+/* 4. Janela de Pop-up (Abre ALINHADA À DIREITA do ÍCONE) */
 #notificacao-janela {
     position: absolute;
-    top: 50px; /* Posição abaixo do ícone */
-    right: 0;
+    top: 50px; 
+    right: 0; /* Abre à direita da tela */
     width: 300px;
     max-height: 400px;
     overflow-y: auto;
@@ -261,7 +208,7 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     padding: 15px;
     z-index: 999;
-    display: none; /* ESSENCIAL: Escondida por padrão */
+    display: none; 
     text-align: left;
 }
 
@@ -277,6 +224,8 @@ body {
     font-size: 1.3em;
 }
 
+/* ... (Restante dos estilos de lista, tags e botão 'Marcar Lido' permanece) ... */
+
 #lista-atualizacoes {
     list-style: none;
     padding: 0;
@@ -290,7 +239,7 @@ body {
 }
 
 .tag-novo {
-    background-color: #7b1fa2; /* Roxo principal */
+    background-color: #7b1fa2; 
     color: white;
     padding: 3px 6px;
     border-radius: 4px;
@@ -317,7 +266,9 @@ body {
     background-color: #7b1fa2;
 }
 
-/* 5. MODO NOTURNO PARA NOTIFICAÇÕES */
+/* ========================================= */
+/* ESTILOS DARK MODE PARA ELEMENTOS FIXOS */
+/* ========================================= */
 
 .dark-mode #notificacao-icone {
     background-color: #444455;
@@ -327,11 +278,11 @@ body {
 .dark-mode #notificacao-janela {
     background-color: #333345;
     border-color: #5d167f;
-    box-shadow: 0 8px 16px rgba(123, 31, 162, 0.5); /* Sombra roxa no dark mode */
+    box-shadow: 0 8px 16px rgba(123, 31, 162, 0.5); 
 }
 
 .dark-mode #notificacao-janela h3 {
-    color: #c4b0ec; /* Lavanda Pálido */
+    color: #c4b0ec; 
     border-bottom-color: #5d167f;
 }
 
@@ -341,6 +292,6 @@ body {
 }
 
 .dark-mode .tag-novo {
-    background-color: #c4b0ec; /* Lavanda Pálido */
+    background-color: #c4b0ec; 
     color: #333;
 }
