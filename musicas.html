@@ -364,6 +364,28 @@
 
                     </div>
                 </div>
+
+                 <div class="musica-item">
+
+                    <div class="info-musica">
+
+                        <img src="img/Let_the_world_burn.jpg" alt="Capa da Música 11" class="capa-musica">
+
+                        <div class="texto-musica">
+                            <h2>11. No One Noticed</h2>
+                            <p>
+
+                            </p>
+                        </div>
+
+                        <a href="https://open.spotify.com/intl-pt/track/6AxxHZTffWwQbN9qPbucSi?si=163638618c824fdf"
+                            target="_blank" class="botao-ouvir">
+                            Ouvir Agora
+                        </a>
+
+                    </div>
+                </div>
+
                 </section>
 
             <br>
@@ -382,6 +404,7 @@
             const acesso = localStorage.getItem('acessoConcedido');
             const expiracao = localStorage.getItem('expiracao');
             const horaAtual = new Date().getTime();
+n in flames <br>
 
             if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
                 window.location.replace("index.html");
