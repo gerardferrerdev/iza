@@ -6,41 +6,78 @@
     <title>Jardim dos Momentos</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* Bloqueio de segurança inicial */
+        /* Segurança: esconde o corpo até a validação */
         body { display: none; }
-        
-        /* Estilos específicos para a Grade do Jardim (Devem estar aqui se não estiverem no global.css) */
+
+        /* Estilos específicos das cartas (Grade do Jardim) */
         .grade-jardim {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             margin: 30px 0;
         }
+
         .item-jardim {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             border: 2px dashed #5d167f;
             padding: 30px;
             border-radius: 15px;
-            cursor: not-allowed;
+            text-align: center;
             transition: all 0.3s ease;
+            cursor: not-allowed;
         }
+
+        /* Quando a carta está disponível */
         .item-jardim.desbloqueado {
-            background: white;
-            border-style: solid;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #5d167f;
             cursor: pointer;
+            color: #333;
         }
+
+        /* Ajuste para Dark Mode nas cartas desbloqueadas */
         .dark-mode .item-jardim.desbloqueado {
             background: #333345;
-            color: white;
+            color: #e0e0e0;
         }
-        .timer-espera { font-weight: bold; margin-top: 10px; font-family: monospace; }
-        
-        /* Modal */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
-        .modal-content { background: white; margin: 10% auto; padding: 40px; width: 80%; max-width: 600px; border-radius: 15px; position: relative; }
-        .dark-mode .modal-content { background: #1e1e28; color: white; }
-        .fechar-modal { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; }
+
+        .timer-espera {
+            display: block;
+            margin-top: 15px;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        /* Estilos do Modal (Leitura da Carta) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 40px;
+            width: 85%;
+            max-width: 600px;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+        }
+
+        .dark-mode .modal-content { background-color: #1e1e28; color: #e0e0e0; }
+
+        .fechar-modal {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 30px; cursor: pointer; color: #5d167f;
+        }
     </style>
 </head>
 <body>
@@ -59,25 +96,25 @@
     <div class="main-content-wrapper">
         <div class="container-romance">
             <h1>🌸 Jardim dos Momentos</h1>
-            <p>Sementes de amor plantadas hoje, para florescerem no tempo certo.</p>
+            <p>Cartas que o tempo guardou para florescerem no momento certo.</p>
 
             <div class="grade-jardim">
                 <div class="item-jardim" data-liberacao="2025-12-25T08:00:00">
-                    <div class="icone-bloqueio"><i class="fas fa-lock"></i></div>
-                    <div class="conteudo-carta" style="display: none;">
+                    <div class="icone-bloqueio"><i class="fas fa-lock fa-3x"></i></div>
+                    <div class="conteudo-secreto" style="display: none;">
                         <h2>🎄 Feliz Natal, meu amor</h2>
-                        <p>Escreve aqui o teu texto especial...</p>
+                        <p>Insira aqui o seu texto especial para ela ler no Natal...</p>
                     </div>
-                    <div class="timer-espera"></div>
+                    <span class="timer-espera">Calculando tempo...</span>
                 </div>
 
                 <div class="item-jardim" data-liberacao="2026-01-01T00:00:00">
-                    <div class="icone-bloqueio"><i class="fas fa-lock"></i></div>
-                    <div class="conteudo-carta" style="display: none;">
-                        <h2>🎆 A Nossa Virada</h2>
-                        <p>Escreve aqui o teu texto especial...</p>
+                    <div class="icone-bloqueio"><i class="fas fa-lock fa-3x"></i></div>
+                    <div class="conteudo-secreto" style="display: none;">
+                        <h2>🎆 Feliz 2026</h2>
+                        <p>O que eu desejo para nós neste novo ano...</p>
                     </div>
-                    <div class="timer-espera"></div>
+                    <span class="timer-espera">Calculando tempo...</span>
                 </div>
             </div>
 
@@ -93,8 +130,9 @@
     </div>
 
     <script src="js/global.js"></script>
+    
     <script>
-        // SEGURANÇA IGUAL AO SUMÁRIO
+        // SEGURANÇA: Mesma lógica do sumario.html
         (function verificarSessao() {
             const acesso = localStorage.getItem('acessoConcedido');
             const expiracao = localStorage.getItem('expiracao');
@@ -107,56 +145,57 @@
             }
         })();
 
-        // INICIALIZAÇÃO DO PROJETO
+        // INICIALIZAÇÃO E LÓGICA DO JARDIM
         document.addEventListener('DOMContentLoaded', function() {
-            // Aplica Dark Mode se salvo
+            // Aplica o Dark Mode caso esteja ativado globalmente
             if (localStorage.getItem('darkMode') === 'enabled') {
                 document.body.classList.add('dark-mode');
             }
 
-            // Garante que os contadores do global.js iniciem
-            if (typeof atualizarRelogios === 'function') atualizarRelogios();
-            if (typeof atualizarContadores === 'function') atualizarContadores();
+            // Atualiza o estado das cartas
+            function atualizarJardim() {
+                const agora = new Date();
+                const itens = document.querySelectorAll('.item-jardim');
 
-            // Lógica do Jardim
+                itens.forEach(item => {
+                    const dataLibera = new Date(item.getAttribute('data-liberacao'));
+                    const timer = item.querySelector('.timer-espera');
+                    const icone = item.querySelector('.icone-bloqueio');
+
+                    if (agora >= dataLibera) {
+                        item.classList.add('desbloqueado');
+                        icone.innerHTML = '<i class="fas fa-envelope-open-text fa-3x"></i>';
+                        timer.innerText = "Disponível para ler!";
+                        
+                        item.onclick = function() {
+                            const conteudo = item.querySelector('.conteudo-secreto').innerHTML;
+                            document.getElementById('texto-da-carta').innerHTML = conteudo;
+                            document.getElementById('modal-carta').style.display = 'block';
+                        };
+                    } else {
+                        const diff = dataLibera - agora;
+                        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                        const s = Math.floor((diff % (1000 * 60)) / 1000);
+                        timer.innerText = `Abre em: ${d}d ${h}h ${m}m ${s}s`;
+                    }
+                });
+            }
+
             setInterval(atualizarJardim, 1000);
             atualizarJardim();
 
-            // Modal
-            document.querySelector('.fechar-modal').onclick = () => {
+            // Fechar Modal
+            document.querySelector('.fechar-modal').onclick = function() {
                 document.getElementById('modal-carta').style.display = 'none';
-            };
-        });
-
-        function atualizarJardim() {
-            const agora = new Date();
-            const itens = document.querySelectorAll('.item-jardim');
-
-            itens.forEach(item => {
-                const dataLibera = new Date(item.getAttribute('data-liberacao'));
-                const timerElemento = item.querySelector('.timer-espera');
-                const icone = item.querySelector('.icone-bloqueio');
-
-                if (agora >= dataLibera) {
-                    item.classList.add('desbloqueado');
-                    icone.innerHTML = '<i class="fas fa-envelope-open-text"></i>';
-                    timerElemento.innerText = "Disponível para ler!";
-                    
-                    item.onclick = function() {
-                        const conteudo = item.querySelector('.conteudo-carta').innerHTML;
-                        document.getElementById('texto-da-carta').innerHTML = conteudo;
-                        document.getElementById('modal-carta').style.display = 'block';
-                    };
-                } else {
-                    const diff = dataLibera - agora;
-                    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const s = Math.floor((diff % (1000 * 60)) / 1000);
-                    timerElemento.innerText = `Abre em: ${d}d ${h}h ${m}m ${s}s`;
+            }
+            window.onclick = function(event) {
+                if (event.target == document.getElementById('modal-carta')) {
+                    document.getElementById('modal-carta').style.display = 'none';
                 }
-            });
-        }
+            }
+        });
     </script>
 </body>
 </html>
