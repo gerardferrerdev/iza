@@ -7,32 +7,26 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Garante que o body comece invisível para a segurança, mas com transição suave */
+        /* Garante que o body comece invisível para segurança */
         body { display: none; }
+        
+        /* Ajuste específico para o botão trancar não herdar margens erradas */
+        #trancar-segredos {
+            cursor: pointer;
+            border: none;
+        }
     </style>
 </head>
 <body> 
     <div id="contador-tempo"></div>
     <div id="contador-vida"></div>
     
-    <button id="trancar-segredos" class="botao-navegacao">
+    <button id="trancar-segredos">
         <i class="fas fa-lock"></i> Trancar Segredos
     </button>
 
     <div id="dark-mode-toggle">
         <i class="fas fa-moon"></i>
-    </div>
-
-    <div id="notificacao-container">
-        <div id="notificacao-icone">
-            <i class="fas fa-bell"></i>
-            <span id="notificacao-contador">0</span>
-        </div>
-        <div id="notificacao-janela">
-            <h3>Atualizações</h3>
-            <ul id="lista-atualizacoes"></ul>
-            <button id="marcar-lido">Entendido</button>
-        </div>
     </div>
 
     <div class="main-content-wrapper">
@@ -84,36 +78,51 @@
             if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
                 window.location.replace("index.html");
             } else {
-                // Se estiver ok, mostra o conteúdo
                 document.body.style.display = 'block';
             }
         })();
 
-        // 2. INICIALIZAÇÃO APÓS CARREGAR TUDO
+        // 2. INICIALIZAÇÃO DE FUNÇÕES DO GLOBAL.JS E JARDIM
         document.addEventListener('DOMContentLoaded', function() {
-            // Garante que o Dark Mode seja aplicado se estiver ativo no global
+            
+            // Força a aplicação do Dark Mode se estiver ativo
             if (localStorage.getItem('darkMode') === 'enabled') {
                 document.body.classList.add('dark-mode');
             }
 
-            // Inicia a lógica do Jardim
+            // Ativa o clique do botão de Trancar (usando a lógica do global se existir)
+            const btnTrancar = document.getElementById('trancar-segredos');
+            if (btnTrancar) {
+                btnTrancar.addEventListener('click', function() {
+                    localStorage.removeItem('acessoConcedido');
+                    localStorage.removeItem('expiracao');
+                    window.location.replace("index.html");
+                });
+            }
+
+            // Inicializa os contadores (chama as funções que estão no seu global.js)
+            // Nota: Se as funções no seu global.js tiverem nomes diferentes, ajuste aqui.
+            if (typeof atualizarContadores === 'function') {
+                atualizarContadores();
+                setInterval(atualizarContadores, 1000);
+            }
+
+            // Lógica do Jardim
             atualizarJardim();
             setInterval(atualizarJardim, 1000);
             
-            // Ativa o botão de fechar modal
+            // Fechar modal
             document.querySelector('.fechar-modal').onclick = () => {
                 document.getElementById('modal-carta').style.display = "none";
             };
         });
 
-        // 3. LÓGICA DO JARDIM
         function atualizarJardim() {
             const agora = new Date();
             const itens = document.querySelectorAll('.item-jardim');
 
             itens.forEach(item => {
-                const dataLiberaStr = item.getAttribute('data-liberacao');
-                const dataLibera = new Date(dataLiberaStr);
+                const dataLibera = new Date(item.getAttribute('data-liberacao'));
                 const timerElemento = item.querySelector('.timer-espera');
                 const icone = item.querySelector('.icone-bloqueio');
 
@@ -123,7 +132,10 @@
                     timerElemento.innerText = "Clique para abrir";
                     
                     item.onclick = function() {
-                        abrirCarta(item.querySelector('.conteudo-carta').innerHTML);
+                        const conteudo = item.querySelector('.conteudo-carta').innerHTML;
+                        const modal = document.getElementById('modal-carta');
+                        document.getElementById('texto-da-carta').innerHTML = conteudo;
+                        modal.style.display = "block";
                     };
                 } else {
                     const diff = dataLibera - agora;
@@ -131,16 +143,9 @@
                     const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                     const segundos = Math.floor((diff % (1000 * 60)) / 1000);
-                    
                     timerElemento.innerText = `Abre em: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
                 }
             });
-        }
-
-        function abrirCarta(conteudo) {
-            const modal = document.getElementById('modal-carta');
-            document.getElementById('texto-da-carta').innerHTML = conteudo;
-            modal.style.display = "block";
         }
     </script>
 </body>
