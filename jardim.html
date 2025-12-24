@@ -6,8 +6,13 @@
     <title>Jardim dos Momentos</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Garante que o body comece invisível para a segurança, mas com transição suave */
+        body { display: none; }
+    </style>
 </head>
-<body style="display: none;"> <div id="contador-tempo"></div>
+<body> 
+    <div id="contador-tempo"></div>
     <div id="contador-vida"></div>
     
     <button id="trancar-segredos" class="botao-navegacao">
@@ -68,29 +73,47 @@
     </div>
 
     <script src="js/global.js"></script>
+
     <script>
-       // SCRIPT DE SEGURANÇA OBRIGATÓRIO (Igual ao do seu sumario.html)
-function verificarSessao() {
-    const acesso = localStorage.getItem('acessoConcedido');
-    const expiracao = localStorage.getItem('expiracao');
-    const horaAtual = new Date().getTime();
+        // 1. VERIFICAÇÃO DE SESSÃO IMEDIATA
+        (function verificarSessao() {
+            const acesso = localStorage.getItem('acessoConcedido');
+            const expiracao = localStorage.getItem('expiracao');
+            const horaAtual = new Date().getTime();
 
-    if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-        window.location.replace("index.html");
-    } else {
-        // Se estiver tudo bem, mostramos o corpo da página
-        document.body.style.display = 'block'; 
-    }
-}
-verificarSessao(); // Executa imediatamente
+            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+                window.location.replace("index.html");
+            } else {
+                // Se estiver ok, mostra o conteúdo
+                document.body.style.display = 'block';
+            }
+        })();
 
-        // 2. LÓGICA DO JARDIM (Contagem Regressiva e Desbloqueio)
+        // 2. INICIALIZAÇÃO APÓS CARREGAR TUDO
+        document.addEventListener('DOMContentLoaded', function() {
+            // Garante que o Dark Mode seja aplicado se estiver ativo no global
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Inicia a lógica do Jardim
+            atualizarJardim();
+            setInterval(atualizarJardim, 1000);
+            
+            // Ativa o botão de fechar modal
+            document.querySelector('.fechar-modal').onclick = () => {
+                document.getElementById('modal-carta').style.display = "none";
+            };
+        });
+
+        // 3. LÓGICA DO JARDIM
         function atualizarJardim() {
             const agora = new Date();
             const itens = document.querySelectorAll('.item-jardim');
 
             itens.forEach(item => {
-                const dataLibera = new Date(item.getAttribute('data-liberacao'));
+                const dataLiberaStr = item.getAttribute('data-liberacao');
+                const dataLibera = new Date(dataLiberaStr);
                 const timerElemento = item.querySelector('.timer-espera');
                 const icone = item.querySelector('.icone-bloqueio');
 
@@ -119,14 +142,6 @@ verificarSessao(); // Executa imediatamente
             document.getElementById('texto-da-carta').innerHTML = conteudo;
             modal.style.display = "block";
         }
-
-        document.querySelector('.fechar-modal').onclick = () => {
-            document.getElementById('modal-carta').style.display = "none";
-        };
-
-        // Atualiza os cronômetros a cada segundo
-        setInterval(atualizarJardim, 1000);
-        atualizarJardim();
     </script>
 </body>
 </html>
