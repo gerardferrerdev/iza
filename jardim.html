@@ -69,17 +69,20 @@
 
     <script src="js/global.js"></script>
     <script>
-        // Função de verificação de segurança (Executa imediatamente)
-        function verificarSessao() {
-            const acesso = localStorage.getItem('acessoConcedido');
-            const expiracao = localStorage.getItem('expiracao');
-            const horaAtual = new Date().getTime();
+       // SCRIPT DE SEGURANÇA OBRIGATÓRIO (Igual ao do seu sumario.html)
+function verificarSessao() {
+    const acesso = localStorage.getItem('acessoConcedido');
+    const expiracao = localStorage.getItem('expiracao');
+    const horaAtual = new Date().getTime();
 
-            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
-                window.location.replace("index.html");
-            }
-        }
-        verificarSessao();
+    if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+        window.location.replace("index.html");
+    } else {
+        // Se estiver tudo bem, mostramos o corpo da página
+        document.body.style.display = 'block'; 
+    }
+}
+verificarSessao(); // Executa imediatamente
 
         // 2. LÓGICA DO JARDIM (Contagem Regressiva e Desbloqueio)
         function atualizarJardim() {
