@@ -69,12 +69,17 @@
 
     <script src="js/global.js"></script>
     <script>
-        // 1. VERIFICAÇÃO DE SEGURANÇA (Obrigatório para abrir a página)
-        if (localStorage.getItem('autenticado') !== 'true') {
-            window.location.href = 'index.html';
-        } else {
-            document.body.style.display = 'flex';
+        // Função de verificação de segurança (Executa imediatamente)
+        function verificarSessao() {
+            const acesso = localStorage.getItem('acessoConcedido');
+            const expiracao = localStorage.getItem('expiracao');
+            const horaAtual = new Date().getTime();
+
+            if (acesso !== 'true' || !expiracao || horaAtual >= parseInt(expiracao)) {
+                window.location.replace("index.html");
+            }
         }
+        verificarSessao();
 
         // 2. LÓGICA DO JARDIM (Contagem Regressiva e Desbloqueio)
         function atualizarJardim() {
