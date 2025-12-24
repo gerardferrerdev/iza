@@ -1,63 +1,58 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jardim dos Momentos</title>
+    <link rel="shortcut icon" href="img/velaris-removebg-preview.png" type="image/x-icon">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        /* Segurança: esconde o corpo até a validação */
+        /* Bloqueio visual inicial para segurança */
         body { display: none; }
 
-        /* Estilos específicos das cartas (Grade do Jardim) */
+        /* Estilos da Grade do Jardim */
         .grade-jardim {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
 
         .item-jardim {
             background: rgba(255, 255, 255, 0.05);
             border: 2px dashed #5d167f;
-            padding: 30px;
+            padding: 40px 20px;
             border-radius: 15px;
             text-align: center;
             transition: all 0.3s ease;
             cursor: not-allowed;
         }
 
-        /* Quando a carta está disponível */
         .item-jardim.desbloqueado {
             background: rgba(255, 255, 255, 0.95);
             border: 2px solid #5d167f;
             cursor: pointer;
-            color: #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        /* Ajuste para Dark Mode nas cartas desbloqueadas */
         .dark-mode .item-jardim.desbloqueado {
             background: #333345;
-            color: #e0e0e0;
+            color: #fff;
         }
 
-        .timer-espera {
-            display: block;
-            margin-top: 15px;
-            font-family: monospace;
-            font-weight: bold;
-            font-size: 0.9em;
-        }
+        .icone-estado { font-size: 3em; color: #5d167f; margin-bottom: 15px; }
+        .timer-espera { display: block; margin-top: 15px; font-family: monospace; font-weight: bold; }
 
-        /* Estilos do Modal (Leitura da Carta) */
+        /* Estilo do Modal (Janela da Carta) */
         .modal {
             display: none;
             position: fixed;
-            z-index: 9999;
+            z-index: 10000;
             left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
         }
 
         .modal-content {
@@ -68,57 +63,71 @@
             max-width: 600px;
             border-radius: 15px;
             position: relative;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
         }
 
         .dark-mode .modal-content { background-color: #1e1e28; color: #e0e0e0; }
-
-        .fechar-modal {
-            position: absolute;
-            top: 15px; right: 20px;
-            font-size: 30px; cursor: pointer; color: #5d167f;
-        }
+        .fechar-modal { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #5d167f; }
     </style>
 </head>
+
 <body>
 
-    <div id="contador-tempo"></div>
-    <div id="contador-vida"></div>
-    
-    <button id="trancar-segredos">
-        <i class="fas fa-lock"></i> Trancar Segredos
-    </button>
+    <a href="#" id="trancar-segredos" class="botao-navegacao">
+        🔒 Trancar Segredos
+    </a>
 
-    <div id="dark-mode-toggle">
-        <i class="fas fa-moon"></i>
+    <div id="contador-tempo">
+        <span>O Nosso Tempo Juntos Desde sua Volta</span>
+        <span id="tempo-decorrido">A calcular...</span>
+    </div>
+
+    <span id="dark-mode-toggle" aria-label="Alternar modo de visualização">
+        🌙
+    </span>
+
+    <div id="contador-vida">
+        <span id="tempo-titulo-encontro">Desde o Nosso Primeiro Encontro</span>
+        <span id="tempo-vida-decorrido">A calcular...</span>
     </div>
 
     <div class="main-content-wrapper">
         <div class="container-romance">
-            <h1>🌸 Jardim dos Momentos</h1>
-            <p>Cartas que o tempo guardou para florescerem no momento certo.</p>
+            
+            <header>
+                <h1>🌸 Jardim dos Momentos</h1>
+                <p>Palavras guardadas para florescerem no instante certo.</p>
+            </header>
 
-            <div class="grade-jardim">
+            <section class="grade-jardim">
+                
                 <div class="item-jardim" data-liberacao="2025-12-25T08:00:00">
-                    <div class="icone-bloqueio"><i class="fas fa-lock fa-3x"></i></div>
+                    <div class="icone-estado"><i class="fas fa-lock"></i></div>
                     <div class="conteudo-secreto" style="display: none;">
-                        <h2>🎄 Feliz Natal, meu amor</h2>
-                        <p>Insira aqui o seu texto especial para ela ler no Natal...</p>
+                        <h2>🎄 Uma Promessa de Natal</h2>
+                        <p>Escreve aqui a tua mensagem para ser lida amanhã...</p>
                     </div>
-                    <span class="timer-espera">Calculando tempo...</span>
+                    <span class="timer-espera">A calcular tempo...</span>
                 </div>
 
                 <div class="item-jardim" data-liberacao="2026-01-01T00:00:00">
-                    <div class="icone-bloqueio"><i class="fas fa-lock fa-3x"></i></div>
+                    <div class="icone-estado"><i class="fas fa-lock"></i></div>
                     <div class="conteudo-secreto" style="display: none;">
-                        <h2>🎆 Feliz 2026</h2>
-                        <p>O que eu desejo para nós neste novo ano...</p>
+                        <h2>🎆 Sobre o Nosso Novo Ano</h2>
+                        <p>O que eu desejo para nós neste próximo ciclo...</p>
                     </div>
-                    <span class="timer-espera">Calculando tempo...</span>
+                    <span class="timer-espera">A calcular tempo...</span>
                 </div>
-            </div>
 
-            <a href="sumario.html" class="botao-navegacao">Voltar ao Sumário</a>
+            </section>
+
+            <br>
+            <a href="sumario.html" class="botao-navegacao">
+                ← Voltar ao Sumário
+            </a>
+
         </div>
     </div>
 
@@ -130,10 +139,10 @@
     </div>
 
     <script src="js/global.js"></script>
-    
+
     <script>
-        // SEGURANÇA: Mesma lógica do sumario.html
-        (function verificarSessao() {
+        // 1. Verificação de Segurança Exata do seu projeto
+        function verificarSessao() {
             const acesso = localStorage.getItem('acessoConcedido');
             const expiracao = localStorage.getItem('expiracao');
             const horaAtual = new Date().getTime();
@@ -143,16 +152,22 @@
             } else {
                 document.body.style.display = 'block';
             }
-        })();
+        }
+        verificarSessao();
 
-        // INICIALIZAÇÃO E LÓGICA DO JARDIM
-        document.addEventListener('DOMContentLoaded', function() {
-            // Aplica o Dark Mode caso esteja ativado globalmente
-            if (localStorage.getItem('darkMode') === 'enabled') {
-                document.body.classList.add('dark-mode');
-            }
+        // 2. Inicialização e Lógica do Jardim
+        document.addEventListener('DOMContentLoaded', function () {
+            // Dark Mode
+            document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
 
-            // Atualiza o estado das cartas
+            // Trancar Segredos
+            document.getElementById('trancar-segredos').addEventListener('click', function (e) {
+                e.preventDefault();
+                localStorage.clear();
+                window.location.replace("index.html");
+            });
+
+            // Lógica das Cartas
             function atualizarJardim() {
                 const agora = new Date();
                 const itens = document.querySelectorAll('.item-jardim');
@@ -160,12 +175,12 @@
                 itens.forEach(item => {
                     const dataLibera = new Date(item.getAttribute('data-liberacao'));
                     const timer = item.querySelector('.timer-espera');
-                    const icone = item.querySelector('.icone-bloqueio');
+                    const icone = item.querySelector('.icone-estado');
 
                     if (agora >= dataLibera) {
                         item.classList.add('desbloqueado');
-                        icone.innerHTML = '<i class="fas fa-envelope-open-text fa-3x"></i>';
-                        timer.innerText = "Disponível para ler!";
+                        icone.innerHTML = '<i class="fas fa-envelope-open-text"></i>';
+                        timer.innerText = "Disponível para ler";
                         
                         item.onclick = function() {
                             const conteudo = item.querySelector('.conteudo-secreto').innerHTML;
@@ -178,7 +193,7 @@
                         const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                         const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                         const s = Math.floor((diff % (1000 * 60)) / 1000);
-                        timer.innerText = `Abre em: ${d}d ${h}h ${m}m ${s}s`;
+                        timer.innerText = `${d}d ${h}h ${m}m ${s}s`;
                     }
                 });
             }
@@ -187,15 +202,21 @@
             atualizarJardim();
 
             // Fechar Modal
-            document.querySelector('.fechar-modal').onclick = function() {
-                document.getElementById('modal-carta').style.display = 'none';
-            }
-            window.onclick = function(event) {
-                if (event.target == document.getElementById('modal-carta')) {
-                    document.getElementById('modal-carta').style.display = 'none';
-                }
-            }
+            document.querySelector('.fechar-modal').onclick = () => document.getElementById('modal-carta').style.display = 'none';
         });
     </script>
+
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/691284fe8102a1195f148808/1j9o5f1bq';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
 </body>
+
 </html>
